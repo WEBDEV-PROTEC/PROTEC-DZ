@@ -9,6 +9,11 @@ class Partner(models.Model):
 
     
     city = fields.Many2one('res.city', string='City')
+    dzcompany_type = fields.Selection(
+        [('Sarl', 'SARL'), ('Eurl', 'EURL'), ('Spa', 'SPA'), ('Snc', 'SNC')
+         
+         ], string='Forme juridique ')
+
 
     
     @api.onchange('city')
