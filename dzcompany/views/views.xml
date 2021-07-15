@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='street']" position="before">
-                    <field name="company_type" attrs="{'invisible': [('company_type','!=','company')]}"/>
+                    <field name="dzcompany_type" attrs="{'invisible': [('company_type','!=','company')]}"/>
                 </xpath>
             </field>
         </record>

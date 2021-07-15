@@ -7,7 +7,7 @@ import json
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    company_type = fields.Selection(
+    dzcompany_type = fields.Selection(
         [('Sarl', 'SARL'), ('Eurl', 'EURL'), ('Spa', 'SPA'), ('Snc', 'SNC')
          
          ], string='Forme juridique ')
