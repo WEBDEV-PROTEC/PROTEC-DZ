@@ -11,6 +11,7 @@ class contact_sequence(models.Model):
         string="Code Client",
         required=True, copy=False, default='New')
     num_rc = fields.Char(string="Num RC")
+    vat = fields.Char(string="NIF")
     art = fields.Char(string="ART")
     @api.model
     def create(self, vals):
