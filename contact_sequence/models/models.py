@@ -17,7 +17,7 @@ class contact_sequence(models.Model):
     def create(self, vals):
         """ function for sequence creation"""
         letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-        current_code_file =  open("code_client.conf","r+")
+        current_code_file =  open("data/code_client.conf","r+")
         current_code =  current_code_file.readline()
         if int(current_code[1:])<=9999:
             seq = str(int('4' + current_code[1:] ) + 1)[1:]
