@@ -9,8 +9,8 @@ class contact_sequence(models.Model):
 
     code_client = fields.Char(
         string="Code Client",
-        required=True, readonly=True, copy=False, default='New')
-    num_rc = fields.Char(string="Num RC")
+        required=True, readonly=True, copy=False)
+    num_rc = fields.Char(string="Num RC / AGREM")
     vat = fields.Char(string="NIF")
     art = fields.Char(string="ART")
     @api.model
