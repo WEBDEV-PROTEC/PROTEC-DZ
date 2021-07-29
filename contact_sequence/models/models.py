@@ -33,6 +33,24 @@ class contact_sequence(models.Model):
         vals['code_client'] = current_code
         result = super(contact_sequence, self).create(vals)
         return result
+    def unlink(self):
+        letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        with open("/home/odoo/data/code_client.conf", 'w') as c:
+                current_code = self.code_client[1:]
+                if current_code=='0001':
+                    current_code = letters[letters.index(current_code[0])-1]+'9999'
+                else:
+                    current_code=current_code[0] + str(int('4' + current_code[1:] ) - 1)[1:]
+                    
+                    
+                c.write(current_code)
+                c.close()
+    
+        result = super(contact_sequence, self).unlink()
+        return result
+
+
+
     #
    #name = fields.Char()
 #     value = fields.Integer()
