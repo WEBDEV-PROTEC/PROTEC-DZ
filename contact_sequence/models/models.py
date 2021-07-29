@@ -9,7 +9,7 @@ class contact_sequence(models.Model):
 
     code_client = fields.Char(
         string="Code Client",
-        required=True, copy=False, default='New')
+        required=True, readonly=True, copy=False, default='New')
     num_rc = fields.Char(string="Num RC")
     vat = fields.Char(string="NIF")
     art = fields.Char(string="ART")
@@ -24,7 +24,7 @@ class contact_sequence(models.Model):
             current_code = current_code[0]+seq
         else:
             current_code = letters[letters.index(current_code[0])+1]+'0001'
-            with open("~/data/code_client.conf", 'w') as c:
+            with open("/home/odoo/data/code_client.conf", 'w') as c:
                 c.write(current_code)
                 c.close()
             
