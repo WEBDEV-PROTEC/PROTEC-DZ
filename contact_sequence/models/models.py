@@ -6,6 +6,15 @@ from odoo import models, fields, api
 class contact_sequence(models.Model):
 
     _inherit = 'res.partner'
+    
+    company_type = fields.Selection(selection=[
+            ('person', 'ETS'),
+            ('eurl', 'EURL'),
+            ('sarl', 'SARL'),
+            ('snc', 'SNC'),
+            ('epe', 'EPE'),
+            ('autres', 'Autres')
+        ], required=True)
 
     code_client = fields.Char(
         string="Code Client",
