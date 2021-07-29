@@ -16,13 +16,13 @@ class contact_sequence(models.Model):
     @api.model
     def create(self, vals):
         """ function for sequence creation"""
-        letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
         current_code_file =  open("/home/odoo/data/code_client.conf","r+")
         current_code =  current_code_file.readline()
-        if int(current_code[1:])<=9999:
+        if int(current_code[1:])<9999:
             seq = str(int('4' + current_code[1:] ) + 1)[1:]
             current_code = current_code[0]+seq
-        else:
+        if int(current_code[1:])==9999:
             current_code = letters[letters.index(current_code[0])+1]+'0001'
             with open("/home/odoo/data/code_client.conf", 'w') as c:
                 c.write(current_code)
