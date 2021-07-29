@@ -13,7 +13,7 @@ class contact_sequence(models.Model):
             ('sarl', 'SARL'),
             ('snc', 'SNC'),
             ('epe', 'EPE'),
-            ('autres', 'Autres')
+            ('company', 'Autres')
         ], required=True)
 
     code_client = fields.Char(
