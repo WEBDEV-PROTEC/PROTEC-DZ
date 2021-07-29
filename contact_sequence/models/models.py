@@ -38,7 +38,7 @@ class contact_sequence(models.Model):
         with open("/home/odoo/data/code_client.conf", 'w') as c:
                 current_code = self.code_client[1:]
                 if current_code=='0001':
-                    current_code = letters[letters.index(current_code[0])-1]+'9999'
+                    current_code = letters[letters.index(self.code_client[0])-1]+'9999'
                 else:
                     current_code=self.code_client[0] + str(int('4' + current_code[1:] ) - 1)[1:]
                     
