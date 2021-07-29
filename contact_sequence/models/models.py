@@ -7,18 +7,11 @@ class contact_sequence(models.Model):
 
     _inherit = 'res.partner'
     
-    company_type = fields.Selection(selection=[
-            ('person', 'ETS'),
-            ('eurl', 'EURL'),
-            ('sarl', 'SARL'),
-            ('snc', 'SNC'),
-            ('epe', 'EPE'),
-            ('company', 'Autres')
-        ], required=True)
+ 
 
     code_client = fields.Char(
         string="Code Client",
-        readonly=True, copy=False)
+        readonly=True)
     num_rc = fields.Char(string="Num RC / AGREM")
     vat = fields.Char(string="NIF")
     art = fields.Char(string="ART")
