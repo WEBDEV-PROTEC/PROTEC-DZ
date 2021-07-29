@@ -9,7 +9,7 @@ class contact_sequence(models.Model):
 
     code_client = fields.Char(
         string="Code Client",
-        required=True, readonly=True, copy=False)
+        readonly=True, copy=False)
     num_rc = fields.Char(string="Num RC / AGREM")
     vat = fields.Char(string="NIF")
     art = fields.Char(string="ART")
@@ -40,7 +40,7 @@ class contact_sequence(models.Model):
                 if current_code=='0001':
                     current_code = letters[letters.index(current_code[0])-1]+'9999'
                 else:
-                    current_code=current_code[0] + str(int('4' + current_code[1:] ) - 1)[1:]
+                    current_code=self.code_client[0] + str(int('4' + current_code[1:] ) - 1)[1:]
                     
                     
                 c.write(current_code)
