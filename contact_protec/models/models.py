@@ -18,7 +18,7 @@ class contact_sequence(models.Model):
     art = fields.Char(string="ART")
     agrem = fields.Char(string="Num Agrement")
     exp_agrem = fields.Date(string="Date Expiration")
-    
+    #nouveau essai
     
    
 
