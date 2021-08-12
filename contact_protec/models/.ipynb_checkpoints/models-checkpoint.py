@@ -6,27 +6,33 @@ from odoo import models, fields, api
 class contact_sequence(models.Model):
 
     _inherit = 'res.partner'
-    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=62)
-    code_client = fields.Char(
+    ref = fields.Char(
         string="Code Client", readonly=True,
-        required=True, copy=False, default='Non Défini')
+        required=True, copy=False, default='New')
+    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=62)
+   
     
     company_statut = fields.Selection([('eurl', 'EURL'),('sarl', 'SARL'),('snc', 'SNC'), ('spa', 'SPA'),('ets', 'ETS'),('epe', 'EPE'),('autre', 'Autre')], string='Type Société')
     
-    num_rc = fields.Char(string="Num RC / AGREM")
+    num_rc = fields.Char(string="Num RC")
     art = fields.Char(string="ART")
+    agrem = fields.Char(string="Num Agrement")
+    exp_agrem = fields.Date(string="Date Expiration")
+    
+    
+   
 
     @api.model
     def create(self, vals):
         """ function for sequence creation"""
         type = vals.get('company_type')
         parent = vals.get('parent_id')
-        if vals.get('code_client', 'Non Défini') == 'Non Défini' and type =='company':
-            vals['code_client'] = self.env['ir.sequence'].next_by_code(
+        if vals.get('ref', 'Non Défini') == 'Non Défini' and type =='company':
+            vals['ref'] = self.env['ir.sequence'].next_by_code(
                 'customer.sequence.company') or 'Non Défini'
-        elif vals.get('code_client', 'Non Défini') == 'Non Défini' and type =='person' and parent==0:
+        elif vals.get('ref', 'Non Défini') == 'Non Défini' and type =='person' and parent==0:
             
-            vals['code_client'] = self.env['ir.sequence'].next_by_code(
+            vals['ref'] = self.env['ir.sequence'].next_by_code(
                 'customer.sequence.individual') or 'Non Défini'
             
         result = super(contact_sequence, self).create(vals)
@@ -37,10 +43,10 @@ class contact_sequence(models.Model):
         type = vals.get('company_type')
         parent = vals.get('parent_id')
         if type == 'company':
-             vals['code_client'] = self.self.env['ir.sequence'].next_by_code(
+             vals['ref'] = self.self.env['ir.sequence'].next_by_code(
                 'customer.sequence.company') or 'Non Défini'
         if type == 'person' :
-            vals['code_client'] = self.env['ir.sequence'].next_by_code(
+            vals['ref'] = self.env['ir.sequence'].next_by_code(
                 'customer.sequence.individual') or 'Non Défini'
         result = super(contact_sequence, self).write(vals)
         return result
