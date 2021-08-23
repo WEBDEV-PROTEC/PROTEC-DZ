@@ -1,0 +1,44 @@
+.form-control-sm {
+    height: 40px;
+}
+
+.signup-form-width {
+    max-width: 100%;
+}
+
+.login-form-width {
+    max-width: 300px;
+}
+
+.background-color-header {
+    background: darkcyan;
+}
+
+.bg-100 {
+
+    color: #212529;
+    background: url(/web_enterprise/static/src/img/home-menu-bg-overlay.svg), linear-gradient(to right bottom, #77717e, #c9a8a9);
+    background-size: cover;
+}
+.card-body {
+    background-color: #ffffff !important;
+    color: #212529;
+}
+
+.oe_signup_form, .oe_reset_password_form {
+
+    max-width: 80% !important;
+    padding: 40px;
+    border: 1px solid #cfcfcf;
+}
+
+.smart-forms .tagline span {
+    color: #fd0000;
+}
+
+.form-control {
+    color: #495057;
+    background-color: #e6e6e6;
+    background-clip: padding-box;
+    border: 1px solid #c9cacc;
+}
