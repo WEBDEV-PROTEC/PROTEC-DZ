@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <record id="view_approval_form" model="ir.ui.view">
+            <field name="name">approval.signup.view</field>
+            <field name="model">approval.signup</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Approvals">
+                    <header>
+                        <button name="action_toapprove" type="object" string="Approve" states="draft" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                            <field name="email"/>
+                            <field name="vat"/>
+                        </group>
+                        <group>
+                            <field name="company_type"/>
+                            <field name="country_id"/>
+                            <field name="password" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="approval_tree_view" model="ir.ui.view">
+          <field name="name">approval.signup.form</field>
+          <field name="model">approval.signup</field>
+          <field name="arch" type="xml">
+              <tree string="Approvals">
+                  <field name="name"/>
+                  <field name="email"/>
+                  <field name="vat"/>
+                  <field name="company_type"/>
+                  <field name="password" invisible="1"/>
+                  <field name="country_id"/>
+             </tree>
+         </field>
+       </record>
+
+        <record model="ir.actions.act_window" id="action_view_approval">
+            <field name="name">Approvals</field>
+            <field name="res_model">approval.signup</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new Request
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="approval_signup" name="Approvals" parent="crm.crm_menu_root" action="action_view_approval"/>
+    </data>
+</odoo>

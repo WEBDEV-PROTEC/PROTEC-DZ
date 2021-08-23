@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <template id='assets_backend_signupavinet' name='Custom Signupavinet' inherit_id='web.assets_frontend' active='True'>
+            <xpath expr='.' position='inside'>
+                <link rel="stylesheet" type="text/css" href="/signupavinet/static/css/smart-forms.css"/>
+                <link rel="stylesheet" type="text/css" href="/signupavinet/static/css/custom.css"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
