@@ -21,12 +21,16 @@
         'security/cron.xml',
         'security/ir.model.access.csv',
 
-        
+        'data/update_ac_mail.xml',
+
+        'views/assets.xml',
         'views/approval_view.xml',
 
         'views/templates/assets.xml',
         'views/templates/signup.xml',
         'views/templates/res_users.xml',
+        'views/portal_ac.xml',
+        'wizard/update_acc_menu.xml'
 
     ],
     "installable": True,

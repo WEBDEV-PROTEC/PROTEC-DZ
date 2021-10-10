@@ -11,7 +11,8 @@ import pdb
 import werkzeug
 from odoo.addons.auth_signup.models.res_users import SignupError
 from cryptography.fernet import Fernet
-
+import datetime
+import base64
 
 _logger = logging.getLogger(__name__)
 
@@ -20,14 +21,51 @@ class AuthSignupHome(Home):
 
     @http.route('/request_sent', type='http', auth='public', website=True, sitemap=False, csrf=False)
     def req_sent(self, **kwargs):
-        com_values = {
-           'name':kwargs.get('company_name'),
-           'company_type':kwargs.get('company_type'),
+        com_values1= {}
+        if kwargs.get('exp_agrem')!= '':
+            com_values1['exp_agrem'] = datetime.datetime.strptime(kwargs.get('exp_agrem'), "%Y-%m-%d").date()
+            
+        
+        city_id = request.env['res.city'].search([('name','=', kwargs.get('ville'))]).id
+        #file = request.httprequest.files.getlist('scan')[0].read()
+       
+        
+        files = request.httprequest.files.getlist('scan')
+        for i in range(len(files)):
+                
+            if i==6:
+                break
+                    
+            com_values1['scan'+str(i+1)] =  base64.b64encode(files[i].read())
+           
+                
+        
+            
+    
+        
+        
+
+
+
+        com_values2 = {
+           'name': kwargs.get('company_name'),
+           'company_statut':kwargs.get('company_type'),
            'email':kwargs.get('login'),
            'vat':kwargs.get('vat'),
-           'country_id':kwargs.get('country_id'),
+            'num_rc':kwargs.get('num_rc'),
+            'art':kwargs.get('art'),
+            'agrem':kwargs.get('agrem'),
+            
+            'fname':kwargs.get('first_name'),
+            'lname':kwargs.get('last_name'),
+            'mobile':kwargs.get('mobile'),
+            'phone':kwargs.get('phone'),
+           'city_id': city_id,
+            'street':kwargs.get('adresse'),
            'password':kwargs.get('password'),
+             
         }
+        com_values = {**com_values1, **com_values2}
         company = request.env['approval.signup'].sudo().create(com_values)
         response = request.render('signupavinet.signup_done')
         return response
@@ -66,8 +104,8 @@ class AuthSignupHome(Home):
                     qcontext['error'] = _("Could not create a new account.")
 
         test = request.env['ir.config_parameter'].sudo().get_param('web.base.url')
-
-        if test == "http://digimex.be":
+        invite = request.website.name
+        if invite == "PROTEC IT Network & Security":
             response = request.render('signupavinet.signup', qcontext)
             response.headers['X-Frame-Options'] = 'DENY'
             return response
@@ -101,7 +139,7 @@ class AuthSignupHome(Home):
             except:
                 pass
 
-            com_values = {
+            com_values44 = {
                 'company_type': 'company',
                 'type': 'contact',
                 # 'street': qcontext.get('street'),
@@ -115,12 +153,32 @@ class AuthSignupHome(Home):
                 'vat': qcontext.get('vat'),
                 # 'comment': qcontext.get('comment'),
             }
+            exp_agrem = datetime.datetime.strptime(qcontext.get('exp_agrem'), "%Y-%m-%d").date()
+            city_id = request.env['res.city'].search([('name','=', qcontext.get('ville'))]).id
+            com_values = {
+            'name': "qcontext.get('company_name')",
+            
+            'company_statut':qcontext.get('company_type'),
+            'email':qcontext.get('login'),
+            'vat':qcontext.get('vat'),
+            'num_rc':qcontext.get('num_rc'),
+            'art':qcontext.get('art'),
+            'agrem':qcontext.get('agrem'),
+            'exp_agrem':exp_agrem,
+            'mobile':qcontext.get('mobile'),
+            'phone':qcontext.get('phone'),
+            'city_id':city_id,
+            'street':qcontext.get('adresse'),
+            
+           
+
+        }
             test = request.env['ir.config_parameter'].sudo().get_param('web.base.url')
-            test = request.env['ir.config_parameter'].sudo().get_param('web.base.url')
-            if test == "http://digimex.be":
+            invite = request.website.name
+            if invite != "PROTEC IT Network & Security":
         
                 our_values = {
-                    'name': qcontext.get('name'),
+                    'name': qcontext.get('company_name'),
                     'type': 'contact',
                     'company_type': 'person',
                 }
@@ -129,12 +187,12 @@ class AuthSignupHome(Home):
             else:
                 our_values = com_values
             login = {
-                'name': qcontext.get('name'),
+                'name': qcontext.get('company_name'),
                 'login': qcontext.get('login'),
                 'password': qcontext.get('password'),
             }
             try:
-                company = request.env['res.partner'].sudo().create(our_values)
+                company = request.env['res.partner'].sudo().create(com_values)
             except odoo.exceptions.ValidationError:
                 raise UserError(_("Vat is not valid"))
 
@@ -143,9 +201,11 @@ class AuthSignupHome(Home):
             values['partner_id'] = company.id
             values['phone'] = qcontext.get('phone')
             values['mobile'] = qcontext.get('mobile')
-            if test == "http://digimex.be":
-                self._signup_with_values(qcontext.get('token'), login)
-                request.env.cr.commit()
+            invite = request.website.name
+            if invite == "PROTEC IT Network & Security":
+                company = request.env['approval.signup'].sudo().create(com_values)
+                response = request.render('signupavinet.signup_done')
+                return response
             else:
                 self._signup_with_values(qcontext.get('token'), values)
                 request.env.cr.commit()
@@ -171,7 +231,7 @@ class Home(http.Controller):
 
         decrpt = f.decrypt(bytes(token, 'utf-8'))
         account =  decrpt.decode('utf-8').split('/')
-        uid = request.session.authenticate("avndgx-copy-3025130", account[0], account[1])
+        uid = request.session.authenticate("protecdz-copie-3087959", account[0], account[1])
         request.params['login_success'] = True
         return http.redirect_with_hash(self._login_redirect(uid, redirect=redirect))
 
@@ -179,4 +239,16 @@ class Home(http.Controller):
     # def web_te(self, redirect=None, **kw):
 
 
-
+    
+    @http.route('/getbaseurl', type='http', auth='public', website=True, sitemap=False, csrf=False)
+    def get_base_url(self, redirect=None, **kw):
+        test = request.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        invite = request.website.name
+        #if test == "https://avndgx-copy-3025130.dev.odoo.com":
+        if invite != "PROTEC IT Network & Security":
+            response = request.render('signupavinet.signup')
+            return response
+        else:
+            
+            response = request.render('auth_signup.signup')
+            return response

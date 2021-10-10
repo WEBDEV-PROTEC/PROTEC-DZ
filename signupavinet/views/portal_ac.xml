@@ -1,0 +1,33 @@
+<odoo>
+    <template id="portal_update" inherit_id="portal.portal_my_details">
+        <xpath expr="//input[@name='redirect']" position="before">
+            <div t-attf-class="form-group #{error.get('company_statut') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="company_statut">Type Société</label>
+                <input type="text" name="company_statut"
+                       t-attf-class="form-control #{error.get('company_statut') and 'is-invalid' or ''}"
+                       t-att-value="company_statut or partner.company_statut"/>
+            </div>
+            <div t-attf-class="form-group #{error.get('num_rc') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="num_rc">Num Rc</label>
+                <input type="text" name="num_rc"
+                       t-attf-class="form-control #{error.get('ref') and 'is-invalid' or ''}"
+                       t-att-value="num_rc or partner.num_rc"/>
+            </div>
+            <div t-attf-class="form-group #{error.get('art') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="art">ART</label>
+                <input type="text" name="art"
+                       t-attf-class="form-control #{error.get('art') and 'is-invalid' or ''}"
+                       t-att-value="art or partner.art"/>
+            </div>
+            <div t-attf-class="form-group #{error.get('agrem') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="agrem">Num Agrement</label>
+                <input type="text" name="agrem"
+                       t-attf-class="form-control #{error.get('agrem') and 'is-invalid' or ''}"
+                       t-att-value="agrem or partner.agrem"/>
+                <input type="date" name="exp_agrem"
+                       t-attf-class="form-control #{error.get('exp_agrem') and 'is-invalid' or ''}"
+                       t-att-value="exp_agrem or partner.exp_agrem"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

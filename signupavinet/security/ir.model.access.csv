@@ -1,5 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_signup_approval,signup_approval,model_approval_signup,base.group_user,1,1,1,1
+access_update_wizard,access.update.wizard,model_update_wizard,base.group_user,1,1,1,0
+access_update_wizard_user,access.update.wizard.user,model_update_wizard_user,base.group_user,1,1,1,0
+
 
 
 
