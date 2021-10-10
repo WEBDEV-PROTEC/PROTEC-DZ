@@ -13,11 +13,33 @@ class ApprovalSignup(models.Model):
     _name = 'approval.signup'
     _description = 'approval.signup'
 
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Nom societe")
+    company_statut = fields.Selection([('eurl', 'EURL'),('sarl', 'SARL'),('snc', 'SNC'), ('spa', 'SPA'),('ets', 'ETS'),('epe', 'EPE'),('autre', 'Autre')], string='Type Société')
+    vat = fields.Char(string="Nif")
+    num_rc = fields.Char(string="Numéro RC")
+    art = fields.Char(string="ART")
+    agrem = fields.Char(string="Agrement")
+    street = fields.Char(string="Adresse")
+    exp_agrem = fields.Date(string="Date Expiration")
+    city_id = fields.Many2one('res.city', domain = "[('country_id','=',62)]", string="Ville")
     email = fields.Char(string="Email")
-    vat = fields.Char(String="Vat")
-    company_type = fields.Char(string="Company Type")
-    country_id = fields.Many2one('res.country', string="Country")
+    fname = fields.Char(string="Prenom")
+    lname = fields.Char(string="Nom")
+    position = fields.Char(string="position")
+    phone = fields.Char(string="telephone")
+    mobile = fields.Char(string="mobile")
+    phone2 = fields.Char(string="telephone")
+    mobile2 = fields.Char(string="mobile")
+    email2 = fields.Char(string="email")
+    
+    
+    scan1 = fields.Binary(string="scan1")
+    scan2 = fields.Binary(string="scan2")
+    scan3 = fields.Binary(string="scan3")
+    scan4 = fields.Binary(string="scan4")
+    scan5 = fields.Binary(string="scan5")
+    
+    
     password = fields.Char(string="Password")
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -46,6 +68,22 @@ class ApprovalSignup(models.Model):
             'company_type': 'company',
             'email': self.email,
             'vat': self.vat,
+            'company_statut': self.company_statut,
+            'num_rc': self.num_rc,
+            'art': self.art,
+            'agrem': self.agrem,
+            'exp_agrem': self.exp_agrem,
+            'street': self.street,
+            'city_id': self.city_id.id,
+            'phone': self.phone,
+            'mobile': self.mobile,
+            'fname': self.fname,
+            'lname': self.lname,
+            'email2': self.email2,
+            'phone2': self.phone2,
+            'mobile2': self.mobile2,
+            
+            
         }
 
         company = self.env['res.partner'].sudo().create(com_values)
@@ -59,22 +97,13 @@ class ApprovalSignup(models.Model):
         }
         user = self.env['res.users'].sudo().create(login)
         print("token", user.token)
-        template_id = self.env.ref('signupavinet.set_password_email').id
-        template = self.env['mail.template'].browse(template_id)
-        template.send_mail(self.id, force_send=True)
+       # template_id = self.env.ref('signupavinet.set_password_email').id
+       # template = self.env['mail.template'].browse(template_id)
+       # template.send_mail(self.id, force_send=True)
         self.state = 'approved'
 
 
-    def test_cron_job(self):
-        i = 0
-        test = self.env['res.users'].search([('share', '=', False)])
-        record = self.env['approval.signup'].search([])
-        for rec in record:
-            if rec.state == 'draft':
-                i = 1
-        if i ==1:
-            for user in  test:
-                user.notify_info(message='Pending Approval request')
+    
 
 class ResUsers(models.Model):
     _inherit = 'res.users'

@@ -4,14 +4,13 @@
         <div class="smart-forms">
             <div class="spacer-b30">
                 <div class="tagline">
-                    <span>Company</span>
+                    <span>Info société</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
-                        <label for="name">Company Type
-                            <span style="color:red">*</span>
+                        <label for="name">Type Société 
                         </label>
                         <label for="month" class="field select">
                             <select name="company_type" id="company_type" title="Company Type" required="required">
@@ -28,13 +27,13 @@
                     </div>
                 </div>
 
-                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
-                        <label for="name">Company Name
+                        <label for="name">Nom Société
                             <span style="color:red">*</span>
                         </label>
                         <input type="text" name="company_name" t-att-value="name" id="company_name"
-                               class="form-control form-control-sm" placeholder="e.g. ABC"
+                               class="form-control form-control-sm" 
                                required="required" t-att-readonly="'readonly' if only_passwords else None"
                                t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                     </div>
@@ -82,10 +81,10 @@
                 <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group field-name">
                         <label for="name">NIF
-                            <span style="color:red">*</span>
+                        
                         </label>
                         <input type="text" name="vat" t-att-value="vat" id="vat" class="form-control form-control-sm"
-                               required="required" t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-readonly="'readonly' if only_passwords else None"
                                t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                     </div>
                 </div>
@@ -93,44 +92,106 @@
                 
                 <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group field-name">
-                        <label for="name">NUM RC
-                            <span style="color:red">*</span>
+                        <label for="name">Numéro RC
+                            
                         </label>
                         <input type="text" name="num_rc" t-att-value="num_rc" id="num_rc" class="form-control form-control-sm"
-                               required="required" t-att-readonly="'readonly' if only_passwords else None"
+                                t-att-readonly="'readonly' if only_passwords else None"
                                t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                     </div>
                 </div>
                 <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group field-name">
                         <label for="name">ART
-                            <span style="color:red">*</span>
+                            
                         </label>
                         <input type="text" name="art" t-att-value="art" id="art" class="form-control form-control-sm"
-                               required="required" t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-readonly="'readonly' if only_passwords else None"
                                t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                     </div>
                 </div>
-                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
-                        <label for="name">Agrement
-                            <span style="color:red">*</span>
+                        <label for="name">Agrément
+                           
                         </label>
                         <input type="text" name="agrem" t-att-value="agrem" id="agrem" class="form-control form-control-sm"
-                               required="required" t-att-readonly="'readonly' if only_passwords else None"
+                                t-att-readonly="'readonly' if only_passwords else None"
                                t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                     </div>
                 </div>
-                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
-                        <label for="name">Expiration
-                            <span style="color:red">*</span>
+                        <label for="name">Expiration Agrément
+                            
                         </label>
-                        <input type="text" name="exp_agrem" t-att-value="exp_agrem" id="exp_agrem" class="form-control form-control-sm"
-                               required="required" t-att-readonly="'readonly' if only_passwords else None"
+                        <input type="date" name="exp_agrem" t-att-value="exp_agrem" id="exp_agrem" class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
                                t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                     </div>
                 </div>
+                <div class="col  col-12 ">
+                <div class="form-group field-name">
+                        <label for="name">Joindre les scans de votre carte fiscale et registre de commerce / agrément. 
+                             <span style="color:red">*</span>
+                        </label>
+                        <input type="file" accept="image/png, image/jpeg" multiple="multiple"  required="required" name="scan" t-att-value="scan" id="scan" class="form-control form-control-sm" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                 <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Adresse
+                            
+                        </label>
+                        <input type="text" name="adresse" t-att-value="adresse" id="adresse"
+                               class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="ville">Ville
+                           
+                        </label>
+                        
+                            <select name="ville" id="ville" title="ville" style="width:100%; height:40x; line-height:40px">
+                                <option data-title="choix" value="">Choisir la ville</option>
+                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>
+                                <t t-foreach="villes" t-as="rec">  
+                                    <option data-title="rec.name" value="rec.name"><t t-esc="rec.name" /></option>
+                                  </t>  
+                               
+                            </select>
+                            
+                       
+                    </div>
+                </div>
+                 <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                    <div class="form-group field-name">
+                        <label for="name">Telephone
+                         
+                        </label>
+                        <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm"
+                              t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+                
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Mobile
+                        </label>
+                        <input type="text" name="mobile" t-att-value="mobile" id="mobile" class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                    
+                
+                
                 
                 
                 
@@ -153,6 +214,85 @@
                         </label>
                     </div>
                 </div> -->
+            </div>
+            <div class="spacer-t30 spacer-b15">
+                <div class="tagline">
+                    <span>Info Contact</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                   <div class="form-group field-name">
+                       <label for="name">Prénom
+                          
+                       </label>
+                       <input type="text" name="first_name" t-att-value="first_name" id="first_name"
+                              class="form-control form-control-sm" 
+                               t-att-readonly="'readonly' if only_passwords else None"
+          t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+</div>
+</div>
+<div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+<div class="form-group field-name">
+                       <label for="name">Nom
+                        
+                       </label>
+                       <input type="text" name="last_name" t-att-value="last_name" id="last_name"
+                              class="form-control form-control-sm" 
+                              t-att-readonly="'readonly' if only_passwords else None"
+                              t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                   </div>
+</div> 
+                
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Position dans la société
+                            
+                        </label>
+                        <input type="text" name="position" t-att-value="position" id="position"
+                               class="form-control form-control-sm" 
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+               
+                 <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                    <div class="form-group field-login">
+                        <label for="login">Email
+                           
+                        </label>
+                        <input type="email" name="email" t-att-value="email" id="email"
+                               class="form-control form-control-sm" autofocus="autofocus"
+                               autocapitalize="off" 
+                               t-att-readonly="'readonly' if only_passwords else None"/>
+                    </div>
+                </div>
+
+
+               
+
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                    <div class="form-group field-name">
+                        <label for="name">Telephone
+                           
+                        </label>
+                        <input type="text" name="phone2" t-att-value="phone2" id="phone2" class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+                
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Mobile
+                        </label>
+                        <input type="text" name="mobile2" t-att-value="mobile2" id="mobile2" class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
             </div>
 
 <!--            <div class="spacer-b30">-->
@@ -209,7 +349,7 @@
 
             <div class="spacer-t30 spacer-b15">
                 <div class="tagline">
-                    <span>Authentication</span>
+                    <span>Authentification</span>
                 </div>
             </div>
             
@@ -217,7 +357,7 @@
                 <div class="row">
                 <div class="col col-12">
                     <div class="form-group field-login">
-                        <label for="login">Your Email
+                        <label for="login">Email
                             <span style="color:red">*</span>
                         </label>
                         <input type="email" name="login" t-att-value="login" id="login"
@@ -229,12 +369,12 @@
             </div>
 
             <div class="form-group field-password pt-2">
-                <label for="password">Password</label>
+                <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password" class="form-control form-control-sm"
                        required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
             </div>
             <div class="form-group field-confirm_password">
-                <label for="confirm_password">Confirm Password</label>
+                <label for="confirm_password">Confirmer mot de passe</label>
                 <input type="password" name="confirm_password" id="confirm_password"
                        class="form-control form-control-sm" required="required"/>
             </div>
@@ -310,16 +450,18 @@
 <!--&lt;!&ndash;         </form>&ndash;&gt;-->
 <!--    </template>-->
 
-    <template id="signup_from_inherit" inherit_id="auth_signup.signup" name="Signup Inherit">
+    <template id="signup_from_inherit" inherit_id="signupavinet.signup" name="Signup Inherit">
         <form class="oe_signup_form" position="attributes">
             <attribute name="action">/request_sent</attribute>
+            <attribute name="enctype">multipart/form-data</attribute>
+           
         </form>
         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
         <div class="text-center oe_login_buttons pt-3" position="replace">
 <!--            <t t-if="url">-->
             <div class="row">
-                <div class="text-center col col-12" style="float:right">
-                    <button type="submit" class="btn btn-primary btn-block" style="width:auto; float:right">Sign up
+                <div class="text-center col col-12">
+                    <button type="submit" class="btn btn-primary btn-block">Sign up
                     </button>
                 </div>
             </div>
@@ -356,15 +498,15 @@
     <template id="signupavinet.signup_done" name="Sign up Request">
         <t t-call="website.layout">
             <div id="wrap">
-                <div class="container">
-                    <h1>Thank You</h1>
-                    <div class="row">
-                        <div class="col-lg-8">
+                <div class="container text-center">
+                    <h1>Merci</h1>
+                    <div class="row" style="align-items: center; justify-content: center;">
+                        <div class="col-6">
                             <div class="alert alert-success" role="status">
-                                Your Request has been sent for approval.
+                               Votre demande d'inscription sera examinée 
                             </div>
                             <p>
-                                We will get back to you shortly
+                               Nous reviendrons vers vous bientot 
                             </p>
                         </div>
                     </div>
