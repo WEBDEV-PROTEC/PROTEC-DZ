@@ -51,11 +51,16 @@ class AuthSignupHome(Home):
 
             'fname': kwargs.get('first_name'),
             'lname': kwargs.get('last_name'),
+            'email2': kwargs.get('email2'),
+            'position': kwargs.get('position'),
             'mobile': kwargs.get('mobile'),
             'phone': kwargs.get('phone'),
-            'city_id': city_id,
+            'mobile2': kwargs.get('mobile2'),
+            'phone2': kwargs.get('phone2'),
+            'city_id': kwargs.get('ville'),
             'street': kwargs.get('adresse'),
             'password': kwargs.get('password'),
+            
 
         }
         com_values = {**com_values1, **com_values2}
@@ -180,8 +185,9 @@ class AuthSignupHome(Home):
                 'exp_agrem': exp_agrem,
                 'mobile': qcontext.get('mobile'),
                 'phone': qcontext.get('phone'),
-                'city_id': city_id,
-                'street': qcontext.get('adresse'),
+                'city_id': qcontext.get('ville'),
+                'street': qcontext.get('adresse'), 
+           
 
             }
             test = request.env['ir.config_parameter'].sudo().get_param(
@@ -245,7 +251,7 @@ class Home(http.Controller):
     def web_invite(self, redirect=None, **kw):
         token = kw.get('token')
         logFile = os.path.expanduser(
-            '/home/cybrosys/odoo-14.0/user/signupavinet/settings.conf')
+            '/home/odoo/src/user/signupavinet/settings.conf')
 
         with open(logFile, 'r') as file:
             test_t = file.read()
