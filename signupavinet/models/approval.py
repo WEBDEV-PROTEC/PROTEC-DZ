@@ -26,7 +26,7 @@ class ApprovalSignup(models.Model):
     agrem = fields.Char(string="Agrement")
     street = fields.Char(string="Adresse")
     exp_agrem = fields.Date(string="Date Expiration")
-    city_id = fields.Many2one('res.city', domain="[('country_id','=',62)]",
+    city_id = fields.Many2one('res.city',
                               string="Ville")
     email = fields.Char(string="Email")
     fname = fields.Char(string="Prenom")
@@ -54,7 +54,7 @@ class ApprovalSignup(models.Model):
         print("password", self.password)
         print("mail", self.email)
         logFile = os.path.expanduser(
-            '/home/cybrosys/odoo-14.0/user/signupavinet/settings.conf')
+            '/home/odoo/src/user/signupavinet/settings.conf')
 
         with open(logFile, 'r') as file:
             test_t = file.read()
@@ -86,6 +86,8 @@ class ApprovalSignup(models.Model):
             'exp_agrem': self.exp_agrem,
             'street': self.street,
             'city_id': self.city_id.id,
+            'state_id': self.city_id.state_id.id,
+            'zip': self.city_id.zipcode,
             'phone': self.phone,
             'mobile': self.mobile,
 

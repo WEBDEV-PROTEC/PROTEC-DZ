@@ -76,12 +76,20 @@
 <!--                    </div>-->
 <!--                </div>-->
 
-               
+<!--               <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">-->
+<!--                    <div class="form-group field-name">-->
+<!--                        <label for="name">NIT-->
+
+<!--                        </label>-->
+<!--                        <input type="checkbox" name="vat1" t-att-value="vat1" id="vat2" class=""-->
+<!--                               />-->
+<!--                    </div>-->
+<!--               </div>-->
 
                 <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group field-name">
                         <label for="name">NIF
-                        
+
                         </label>
                         <input type="text" name="vat" t-att-value="vat" id="vat" class="form-control form-control-sm"
                                t-att-readonly="'readonly' if only_passwords else None"
@@ -112,8 +120,24 @@
                 </div>
                 <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
+                        <input type="checkbox" name="check1" class="check_1"/>
+                        <label for="name">does your company resells security products
+
+                        </label>
+                    </div>
+                </div>
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <input type="checkbox" name="check2" t-att-value="check2"  class="check_2"/>
+                        <label for="name">does your company resells telecom products
+
+                        </label>
+                    </div>
+                </div>
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
                         <label for="name">Agrément
-                           
+                           <span class="req_mark" style="color:red">*</span>
                         </label>
                         <input type="text" name="agrem" t-att-value="agrem" id="agrem" class="form-control form-control-sm"
                                 t-att-readonly="'readonly' if only_passwords else None"
@@ -123,7 +147,7 @@
                 <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
                         <label for="name">Expiration Agrément
-                            
+                            <span class="req_mark" style="color:red">*</span>
                         </label>
                         <input type="date" name="exp_agrem" t-att-value="exp_agrem" id="exp_agrem" class="form-control form-control-sm"
                                 t-att-readonly="'readonly' if only_passwords else None"
@@ -131,14 +155,22 @@
                     </div>
                 </div>
                 <div class="col  col-12 ">
-                <div class="form-group field-name">
-                        <label for="name">Joindre les scans de votre carte fiscale et registre de commerce / agrément. 
-                             <span style="color:red">*</span>
+                    <div class="form-group field-name">
+                        <label for="name">Joindre les scans de votre carte
+                            fiscale et registre de commerce / agrément.
+                            <span style="color:red">*</span>
                         </label>
-                        <input type="file" accept="image/png, image/jpeg" multiple="multiple"  required="required" name="scan" t-att-value="scan" id="scan" class="form-control form-control-sm" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                        <input type="file" accept="image/png, image/jpeg"
+                               multiple="multiple" required="required"
+                               name="scan" t-att-value="scan" id="scan"
+                               class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                        <p class="alert alert-danger file_alert">Limit exceeds up to 5 files
+                        </p>
                     </div>
                 </div>
-                 <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                 <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group field-name">
                         <label for="name">Adresse
                             
@@ -150,24 +182,42 @@
                     </div>
                 </div>
                 
-                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group field-name">
-                        <label for="ville">Ville
+                        <label for="ville">State
                            
                         </label>
-                        
-                            <select name="ville" id="ville" title="ville" style="width:100%; height:40x; line-height:40px">
+                            <select name="State" id="State" title="State" style="width:100%; height:40x; line-height:40px">
                                 <option data-title="choix" value="">Choisir la ville</option>
-                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>
-                                <t t-foreach="villes" t-as="rec">  
-                                    <option data-title="rec.name" value="rec.name"><t t-esc="rec.name" /></option>
+<!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
+                                <t t-foreach="villes" t-as="rec">
+                                    <option id="state1" data-title="rec.name" t-esc="rec.name" t-att-value="rec.id" t-att-selected="rec.id == (state and state.id or -1)"/>
                                   </t>  
                                
                             </select>
-                            
-                       
+
+                    </div>
+
+                </div>
+                <t t-set="state_id" t-value="0" id="state_selected"/>
+                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group field-name">
+                        <label for="ville">Ville
+
+                        </label>
+
+                            <select name="ville" id="ville" title="ville" style="width:100%; height:40x; line-height:40px">
+<!--                                <option data-title="choix" value="">Choisir la ville</option>-->
+<!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
+
+                                <option id="city" name="city"/>
+
+                            </select>
+
+
                     </div>
                 </div>
+
                  <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
                     <div class="form-group field-name">
                         <label for="name">Telephone
@@ -258,10 +308,10 @@
                
                  <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
                     <div class="form-group field-login">
-                        <label for="login">Email
+                        <label for="email2">Email
                            
                         </label>
-                        <input type="email" name="email" t-att-value="email" id="email"
+                        <input type="email" name="email" t-att-value="email" id="email2"
                                class="form-control form-control-sm" autofocus="autofocus"
                                autocapitalize="off" 
                                t-att-readonly="'readonly' if only_passwords else None"/>
@@ -416,7 +466,7 @@
                 <input type="hidden" name="redirect" t-att-value="redirect"/>
                 <input type="hidden" name="token" t-att-value="token"/>
                 <div class="text-center oe_login_buttons pt-3">
-                    <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+                    <button type="submit" class="nb btn btn-primary btn-block">Sign up</button>
                     <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already
                         have an account?
                     </a>
@@ -461,7 +511,7 @@
 <!--            <t t-if="url">-->
             <div class="row">
                 <div class="text-center col col-12">
-                    <button type="submit" class="btn btn-primary btn-block">Sign up
+                    <button type="submit" class="btn btn-primary btn-block doc">Sign up
                     </button>
                 </div>
             </div>
