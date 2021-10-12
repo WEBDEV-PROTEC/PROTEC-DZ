@@ -121,7 +121,7 @@
                 <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
                         <input type="checkbox" name="check1" class="check_1"/>
-                        <label for="name">does your company resells security products
+                        <label for="name">Faites-vous de la revente des equipements de videosurveillance?
 
                         </label>
                     </div>
@@ -129,7 +129,7 @@
                 <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group field-name">
                         <input type="checkbox" name="check2" t-att-value="check2"  class="check_2"/>
-                        <label for="name">does your company resells telecom products
+                        <label for="name">Faites-vous de la revente des equipements telecom?
 
                         </label>
                     </div>
