@@ -118,7 +118,7 @@
                                t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                     </div>
                 </div>
-                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6 my-3">
                     <div class="form-group field-name">
                         <input type="checkbox" name="check1" class="check_1"/>
                         <label for="name">Faites-vous de la revente des equipements de videosurveillance?
@@ -126,7 +126,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6 my-3">
                     <div class="form-group field-name">
                         <input type="checkbox" name="check2" t-att-value="check2"  class="check_2"/>
                         <label for="name">Faites-vous de la revente des equipements telecom?
