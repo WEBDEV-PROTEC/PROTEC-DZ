@@ -994,7 +994,7 @@
                                 <a class="nav-link active" data-toggle="tab" href="#tp-product-description-tab" role="tab" aria-selected="true">
                                     <div class="my-1 tp-tab-title o_not_editable">
                                         <span class="fa fa-file-text-o mr-1"/>
-                                        Description dfdf
+                                        Description
                                     </div>
                                 </a>
                             
@@ -1208,7 +1208,7 @@
                                                 </a>
                                             </h6>
                                             <div>
-                                                <h6 class="text-primary d-inline mb-0" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.pricelist_id.currency_id}"/>
+                                                <h6 groups="base.group_portal"  class="text-primary d-inline mb-0" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.pricelist_id.currency_id}"/>
                                                 <small t-attf-class="oe_default_price ml-1 {{'d-none d-md-inline-block' if combination_info['has_discounted_price'] else 'd-none'}}" style="text-decoration: line-through; white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.pricelist_id.currency_id}"/>
                                             </div>
                                         </div>
