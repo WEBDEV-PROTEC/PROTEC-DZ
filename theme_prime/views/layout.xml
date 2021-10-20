@@ -746,7 +746,7 @@
                             <a class="tp-link-dark d-block text-truncate" t-att-title="product.name" itemprop="name" t-att-href="product_href" t-att-content="product.name" t-field="product.name" />
                             <a role="button" t-if="not product.website_published" t-att-href="product_href" class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished</a>
                         </h6>
-                        <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                        <div groups="base.group_user" class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
                             <span class="h6 text-primary" t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
                             <small t-attf-class="text-body ml-1 oe_default_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="text-decoration: line-through; white-space: nowrap;"
                             t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
