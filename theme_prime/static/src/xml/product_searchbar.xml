@@ -17,8 +17,8 @@
                 <p t-if="description" class="mb-0 small" t-esc="description"/>
             </div>
         </t>
-        <t t-jquery="[t-if='widget.displayPrice']" t-operation="replace">
-            <div groups="base.group_user" t-if="widget.displayPrice" class="flex-shrink-0">
+        <!-- <t t-jquery="[t-if='widget.displayPrice']" t-operation="replace">
+            <div t-if="widget.displayPrice" class="flex-shrink-0">
                 <b class="text-nowrap">
                     <t t-raw="product['price']"/>
                 </b>
@@ -29,7 +29,7 @@
                     </small>
                 </t>
             </div>
-        </t>
+        </t> -->
         <t t-jquery="[t-if='hasMoreProducts'] button" t-operation="replace">
             <button type="submit" class="dropdown-item text-center">All results</button>
         </t>
