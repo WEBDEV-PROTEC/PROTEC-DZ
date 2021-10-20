@@ -32,7 +32,7 @@ publicWidget.registry.productsSearchBar.include({
         this.$el.attr('action', actionURL);
     },
     _fetch: function () {
-        var options = {'order': this.order, 'limit': this.limit, 'display_description': this.displayDescription, 'display_price': this.displayPrice, 'max_nb_chars': Math.round(Math.max(this.autocompleteMinWidth, parseInt(this.$el.width())) * 0.22)};
+        var options = {'order': this.order, 'limit': this.limit, 'display_description': this.displayDescription, 'max_nb_chars': Math.round(Math.max(this.autocompleteMinWidth, parseInt(this.$el.width())) * 0.22)};
         if (this.categoryID) {
             options['category'] = this.categoryID;
         }
