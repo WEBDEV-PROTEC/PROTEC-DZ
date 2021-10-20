@@ -17,8 +17,8 @@
                 <p t-if="description" class="mb-0 small" t-esc="description"/>
             </div>
         </t>
-        <t groups="base.group_user" t-jquery="[t-if='widget.displayPrice']" t-operation="replace">
-            <div t-if="widget.displayPrice" class="flex-shrink-0">
+        <t t-jquery="[t-if='widget.displayPrice']" t-operation="replace">
+            <div group="base.group_user" t-if="widget.displayPrice" class="flex-shrink-0">
                 <b class="text-nowrap">
                     <t t-raw="product['price']"/>
                 </b>
