@@ -56,8 +56,9 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-label="Account Info"><i t-attf-class="dri dri-user #{_icon_classes}"/></a>
                 <div t-if="action_label" class="tp-action-btn-label">Account</div>
                 <div class="dropdown-menu dropdown-menu-right" role="menu">
-                    <div class="dropdown-header">Guest</div>
+                    <!-- <div class="dropdown-header">Guest</div> -->
                     <a href="/web/login" role="menuitem" class="dropdown-item">Login</a>
+                    <a href="/web/login" role="menuitem" class="dropdown-item">S'inscrire</a>
                     <div class="dropdown-divider"></div>
                     <a href="/shop/cart" role="menuitem" class="dropdown-item">My Cart</a>
                     <a href="/shop/wishlist" role="menuitem" class="dropdown-item">Wishlist (<span class="tp-wishlist-counter"><t t-esc="wishcount"/></span>)</a>
