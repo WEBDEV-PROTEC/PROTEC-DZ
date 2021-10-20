@@ -1208,7 +1208,7 @@
                                                 </a>
                                             </h6>
                                             <div>
-                                                <h6 groups="base.group_portal"  class="text-primary d-inline mb-0" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.pricelist_id.currency_id}"/>
+                                                <h6  class="text-primary d-inline mb-0" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.pricelist_id.currency_id}"/>
                                                 <small t-attf-class="oe_default_price ml-1 {{'d-none d-md-inline-block' if combination_info['has_discounted_price'] else 'd-none'}}" style="text-decoration: line-through; white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.pricelist_id.currency_id}"/>
                                             </div>
                                         </div>
@@ -1296,7 +1296,10 @@
 
     <template id="product_price" inherit_id="website_sale.product_price">
         <xpath expr="//h4[hasclass('oe_price_h4')]" position="replace">
-            <h4 class="oe_price_h4 css_editable_mode_hidden">
+            <div t-if="request.env.user.id == request.env.ref('base.public_user').id">
+                <a href="/web/login">Connectez-vous pour afficher le prix</a>
+             </div>   
+            <h4 groups="base.group_portal" class="oe_price_h4 css_editable_mode_hidden">
                 <span class="oe_price" style="white-space: nowrap;" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
                 <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
                 <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
