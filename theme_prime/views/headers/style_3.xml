@@ -28,14 +28,14 @@
             <div class="tp-header">
                 <div class="container">
                     <div class="row justify-content-center justify-content-lg-between align-items-center">
-                        <div class="col-3 py-3">
+                        <div class="col-2 py-3">
                             <!-- Brand -->
                             <t t-call="website.placeholder_header_brand">
                                 <t t-set="_link_class" t-value="'d-none d-lg-inline-block'"/>
                             </t>
                         </div>
                         <div class="col-6 py-3">
-                            <form class="w-100 w-lg-75 o_wsale_products_searchbar_form o_not_editable mx-auto" method="get" action="/shop">
+                            <form class="w-100  o_wsale_products_searchbar_form o_not_editable mx-auto" method="get" action="/shop">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <t t-call="theme_prime.component_product_search_category_dropdown">
@@ -49,7 +49,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-3 py-3 text-right">
+                        <div class="col-4 py-3 text-right">
                             <a groups="base.group_public" class="btn btn-primary mx-2"  style="vertical-align: super; border-radius: 4px;" href="/web/signup">
                                 <i class="fa fa-user-plus"></i> Nouveau client
                             </a>
