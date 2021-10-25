@@ -152,7 +152,7 @@
         </li>
 
         <t t-set="website_sale_order" t-value="website.sale_get_order()" />
-        <li class="list-inline-item">
+        <li groups="base.group_user" class="list-inline-item">
             <a class="o_wsale_my_cart tp-cart-sidebar-action" href="/shop/cart">
                 <i class="dri dri-cart o_not_editable"/>
                 <sup class="my_cart_quantity badge badge-primary mb-0 font-weight-bold" t-esc="website_sale_order and website_sale_order.cart_quantity or '0'" t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>
@@ -161,7 +161,7 @@
         </li>
 
         <t t-set="wishcount" t-value="len(request.env['product.wishlist'].current())"/>
-        <li class="list-inline-item">
+        <li groups="base.group_user" class="list-inline-item">
             <a class="o_wsale_my_wish" href="/shop/wishlist">
                 <i class="dri dri-wishlist o_not_editable"/>
                 <sup t-esc="wishcount" t-attf-class="my_wish_quantity o_animate_blink badge badge-primary"/>
