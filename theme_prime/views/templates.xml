@@ -568,7 +568,7 @@
             <i t-if="submenu.dr_is_special_menu and submenu.is_mega_menu" class="dri dri-category mr-1"/>
         </xpath>
         <xpath expr="//t[@t-set='has_visible_submenu']" position="after">
-            <t t-set="item_class" t-value="submenu.dr_is_special_menu and (item_class and item_class or '') + ' tp-special-menu' or item_class"/>
+            <t t-set="item_class" t-value="submenu.dr_is_special_menu and (item_class and item_class or '') or item_class"/>
         </xpath>
     </template>
 
