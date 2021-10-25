@@ -50,7 +50,7 @@
                             </form>
                         </div>
                         <div class="col-3 py-3 text-right">
-                            <a groups="base.group_public" class="btn btn-primary mx-2"  style="border-radius: 4px;" href="/web/signup">
+                            <a groups="base.group_public" class="btn btn-primary mx-3"  style="vertical-align: super; border-radius: 4px;" href="/web/signup">
                                 <i class="fa fa-user-plus"></i> Nouveau client
                             </a>
                             <ul style="display: inline-block; " class="list-inline m-0 tp-account-info">
