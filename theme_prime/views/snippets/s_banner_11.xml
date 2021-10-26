@@ -4,37 +4,13 @@
     <template id="s_banner_11" name="Banner - 11">
         <section class="s_banner_11 pt16 pb16">
             <div class="container">
-                <div class="row s_nb_column_fixed">
-                    <div class="col-12 col-lg-4 py-3 tp-block-container">
-                        <div class="tp-img-container position-relative" style="background-image: url('/web/image/theme_prime.s_banner_11_1')">
+                <div class="row s_nb_column_fixed" >
+                    <div class="col-12 col-lg-2 py-3 tp-block-container" t-foreach="request.env['product.public.category'].search([])" t-as="categ" >
+                        <div class="tp-img-container position-relative" t-attf-style="background-image: url('data:image/png;base64, #{categ.image_1920}">
                             <div class="tp-block-content h-100 w-100">
-                                <h2 class="tp-title text-center w-100">New Arrival</h2>
-                                <div class="tp-subtitle px-3 text-center w-100">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                                    <a href="/shop" class="btn btn-primary">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4 py-3 tp-block-container">
-                        <div class="tp-img-container position-relative" style="background-image: url('/web/image/theme_prime.s_banner_11_2')">
-                            <div class="tp-block-content h-100 w-100">
-                                <h2 class="tp-title text-center w-100">Trending Products</h2>
-                                <div class="tp-subtitle px-3 text-center w-100">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                                    <a href="/shop" class="btn btn-primary">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4 py-3 tp-block-container">
-                        <div class="tp-img-container position-relative" style="background-image: url('/web/image/theme_prime.s_banner_11_3')">
-                            <div class="tp-block-content h-100 w-100">
-                                <h2 class="tp-title text-center w-100">New Collection</h2>
-                                <div class="tp-subtitle px-3 text-center w-100">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                                    <a href="/shop" class="btn btn-primary">Shop Now</a>
-                                </div>
+                                <a t-att-href="'/shop/category/%s' %(categ.id)">
+                                    <h2 class="tp-title text-center w-100" style="font-size:14px;top: 84%;" t-field="categ.name"/>
+                                </a>  
                             </div>
                         </div>
                     </div>
