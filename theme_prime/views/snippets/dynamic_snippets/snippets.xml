@@ -185,7 +185,7 @@
         <section class="s_d_brand_snippet_wrapper pt32 pb32" data-mode="slider" data-brand-count="8">
             <div class="container position-relative">
             <div class="tp-underline-title"> 
-                 <h3 class=" pb-3 d-inline-block">Nos Marques</h3>
+                 <h3 class="d-inline-block">Nos Marques</h3>
                  <a class="btn btn-outline-primary d-sm-none d-md-block" style="float: right" href="/shop/all_brands">Voir Tout</a>
             </div>
                
