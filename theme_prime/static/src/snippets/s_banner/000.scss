@@ -104,50 +104,46 @@
             overflow: hidden;
             .tp-block-content {
                 @include o-position-absolute($top: 0, $left: 0);
-                // padding: 2rem;
-                min-width: 20% !important;
+                padding: 2rem;
                 backface-visibility:hidden;
-                // .tp-title {
-                //     @include o-position-absolute($top: 50%, $left: 0);
-                //     color: white;
-                //     -webkit-transition: -webkit-transform 0.35s, color 0.35s;
-                //     transition: transform 0.35s, color 0.35s;
-                //     -webkit-transform: translate3d(0,-50%,0);
-                //     transform: translate3d(0,-50%,0);
-                //     background: rgba(232, 227, 227, 0.21);
-                //     text-shadow: 1px 1px 1px rgba(17, 17, 17, 0.32);
-                //     padding: 10px;
-                // }
-                .tp-subtitle {
-                    
+                .tp-title {
+                    @include o-position-absolute($top: 50%, $left: 0);
+                    color: white;
+                    -webkit-transition: -webkit-transform 0.35s, color 0.35s;
+                    transition: transform 0.35s, color 0.35s;
+                    -webkit-transform: translate3d(0,-50%,0);
+                    transform: translate3d(0,-50%,0);
+                    background: rgba(232, 227, 227, 0.21);
+                    text-shadow: 1px 1px 1px rgba(17, 17, 17, 0.32);
                     padding: 10px;
-                    min-height: 60px;
-                    color: #4d4d4d;
-                    // @include o-position-absolute($bottom: 0, $left: 0);
-                    // opacity: 0;
-                    // -webkit-transform: translate3d(0,10px,0);
-                    // transform: translate3d(0,10px,0);
-                    // -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-                    // transition: opacity 0.35s, transform 0.35s;
                 }
-                // &:before {
-                //     @include o-position-absolute($top: 0, $left: 0);
-                //     width: 100%;
-                //     height: 100%;
-                //     background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.52) 58%);
-                //     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.52) 58%);
-                //     content: '';
-                //     opacity: 0;
-                //     -webkit-transform: translate3d(0,50%,0);
-                //     transform: translate3d(0,50%,0);
-                // }
+                .tp-subtitle {
+                    @include o-position-absolute($bottom: 0, $left: 0);
+                    padding: 1.7rem;
+                    opacity: 0;
+                    -webkit-transform: translate3d(0,10px,0);
+                    transform: translate3d(0,10px,0);
+                    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+                    transition: opacity 0.35s, transform 0.35s;
+                }
+                &:before {
+                    @include o-position-absolute($top: 0, $left: 0);
+                    width: 100%;
+                    height: 100%;
+                    background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.52) 58%);
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.52) 58%);
+                    content: '';
+                    opacity: 0;
+                    -webkit-transform: translate3d(0,50%,0);
+                    transform: translate3d(0,50%,0);
+                }
             }
-            // @include media-breakpoint-down(md) {
-            //     @include tp-s-banner-11-effect();
-            // }
-            // &:hover {
-            //     // @include tp-s-banner-11-effect();
-            // }
+            @include media-breakpoint-down(md) {
+                @include tp-s-banner-11-effect();
+            }
+            &:hover {
+                @include tp-s-banner-11-effect();
+            }
         }
     }
 }
