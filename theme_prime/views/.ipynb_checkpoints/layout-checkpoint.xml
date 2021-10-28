@@ -239,9 +239,9 @@
                                         <!-- <t t-if="len(website_sale_sortable_current)">
                                             <t t-raw="website_sale_sortable_current[0][0]"/>
                                         </t> -->
-                                        <t t-else="">
+                                        <!-- <t t-else="">
                                             Default
-                                        </t>
+                                        </t> -->
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" role="menu">
                                         <t t-foreach="website_sale_sortable" t-as="sortby">
