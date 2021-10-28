@@ -49,6 +49,7 @@
                                 </div>
                             </form>
                         </div>
+                        
                         <div class="col-3 py-3 text-right">
                             <ul class="list-inline m-0 tp-account-info">
                                 <t t-call="theme_prime.component_account_info">
