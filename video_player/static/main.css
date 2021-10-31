@@ -42,7 +42,7 @@
 
 /* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
 
-@media (pointer: coarse) and (hover: none) {
+/* @media (pointer: coarse) and (hover: none) {
   .myheader {
     background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
   }
@@ -50,4 +50,4 @@
   .myheader video {
     display: none;
   }
-}
+} */
