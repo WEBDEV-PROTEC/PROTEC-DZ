@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_view_order_form_cscr" model="ir.ui.view">
+        <field name="name">sale.view.order.form.inherit.cscr</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="before">
+                <field name="payment_method_id"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_tax']" position="after">
+                <field name="stamp_duty_tax"/>
+            </xpath>
+        </field>
+    </record>
+   
+</odoo>
