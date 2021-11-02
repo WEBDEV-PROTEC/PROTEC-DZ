@@ -823,7 +823,7 @@ publicWidget.registry.s_d_brand_snippet = RootWidget.extend({
 
                 nav: false,
                 autoplay: true,
-                rtl : owl_rtl,
+                rtl: true,
                 autoplayTimeout: 4000,
                 responsive: {
                     0: {
