@@ -820,8 +820,10 @@ publicWidget.registry.s_d_brand_snippet = RootWidget.extend({
             this.$('.s_d_brand_snippet > .row > *').removeAttr('class');
             this.$('.s_d_brand_snippet > .row').removeClass('row');
             this.$('.owl-carousel').owlCarousel({
+
                 nav: false,
                 autoplay: true,
+                rtl : owl_rtl,
                 autoplayTimeout: 4000,
                 responsive: {
                     0: {
