@@ -115,6 +115,45 @@
                 </label>
             </li>
         </xpath>
+        <xpath expr="//select" position="replace">
+             <select
+                            t-att-data-attribute_id="ptal.attribute_id.id"
+                            t-attf-class="form-control js_variant_change #{ptal.attribute_id.create_variant} #{'d-none' if single_and_custom else ''}"
+                            t-att-name="'ptal-%s' % ptal.id">
+                            <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
+                                <t t-set="ptav_parent_id" t-value="ptav.product_tmpl_id.id"/>
+                                <t t-set="dcode" t-value="request.env['product.template'].search([('id','=',ptav_parent_id)]).product_variant_ids.search([('product_template_attribute_value_ids','=', ptav.id )]).default_code"/>
+                                <option t-att-value="ptav.id"
+                                    t-att-data-value_id="ptav.id"
+                                    t-att-data-value_name="ptav.name"
+                                    t-att-data-attribute_name="ptav.attribute_id.name"
+                                    t-att-data-is_custom="ptav.is_custom"
+                                    t-att-selected="ptav in combination"
+                                     t-attf-code="#{dcode}"
+                                    t-att-data-is_single_and_custom="single_and_custom">
+                                    <span t-field="ptav.name"/>
+                                    <span t-if="ptav.price_extra" class="badge badge-pill badge-secondary">
+                                        <!--
+                                            price_extra is displayed as catalog price instead of
+                                            price after pricelist because it is impossible to
+                                            compute. Indeed, the pricelist rule might depend on the
+                                            selected variant, so the price_extra will be different
+                                            depending on the selected combination. The price of an
+                                            attribute is therefore variable and it's not very
+                                            accurate to display it.
+                                            -->
+                                        <t t-esc="ptav.price_extra > 0 and '+' or '-'"/>
+                                        <span t-esc="abs(ptav.price_extra)" class="variant_price_extra" style="white-space: nowrap;"
+                                            t-options='{
+                                                "widget": "monetary",
+                                                "from_currency": product.currency_id,
+                                                "display_currency": (pricelist or product).currency_id
+                                            }'/>
+                                    </span>
+                                </option>
+                            </t>
+                        </select>
+        </xpath>
      
     </template>
 
