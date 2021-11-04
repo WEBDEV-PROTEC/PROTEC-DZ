@@ -1,6 +1,6 @@
 $( document ).ready(function() {
-    if ($('input:radio.always[checked="checked"]').length>0) {$('#al').html($('input:radio.always[checked="checked"]').attr('code'))}
-    if ($('select.always').length>0) {setTimeout(() => {$('#al').html($('select.always > option[selected="selected"]').attr('code'))}, 300);}
+    if ($('input:radio.always[checked="checked"]').length>0) {$('#sku').html($('input:radio.always[checked="checked"]').attr('code'))}
+    if ($('select.always').length>0) {setTimeout(() => {$('#sku').html($('select.always > option[selected="selected"]').attr('code'))}, 300);}
     
     
 });
@@ -8,7 +8,7 @@ $( document ).ready(function() {
 $('input:radio.always').change(
     function(){
         if ($(this).is(':checked') )
-            $('#al').html($(this).attr('code'))
+            $('#sku').html($(this).attr('code'))
             console.log("lol")
         }
     );
@@ -19,7 +19,7 @@ $('input:radio.always').change(
     $('select.always').change(
         function(){
           
-                  setTimeout(() => {$('#al').html($('select.always > option[selected="selected"]').attr('code'))}, 100);
+                  setTimeout(() => {$('#sku').html($('select.always > option[selected="selected"]').attr('code'))}, 100);
             }
         );
     
