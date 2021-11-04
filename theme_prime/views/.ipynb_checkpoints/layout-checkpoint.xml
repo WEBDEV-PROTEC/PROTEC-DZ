@@ -237,7 +237,7 @@
                                     <h6 class="d-inline mr-1">Sort By :</h6>
                                     <a role="button" href="#" class="dropdown-toggle text-body py-2" data-toggle="dropdown">
                                         <t t-if="len(website_sale_sortable_current)">
-                                            <!-- <t t-raw="website_sale_sortable_current[0][0]"/> -->
+                                            <!-- <t     ² -->
                                         </t>
                                         <t t-else="">
                                             Default
