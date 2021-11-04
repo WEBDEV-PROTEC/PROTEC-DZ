@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <template id="protecPartner" inherit_id="website_crm_partner_assign.index">
+            <xpath expr="//ul[@id='reseller_countries']" position="replace"> 
+              <ul id="reseller_countries" class="nav nav-pills flex-column mt16">
+                    <li class="nav-header nav-item"><h3>Filter by Wilaya</h3></li>
+                    <t t-foreach="countries" t-as="country">
+                        <li t-if="country" class="nav-item">
+                            <a t-attf-href="/partners#{ current_grade and '/grade/%s' % slug(current_grade) or ''}#{country['state_id'][0] and '/wilaya/%s' % country['state_id'][0] or '' }#{ '?' + (search_path or '') + (country['state_id'][0] == 0 and '&amp;country_all=True' or '')}"
+                               t-attf-class="nav-link#{country['active'] and ' active' or ''}">
+                                <span class="badge badge-pill float-right" t-esc="country['state_id_count'] or ''"/>
+                                <t t-esc="country['state_id'][1]"/>
+                            </a>
+                        </li>
+                    </t>
+                </ul>
+            </xpath>
+        </template>
+    </data>
+</odoo>
