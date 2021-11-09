@@ -2,294 +2,294 @@
 <odoo>
     <!--******* Start signup form ********-->
     <template id="signupavinet.fields" name="Auth Signup/ResetPassword form fields">
-        <div>
-            <div class="row"> 
-                  <div class="col  col-12">
-                        <span style="color:red">*</span>: Champs obligatoire 
-                </div>
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12 text-center">
+                <h2 class="display-4 mb-5">Devenez Client</h2>
             </div>
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist" style="display: none">
-                   <a class="nav-item nav-link active" id="nav-company" data-toggle="tab" href="#nav-tab-company" role="tab" aria-controls="nav-tab-company" aria-selected="true">Info société</a> 
-                    <a class="nav-item nav-link" id="nav-info-contact" data-toggle="tab" href="#nav-tab-contact" role="tab" aria-controls="nav-tab-contact" aria-selected="false">Info Contact</a> 
-                   <a class="nav-item nav-link" id="nav-auth" data-toggle="tab" href="#nav-tab-auth" role="tab" aria-controls="nav-tab-auth" aria-selected="false">Authentification</a>
-                </div>
-            </nav>
-            <div class="tab-content" id="nav-tab">
-                <div class="tab-pane fade show active" id="nav-tab-company" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <div class="row">
-                        <div class="col col-12 col-sm-6 col-md-12 col-lg-12 text-center">
-                            <h3 class="mb-5">Info société</h3>
-                        </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="display: none">
+                        <a class="nav-item nav-link active" id="nav-company" data-toggle="tab" href="#nav-tab-company" role="tab" aria-controls="nav-tab-company" aria-selected="true">Info société</a> 
+                        <a class="nav-item nav-link" id="nav-info-contact" data-toggle="tab" href="#nav-tab-contact" role="tab" aria-controls="nav-tab-contact" aria-selected="false">Info Contact</a> 
+                        <a class="nav-item nav-link" id="nav-auth" data-toggle="tab" href="#nav-tab-auth" role="tab" aria-controls="nav-tab-auth" aria-selected="false">Authentification</a>
                     </div>
-                    <div class="row">
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Type Société 
-                                </label>
-                                <br/>
-                                <label for="month" class="field select" style="width: 100%;">
-                                    <select class="form-control"  name="company_type" id="company_type" title="Company Type" required="required">
-                                        <option data-title="eurl" value="eurl">EURL</option>
-                                        <option data-title="sarl" value="sarl">SARL</option>
-                                        <option data-title="snc" value="snc">SNC</option>
-                                        <option data-title="spa" value="spa">SPA</option>
-                                        <option data-title="ets" value="ets">ETS</option>
-                                        <option data-title="epe" value="epe">EPE</option>
-                                        <option data-title="autre" value="autre">AUTRE</option>
+                </nav>
+                <div class="tab-content" id="nav-tab">
+                    <!-- Info société -->
+                    <div class="tab-pane fade show active" id="nav-tab-company" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="row">
+                            <div class="col col-12 col-sm-6 col-md-12 col-lg-12 text-center">
+                                <h3 class="mb-5">Info société</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Type Société 
+                                    </label>
+                                    <br/>
+                                    <label for="month" class="field select" style="width: 100%;">
+                                        <select class="form-control"  name="company_type" id="company_type" title="Company Type" required="required">
+                                            <option data-title="eurl" value="eurl">EURL</option>
+                                            <option data-title="sarl" value="sarl">SARL</option>
+                                            <option data-title="snc" value="snc">SNC</option>
+                                            <option data-title="spa" value="spa">SPA</option>
+                                            <option data-title="ets" value="ets">ETS</option>
+                                            <option data-title="epe" value="epe">EPE</option>
+                                            <option data-title="autre" value="autre">AUTRE</option>
+                                        </select>
+                                        <i class="arrow double"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Nom Société
+                                    <span style="color:red">*</span>
+                                    </label>
+                                    <input type="text" name="company_name" t-att-value="name" id="company_name"
+                                        class="form-control form-control-sm" 
+                                        required="required" t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group field-name">
+                                    <label for="name">NIF
+                                    </label>
+                                    <input type="text" name="vat" t-att-value="vat" id="vat" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group field-name">
+                                    <label for="name">Numéro RC
+                                    </label>
+                                    <input type="text" name="num_rc" t-att-value="num_rc" id="num_rc" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group field-name">
+                                    <label for="name">ART
+                                    </label>
+                                    <input type="text" name="art" t-att-value="art" id="art" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6 col-md-6 col-lg-6">
+                                <hr/>
+                                <div class="form-group field-name">
+                                    <input type="checkbox" name="check1" class="check_1"/>
+                                    <label for="name">Does your company resells security products?
+                                    </label>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="col col-12 col-sm-6 col-md-6 col-lg-6">
+                                <hr/>
+                                <div class="form-group field-name">
+                                    <input type="checkbox" name="check2" t-att-value="check2"  class="check_2"/>
+                                    <label for="name">Does your company resells telecom products?
+                                    </label>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Agrément
+                                    <span class="req_mark" style="color:red">*</span>
+                                    </label>
+                                    <input type="text" name="agrem" t-att-value="agrem" id="agrem" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Expiration Agrément
+                                    <span class="req_mark" style="color:red">*</span>
+                                    </label>
+                                    <input type="date" name="exp_agrem" t-att-value="exp_agrem" id="exp_agrem" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 ">
+                                <div class="form-group field-name">
+                                    <label for="name">Joindre les scans de votre carte
+                                    fiscale et registre de commerce / agrément.
+                                    <span style="color:red">*</span>
+                                    </label>
+                                    <input type="file" accept="image/png, image/jpeg"
+                                        multiple="multiple" required="required"
+                                        name="scan" t-att-value="scan" id="scan"
+                                        class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                    <p class="alert alert-danger file_alert">Limit exceeds up to 5 files
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group field-name">
+                                    <label for="name">Adresse
+                                    </label>
+                                    <input type="text" name="adresse" t-att-value="adresse" id="adresse"
+                                        class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group field-name">
+                                    <label for="ville">State
+                                    </label>
+                                    <select name="State" id="State" title="State" style="width:100%; height:40x; line-height:40px">
+                                        <option data-title="choix" value="">Choisir la ville</option>
+                                        <!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
+                                        <t t-foreach="villes" t-as="rec">
+                                            <option id="state1" data-title="rec.name" t-esc="rec.name" t-att-value="rec.id" t-att-selected="rec.id == (state and state.id or -1)"/>
+                                        </t>
                                     </select>
-                                    <i class="arrow double"></i>
-                                </label>
+                                </div>
+                            </div>
+                            <t t-set="state_id" t-value="0" id="state_selected"/>
+                            <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group field-name">
+                                    <label for="ville">Ville
+                                    </label>
+                                    <select name="ville" id="ville" title="ville" style="width:100%; height:40x; line-height:40px">
+                                        <!--                                <option data-title="choix" value="">Choisir la ville</option>-->
+                                        <!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
+                                        <option id="city" name="city"/>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                                <div class="form-group field-name">
+                                    <label for="name">Telephone
+                                    </label>
+                                    <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Mobile
+                                    </label>
+                                    <input type="text" name="mobile" t-att-value="mobile" id="mobile" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
                             </div>
                         </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Nom Société
-                                <span style="color:red">*</span>
-                                </label>
-                                <input type="text" name="company_name" t-att-value="name" id="company_name"
-                                    class="form-control form-control-sm" 
-                                    required="required" t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group field-name">
-                                <label for="name">NIF
-                                </label>
-                                <input type="text" name="vat" t-att-value="vat" id="vat" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group field-name">
-                                <label for="name">Numéro RC
-                                </label>
-                                <input type="text" name="num_rc" t-att-value="num_rc" id="num_rc" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group field-name">
-                                <label for="name">ART
-                                </label>
-                                <input type="text" name="art" t-att-value="art" id="art" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                       
-                        <div class="col col-12 col-sm-6 col-md-6 col-lg-6">
-                            <hr/>
-                            <div class="form-group field-name">
-                                <input type="checkbox" name="check1" class="check_1"/>
-                                <label for="name">Does your company resells security products?
-                                </label>
-                            </div>
-                            <hr/>
-                        </div>
-                        <div class="col col-12 col-sm-6 col-md-6 col-lg-6">
-                            <hr/>
-                            <div class="form-group field-name">
-                                <input type="checkbox" name="check2" t-att-value="check2"  class="check_2"/>
-                                <label for="name">Does your company resells telecom products?
-                                </label>
-                            </div>
-                            <hr/>
-                        </div>
-                       
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Agrément
-                                <span class="req_mark" style="color:red">*</span>
-                                </label>
-                                <input type="text" name="agrem" t-att-value="agrem" id="agrem" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Expiration Agrément
-                                <span class="req_mark" style="color:red">*</span>
-                                </label>
-                                <input type="date" name="exp_agrem" t-att-value="exp_agrem" id="exp_agrem" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 ">
-                            <div class="form-group field-name">
-                                <label for="name">Joindre les scans de votre carte
-                                fiscale et registre de commerce / agrément.
-                                <span style="color:red">*</span>
-                                </label>
-                                <input type="file" accept="image/png, image/jpeg"
-                                    multiple="multiple" required="required"
-                                    name="scan" t-att-value="scan" id="scan"
-                                    class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                                <p class="alert alert-danger file_alert">Limit exceeds up to 5 files
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group field-name">
-                                <label for="name">Adresse
-                                </label>
-                                <input type="text" name="adresse" t-att-value="adresse" id="adresse"
-                                    class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group field-name">
-                                <label for="ville">State
-                                </label>
-                                <select name="State" id="State" title="State" style="width:100%; height:40x; line-height:40px">
-                                    <option data-title="choix" value="">Choisir la ville</option>
-                                    <!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
-                                    <t t-foreach="villes" t-as="rec">
-                                        <option id="state1" data-title="rec.name" t-esc="rec.name" t-att-value="rec.id" t-att-selected="rec.id == (state and state.id or -1)"/>
-                                    </t>
-                                </select>
-                            </div>
-                        </div>
-                        <t t-set="state_id" t-value="0" id="state_selected"/>
-                        <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group field-name">
-                                <label for="ville">Ville
-                                </label>
-                                <select name="ville" id="ville" title="ville" style="width:100%; height:40x; line-height:40px">
-                                    <!--                                <option data-title="choix" value="">Choisir la ville</option>-->
-                                    <!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
-                                    <option id="city" name="city"/>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
-                            <div class="form-group field-name">
-                                <label for="name">Telephone
-                                </label>
-                                <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Mobile
-                                </label>
-                                <input type="text" name="mobile" t-att-value="mobile" id="mobile" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                        <div class="row">
+                            <div class="col text-center col-12">
+                                <a class="btn btn-primary text-light btnNext mb-3" >Suivant  <i class="fa fa-angle-right ml-2"> </i> </a>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col text-center col-12">
-                            <a class="btn btn-primary text-light btnNext mb-3" >Suivant  <i class="fa fa-angle-right ml-2"> </i> </a>
+                    <!--***** Info Contact *****-->
+                    <div class="tab-pane fade" id="nav-tab-contact" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="row">
+                            <div class="col col-12 col-sm-6 col-md-12 col-lg-12 text-center">
+                                <h3 class="mb-5">Info Contact</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Prénom
+                                    </label>
+                                    <input type="text" name="first_name" t-att-value="first_name" id="first_name"
+                                        class="form-control form-control-sm" 
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Nom
+                                    </label>
+                                    <input type="text" name="last_name" t-att-value="last_name" id="last_name"
+                                        class="form-control form-control-sm" 
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Position dans la société
+                                    </label>
+                                    <input type="text" name="position" t-att-value="position" id="position"
+                                        class="form-control form-control-sm" 
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                                <div class="form-group field-login">
+                                    <label for="email2">Email
+                                    </label>
+                                    <input type="email" name="email" t-att-value="email" id="email2"
+                                        class="form-control form-control-sm" autofocus="autofocus"
+                                        autocapitalize="off" 
+                                        t-att-readonly="'readonly' if only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                                <div class="form-group field-name">
+                                    <label for="name">Telephone
+                                    </label>
+                                    <input type="text" name="phone2" t-att-value="phone2" id="phone2" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                            <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group field-name">
+                                    <label for="name">Mobile
+                                    </label>
+                                    <input type="text" name="mobile2" t-att-value="mobile2" id="mobile2" class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 text-center">
+                                <a class="btn btn-primary text-light btnPrevious mb-3" ><i class="fa fa-angle-left mr-2"></i> Précedent</a>
+                                <a class="btn btn-primary text-light btnNext mb-3" >Suivant <i class="fa fa-angle-right ml-2"> </i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--***** Info Contact *****-->
-                <div class="tab-pane fade" id="nav-tab-contact" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div class="row">
-                        <div class="col col-12 col-sm-6 col-md-12 col-lg-12 text-center">
-                            <h3 class="mb-5">Info Contact</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Prénom
-                                </label>
-                                <input type="text" name="first_name" t-att-value="first_name" id="first_name"
-                                    class="form-control form-control-sm" 
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    <!--***** Auth *****-->
+                    <div class="tab-pane fade" id="nav-tab-auth" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div class="row">
+                            <div class="col col-12 col-sm-6 col-md-12 col-lg-12 text-center">
+                                <h3 class="mb-5">Authentification</h3>
                             </div>
                         </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Nom
-                                </label>
-                                <input type="text" name="last_name" t-att-value="last_name" id="last_name"
-                                    class="form-control form-control-sm" 
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                        <div class="row">
+                            <div class="col col-12">
+                                <div class="form-group field-login">
+                                    <label for="login">Email
+                                    <span style="color:red">*</span>
+                                    </label>
+                                    <input type="email" name="login" t-att-value="login" id="login"
+                                        class="form-control form-control-sm" autofocus="autofocus"
+                                        autocapitalize="off" required="required"
+                                        t-att-readonly="'readonly' if only_passwords else None"/>
+                                </div>
                             </div>
                         </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Position dans la société
-                                </label>
-                                <input type="text" name="position" t-att-value="position" id="position"
-                                    class="form-control form-control-sm" 
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
-                            <div class="form-group field-login">
-                                <label for="email2">Email
-                                </label>
-                                <input type="email" name="email" t-att-value="email" id="email2"
-                                    class="form-control form-control-sm" autofocus="autofocus"
-                                    autocapitalize="off" 
-                                    t-att-readonly="'readonly' if only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
-                            <div class="form-group field-name">
-                                <label for="name">Telephone
-                                </label>
-                                <input type="text" name="phone2" t-att-value="phone2" id="phone2" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                        <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
-                            <div class="form-group field-name">
-                                <label for="name">Mobile
-                                </label>
-                                <input type="text" name="mobile2" t-att-value="mobile2" id="mobile2" class="form-control form-control-sm"
-                                    t-att-readonly="'readonly' if only_passwords else None"
-                                    t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-12 text-center">
-                            <a class="btn btn-primary text-light btnPrevious mb-3" ><i class="fa fa-angle-left mr-2"></i> Précedent</a>
-                            <a class="btn btn-primary text-light btnNext mb-3" >Suivant <i class="fa fa-angle-right ml-2"> </i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--***** Auth *****-->
-                <div class="tab-pane fade" id="nav-tab-auth" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <div class="row">
-                        <div class="col col-12 col-sm-6 col-md-12 col-lg-12 text-center">
-                            <h3 class="mb-5">Authentification</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-12">
-                            <div class="form-group field-login">
-                                <label for="login">Email
-                                <span style="color:red">*</span>
-                                </label>
-                                <input type="email" name="login" t-att-value="login" id="login"
-                                    class="form-control form-control-sm" autofocus="autofocus"
-                                    autocapitalize="off" required="required"
-                                    t-att-readonly="'readonly' if only_passwords else None"/>
-                            </div>
-                        </div>
-                            </div>
                         <div class="form-group field-password pt-2">
                             <label for="password">Mot de passe</label>
                             <input type="password" name="password" id="password" class="form-control form-control-sm"
@@ -300,20 +300,98 @@
                             <input type="password" name="confirm_password" id="confirm_password"
                                 class="form-control form-control-sm" required="required"/>
                         </div>
-                
-                    
-                    <div class="row">
-                        <div class="text-center col col-12">
-                            <a class="btn btn-primary text-light btnPrevious " ><i class="fa fa-angle-left mr-2"></i>Précedent</a>
-                            <button type="submit" class="btn btn-success doc">Sign up
-                            </button>
+                        <div class="row">
+                            <div class="text-center col col-12">
+                                <a class="btn btn-primary text-light btnPrevious " ><i class="fa fa-angle-left mr-2"></i>Précedent</a>
+                                <button type="submit" class="btn btn-success doc">Sign up
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
-
             </div>
-
+            <div class="col-12 col-md-6 col-lg-6" style="border-left-width: 2px; border-left-color: #999999; border-left-style: solid;">
+                <h4 class="mb-5"><i class="fa fa-info-circle mr-2 "> </i> Qui sommes-nous?</h4>
+                <p style="font-size: 16px;">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <div class="card-deck">
+                    <div class="card pt-2" style="border-radius: 6px">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/badge.png" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+                            <p class="card-text text-center">Plus de 20 ans d'expérience dans le secteur.</p>
+                        </div>
+                    </div>
+                    <div class="card pt-2" style="border-radius: 6px">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/satisfaction.png" class="card-img-top" alt="..." />
+                        <div class="card-body text-center">
+                            <!--               <h5 class="card-title text-center"> Plus de 3000 Clients Satisfait</h5> -->
+                            <p class="card-text">Plus de 3000 Clients Satisfait</p>
+                        </div>
+                    </div>
+                    <div class="card pt-2" style="border-radius: 6px">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/algeria.png" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+                            <p class="card-text text-center">Livraison 58 Wilayas</p>
+                        </div>
+                    </div>
+                    <div class="card pt-2" style="border-radius: 6px">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/high-quality.png" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+                            <p class="card-text text-center">Produit de Qualité</p>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mb-5"><i class="fa fa-shopping-cart mr-2 "> </i> Nos Produits</h4>
+                <p>Nous offrons à nos clients la meilleure sélection de produits en:</p>
+                <div class="card-deck">
+                    <div class="card pt-2" style="border: none">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/cctv-camera.png" class="card-img-top" alt="..." />
+                        <div class="card-body text-center" style="padding-right: 0;padding-left: 0;">
+                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+                            <p class="text-center badge badge-dark">CCTV</p>
+                        </div>
+                    </div>
+                    <div class="card pt-2" style="border: none">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/alert.png" class="card-img-top" alt="..." />
+                        <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
+                            <!--               <h5 class="card-title text-center"> Plus de 3000 Clients Satisfait</h5> -->
+                            <p class="badge badge-dark">INTRUSION</p>
+                        </div>
+                    </div>
+                    <div class="card pt-2" style="border: none">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/settings.png" class="card-img-top" alt="..." />
+                        <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
+                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+                            <p class="text-center badge badge-dark">Matériel IT</p>
+                        </div>
+                    </div>
+                    <div class="card pt-2" style="border: none">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/smart-home.png" class="card-img-top" alt="..." />
+                        <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
+                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+                            <p class=" text-center badge badge-dark">Smart Home</p>
+                        </div>
+                    </div>
+                    <div class="card pt-2" style="border: none">
+                        <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/access-control.png" class="card-img-top" alt="..." />
+                        <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
+                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+                            <p class="text-center badge badge-dark" style="font-size: 10px;">Contrôles D'accés</p>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mb-5"><i class="fa fa-check-square-o mr-2 "> </i> Avantages d'être client PROTEC</h4>
+                <ul type="circle">
+                    <li class="h5">Service aprés vente.</li>
+                    <li class="h5">Plus de 20 ans d'expérience dans le secteur de securité.</li>
+                    <li class="h5">Formations disponibles.</li>
+                    <li class="h5">Expédition en 48-72 heures.</li>
+                </ul>
+            </div>
         </div>
     </template>
     <!--******* End signup form ********-->
@@ -330,8 +408,8 @@
                 <input type="hidden" name="redirect" t-att-value="redirect"/>
                 <input type="hidden" name="token" t-att-value="token"/>
                 <div class="text-center oe_login_buttons pt-3">
-                                <button type="submit" class="nb btn btn-primary btn-block">Sign up</button>
-                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already
+                <button type="submit" class="nb btn btn-primary btn-block">Sign up</button>
+                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link" role="button">Already
                 have an account?
                 </a>
                 <div class="o_login_auth"/>
@@ -347,16 +425,16 @@
         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
         <div class="text-center oe_login_buttons pt-3" position="replace">
         <!--            <t t-if="url">-->
-<!--         <div class="row">
+        <!--         <div class="row">
             <div class="text-center col col-12">
                 <button type="submit" class="btn btn-primary btn-block doc">Sign up
                 </button>
             </div>
-        </div> -->
+            </div> -->
         <!--            </t>-->
         <div class="row">
-            <div class="text-center col col-12">
-                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already
+            <div class="text-left col col-12">
+                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link" role="button">Already
                 have an account?
                 </a>
                 <div class="o_login_auth"/>
