@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="signupavinet.fields" name="Auth Signup/ResetPassword form fields">
+        <div class="smart-forms">
+            <div class="spacer-b30">
+                <div class="tagline">
+                    <span>Info société</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Type Société 
+                        </label>
+                        <label for="month" class="field select">
+                            <select name="company_type" id="company_type" title="Company Type" required="required">
+                                <option data-title="eurl" value="eurl">EURL</option>
+                                <option data-title="sarl" value="sarl">SARL</option>
+                                <option data-title="snc" value="snc">SNC</option>
+                                <option data-title="spa" value="spa">SPA</option>
+                                <option data-title="ets" value="ets">ETS</option>
+                                <option data-title="epe" value="epe">EPE</option>
+                                <option data-title="autre" value="autre">AUTRE</option>
+                            </select>
+                            <i class="arrow double"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Nom Société
+                            <span style="color:red">*</span>
+                        </label>
+                        <input type="text" name="company_name" t-att-value="name" id="company_name"
+                               class="form-control form-control-sm" 
+                               required="required" t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+<!--                <div class="col  col-12">-->
+<!--                    <div class="form-group field-name">-->
+<!--                        <label for="name">Address-->
+<!--                            <span style="color:red">*</span>-->
+<!--                        </label>-->
+<!--                        <input type="text" name="street" t-att-value="street" id="street"-->
+<!--                               class="form-control form-control-sm" placeholder="e.g. Line1"-->
+<!--                               required="required" t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                        <input type="text" style='margin-top:10px;' name="street2" t-att-value="street2" id="street2"-->
+<!--                               class="form-control form-control-sm" placeholder="e.g. Line2"-->
+<!--                               t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col  col-12 col-sm-6 col-md-4 .col-lg-4">-->
+<!--                    <div class="form-group field-name">-->
+<!--                        <label for="name">Zip/Postal Code-->
+<!--                            <span style="color:red">*</span>-->
+<!--                        </label>-->
+<!--                        <input type="text" name="zip" id="zip" class="form-control form-control-sm"-->
+<!--                               placeholder="e.g. 85455"-->
+<!--                               required="required" t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col  col-12 col-sm-6 col-md-4 .col-lg-4">-->
+<!--                    <div class="form-group field-name">-->
+<!--                        <label for="name">City-->
+<!--                            <span style="color:red">*</span>-->
+<!--                        </label>-->
+<!--                        <input type="text" name="city" t-att-value="city" id="city" class="form-control form-control-sm"-->
+<!--                               placeholder="e.g. 85455"-->
+<!--                               required="required" t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--               <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">-->
+<!--                    <div class="form-group field-name">-->
+<!--                        <label for="name">NIT-->
+
+<!--                        </label>-->
+<!--                        <input type="checkbox" name="vat1" t-att-value="vat1" id="vat2" class=""-->
+<!--                               />-->
+<!--                    </div>-->
+<!--               </div>-->
+
+                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group field-name">
+                        <label for="name">NIF
+
+                        </label>
+                        <input type="text" name="vat" t-att-value="vat" id="vat" class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+                
+                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group field-name">
+                        <label for="name">Numéro RC
+                            
+                        </label>
+                        <input type="text" name="num_rc" t-att-value="num_rc" id="num_rc" class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group field-name">
+                        <label for="name">ART
+                            
+                        </label>
+                        <input type="text" name="art" t-att-value="art" id="art" class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6 my-3">
+                    <div class="form-group field-name">
+                        <input type="checkbox" name="check1" class="check_1"/>
+                        <label for="name">Faites-vous de la revente des equipements de videosurveillance?
+
+                        </label>
+                    </div>
+                </div>
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6 my-3">
+                    <div class="form-group field-name">
+                        <input type="checkbox" name="check2" t-att-value="check2"  class="check_2"/>
+                        <label for="name">Faites-vous de la revente des equipements telecom?
+
+                        </label>
+                    </div>
+                </div>
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Agrément
+                           <span class="req_mark" style="color:red">*</span>
+                        </label>
+                        <input type="text" name="agrem" t-att-value="agrem" id="agrem" class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Expiration Agrément
+                            <span class="req_mark" style="color:red">*</span>
+                        </label>
+                        <input type="date" name="exp_agrem" t-att-value="exp_agrem" id="exp_agrem" class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                <div class="col  col-12 ">
+                    <div class="form-group field-name">
+                        <label for="name">Joindre les scans de votre carte
+                            fiscale et registre de commerce / agrément.
+                            <span style="color:red">*</span>
+                        </label>
+                        <input type="file" accept="image/png, image/jpeg"
+                               multiple="multiple" required="required"
+                               name="scan" t-att-value="scan" id="scan"
+                               class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                        <p class="alert alert-danger file_alert">Limit exceeds up to 5 files
+                        </p>
+                    </div>
+                </div>
+                 <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group field-name">
+                        <label for="name">Adresse
+                            
+                        </label>
+                        <input type="text" name="adresse" t-att-value="adresse" id="adresse"
+                               class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group field-name">
+                        <label for="ville">State
+                           
+                        </label>
+                            <select name="State" id="State" title="State" style="width:100%; height:40x; line-height:40px">
+                                <option data-title="choix" value="">Choisir la ville</option>
+<!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
+                                <t t-foreach="villes" t-as="rec">
+                                    <option id="state1" data-title="rec.name" t-esc="rec.name" t-att-value="rec.id" t-att-selected="rec.id == (state and state.id or -1)"/>
+                                  </t>  
+                               
+                            </select>
+
+                    </div>
+
+                </div>
+                <t t-set="state_id" t-value="0" id="state_selected"/>
+                <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="form-group field-name">
+                        <label for="ville">Ville
+
+                        </label>
+
+                            <select name="ville" id="ville" title="ville" style="width:100%; height:40x; line-height:40px">
+<!--                                <option data-title="choix" value="">Choisir la ville</option>-->
+<!--                                <t t-set="villes" t-value="request.env['res.city'].search([('country_id','=',62)])"/>-->
+
+                                <option id="city" name="city"/>
+
+                            </select>
+
+
+                    </div>
+                </div>
+
+                 <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                    <div class="form-group field-name">
+                        <label for="name">Telephone
+                         
+                        </label>
+                        <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm"
+                              t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+                
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Mobile
+                        </label>
+                        <input type="text" name="mobile" t-att-value="mobile" id="mobile" class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                    
+                
+                
+                
+                
+                
+                
+                 <!-- <div class="col  col-12">
+                    <div class="form-group field-name">
+                        <label for="name">Country
+                            <span style="color:red">*</span>
+                        </label>
+                        <label for="month" class="field select">
+                            <select id="country_id" name="country_id" required="1">
+                                <option value="">Select Country</option>
+                                <t t-foreach="request.env['res.country'].sudo().search([])" t-as="con">
+                                    <option t-att-value="con.id" t-att-selected="con == country_id">
+                                        <span t-esc="con.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                            <i class="arrow double"></i>
+                        </label>
+                    </div>
+                </div> -->
+            </div>
+            <div class="spacer-t30 spacer-b15">
+                <div class="tagline">
+                    <span>Info Contact</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                   <div class="form-group field-name">
+                       <label for="name">Prénom
+                          
+                       </label>
+                       <input type="text" name="first_name" t-att-value="first_name" id="first_name"
+                              class="form-control form-control-sm" 
+                               t-att-readonly="'readonly' if only_passwords else None"
+          t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+</div>
+</div>
+<div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+<div class="form-group field-name">
+                       <label for="name">Nom
+                        
+                       </label>
+                       <input type="text" name="last_name" t-att-value="last_name" id="last_name"
+                              class="form-control form-control-sm" 
+                              t-att-readonly="'readonly' if only_passwords else None"
+                              t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                   </div>
+</div> 
+                
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Position dans la société
+                            
+                        </label>
+                        <input type="text" name="position" t-att-value="position" id="position"
+                               class="form-control form-control-sm" 
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+               
+                 <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                    <div class="form-group field-login">
+                        <label for="email2">Email
+                           
+                        </label>
+                        <input type="email" name="email2" t-att-value="email" id="email2"
+                               class="form-control form-control-sm" autofocus="autofocus"
+                               autocapitalize="off" 
+                               t-att-readonly="'readonly' if only_passwords else None"/>
+                    </div>
+                </div>
+
+
+               
+
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
+                    <div class="form-group field-name">
+                        <label for="name">Telephone
+                           
+                        </label>
+                        <input type="text" name="phone2" t-att-value="phone2" id="phone2" class="form-control form-control-sm"
+                                t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+                
+                <div class="col  col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group field-name">
+                        <label for="name">Mobile
+                        </label>
+                        <input type="text" name="mobile2" t-att-value="mobile2" id="mobile2" class="form-control form-control-sm"
+                               t-att-readonly="'readonly' if only_passwords else None"
+                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    </div>
+                </div>
+                
+            </div>
+
+<!--            <div class="spacer-b30">-->
+<!--                <div class="tagline">-->
+<!--                    <span>Contact</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="col  col-12 col-sm-6 col-md-4 .col-lg-4">-->
+<!--                    <div class="form-group field-name">-->
+<!--                        <label for="name">First Name-->
+<!--                            <span style="color:red">*</span>-->
+<!--                        </label>-->
+<!--                        <input type="text" name="first_name" t-att-value="first_name" id="first_name"-->
+<!--                               class="form-control form-control-sm" placeholder="e.g. John"-->
+<!--                               required="required" t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col  col-12 col-sm-6 col-md-4 .col-lg-4">-->
+<!--                    <div class="form-group field-name">-->
+<!--                        <label for="name">Last Name-->
+<!--                            <span style="color:red">*</span>-->
+<!--                        </label>-->
+<!--                        <input type="text" name="last_name" t-att-value="last_name" id="last_name"-->
+<!--                               class="form-control form-control-sm" placeholder="e.g. Watson"-->
+<!--                               t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                               t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        
+<!--            <div class="row">-->
+<!--                <div class="col  col-12 col-sm-6 col-md-6 .col-lg-6">-->
+<!--                    <div class="form-group field-phone">-->
+<!--                        <label for="login">Phone Number-->
+<!--                            <span style="color:red">*</span>-->
+<!--                        </label>-->
+<!--                        <input type="text" name="phone" t-att-value="phone" id="phone"-->
+<!--                               class="form-control form-control-sm" autofocus="autofocus"-->
+<!--                               required="required" t-att-readonly="'readonly' if only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col  col-12 col-sm-6 col-md-6 .col-lg-6">-->
+<!--                    <div class="form-group field-mobile">-->
+<!--                        <label for="login">Mobile</label>-->
+<!--                        <input type="text" name="mobile" t-att-value="mobile" id="mobile"-->
+<!--                               class="form-control form-control-sm" autofocus="autofocus"-->
+<!--                               t-att-readonly="'readonly' if only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="spacer-t30 spacer-b15">
+                <div class="tagline">
+                    <span>Authentification</span>
+                </div>
+            </div>
+            
+            
+                <div class="row">
+                <div class="col col-12">
+                    <div class="form-group field-login">
+                        <label for="login">Email
+                            <span style="color:red">*</span>
+                        </label>
+                        <input type="email" name="login" t-att-value="login" id="login"
+                               class="form-control form-control-sm" autofocus="autofocus"
+                               autocapitalize="off" required="required"
+                               t-att-readonly="'readonly' if only_passwords else None"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group field-password pt-2">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" class="form-control form-control-sm"
+                       required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
+            </div>
+            <div class="form-group field-confirm_password">
+                <label for="confirm_password">Confirmer mot de passe</label>
+                <input type="password" name="confirm_password" id="confirm_password"
+                       class="form-control form-control-sm" required="required"/>
+            </div>
+
+<!--            <div class="spacer-t30 spacer-b15">-->
+<!--                <div class="tagline">-->
+<!--                    <span>Information</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="col col-12">-->
+<!--                    <div class="form-group field-comment">-->
+<!--                        <label for="comment">Comment</label>-->
+<!--                        <textarea name="comment" t-att-value="comment" id="comment" class="form-control form-control-sm"-->
+<!--                                  autofocus="autofocus"-->
+<!--                                  t-att-readonly="'readonly' if only_passwords else None"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <a t-attf-href="/request_sent">-->
+<!--                <button type="button" class="btn btn-primary btn-md o_website_form_send">Sign up</button>-->
+<!--            </a>-->
+        </div>
+    </template>
+
+   
+    <template id="signupavinet.signup" name="Sign up login">
+        <t t-call="web.login_layout">
+            <form class="oe_signup_form" role="form" method="post" t-if="not message">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <t t-call="signupavinet.fields">
+                    <t t-set="only_passwords" t-value="bool(token and not invalid_token)"/>
+                </t>
+
+                <p class="alert alert-danger" t-if="error" role="alert">
+                    <t t-esc="error"/>
+                </p>
+                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                <input type="hidden" name="token" t-att-value="token"/>
+                <div class="text-center oe_login_buttons pt-3">
+                    <button type="submit" class="nb btn btn-primary btn-block">Sign up</button>
+                    <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already
+                        have an account?
+                    </a>
+                    <div class="o_login_auth"/>
+                </div>
+            </form>
+        </t>
+    </template>
+
+<!--    <template id="signup_from_inherit" inherit_id="auth_signup.signup" name="Signup Inherit">-->
+<!--&lt;!&ndash;        <form class="oe_signup_form" action="/request_sent" role="form" method="post" t-if="not message">&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>&ndash;&gt;-->
+<!--        <div class="text-center oe_login_buttons pt-3" position="replace">-->
+<!--&lt;!&ndash;            <t t-if="url">&ndash;&gt;-->
+<!--            <div class="row">-->
+<!--                <div class="text-center col col-12" style="float:right">-->
+<!--                    <button type="submit" class="btn btn-primary btn-block" style="width:auto; float:right">Sign up-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--&lt;!&ndash;            </t>&ndash;&gt;-->
+<!--            <div class="row">-->
+<!--                <div class="text-center col col-12">-->
+<!--                    <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already-->
+<!--                        have an account?-->
+<!--                    </a>-->
+<!--                    <div class="o_login_auth"/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--&lt;!&ndash;         </form>&ndash;&gt;-->
+<!--    </template>-->
+
+    <template id="signup_from_inherit" inherit_id="signupavinet.signup" name="Signup Inherit">
+        <form class="oe_signup_form" position="attributes">
+            <attribute name="action">/request_sent</attribute>
+            <attribute name="enctype">multipart/form-data</attribute>
+           
+        </form>
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+        <div class="text-center oe_login_buttons pt-3" position="replace">
+<!--            <t t-if="url">-->
+            <div class="row">
+                <div class="text-center col col-12">
+                    <button type="submit" class="btn btn-primary btn-block doc">Sign up
+                    </button>
+                </div>
+            </div>
+<!--            </t>-->
+            <div class="row">
+                <div class="text-center col col-12">
+                    <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already
+                        have an account?
+                    </a>
+                    <div class="o_login_auth"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+<!--    <template id="signupavinet.test_template" name="Sign up Request">-->
+<!--        <t t-call="web.login_layout">-->
+<!--            <form class="oe_signup_form" action="/request_sent" role="form" method="post" t-if="not message">-->
+<!--                <div class="form-group field-name">-->
+<!--                    <label for="name">Your Name</label>-->
+<!--                    <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm"-->
+<!--                           placeholder="e.g. John Doe"-->
+<!--                           required="required" t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                           t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                </div>-->
+<!--                <a t-attf-href="/request_sent">-->
+<!--                    <button type="submit" class="btn btn-primary btn-md o_website_form_send">Sign up</button>-->
+<!--                </a>-->
+<!--            </form>-->
+<!--        </t>-->
+<!--    </template>-->
+
+
+    <template id="signupavinet.signup_done" name="Sign up Request">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container text-center">
+                    <h1>Merci</h1>
+                    <div class="row" style="align-items: center; justify-content: center;">
+                        <div class="col-6">
+                            <div class="alert alert-success" role="status">
+                               Votre demande d'inscription sera examinée 
+                            </div>
+                            <p>
+                               Nous reviendrons vers vous bientot 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+<!--    <record id="order_created" model="website.page">-->
+<!--        <field name="name">Thanks</field>-->
+<!--        <field name="type">qweb</field>-->
+<!--        <field name="url">/web_order_sent</field>-->
+<!--        <field name="website_published">True</field>-->
+<!--        <field name="key">website_repair.order_created</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <t name="thanks" t-name="website_repair.order_created">-->
+<!--                <t t-call="website.layout">-->
+<!--                     <div id="wrap">-->
+<!--                        <div class="container">-->
+<!--                            <h1>Thank You</h1>-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-lg-8">-->
+<!--                                    <div class="alert alert-success" role="status">-->
+<!--                                        Your Order has been Sent Successfully.-->
+<!--                                    </div>-->
+<!--                                    <p>-->
+<!--                                        We will get back to you shortly-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                     </div>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>
