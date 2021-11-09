@@ -311,12 +311,12 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6" style="border-left-width: 2px; border-left-color: #999999; border-left-style: solid;">
-                <h4 class="mb-5"><i class="fa fa-info-circle mr-2 "> </i> Qui sommes-nous?</h4>
+                <h4 class="mb-2"><i class="fa fa-info-circle mr-2 "> </i> Qui sommes-nous?</h4>
                 <p style="font-size: 16px;">
                     PROTEC est un fournisseur de systèmes de sécurité globale, spécialisé dans la vente en gros de caméras de sécurité, d’enregistreur, de systèmes d'intrusion, de contrôle d'accès, de présence et de Materiel informatique. 
                     Avec une experiance  de plus de 20ans  dans le secteur, nous fournissons des produits et services destinés au secteur professionnel.
                 </p>
-                <div class="card-deck">
+                <div class="card-deck mb-4">
                     <div class="card pt-2" style="border-radius: 6px">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/badge.png" class="card-img-top" alt="..." />
                         <div class="card-body">
@@ -346,9 +346,9 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="mb-5"><i class="fa fa-shopping-cart mr-2 "> </i> Nos Produits</h4>
+                <h4 class="mb-2"><i class="fa fa-shopping-cart mr-2 "> </i> Nos Produits</h4>
                 <p>Nous offrons à nos clients la meilleure sélection de produits en:</p>
-                <div class="card-deck">
+                <div class="card-deck mb-4">
                     <div class="card pt-2" style="border: none">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/cctv-camera.png" class="card-img-top" alt="..." />
                         <div class="card-body text-center" style="padding-right: 0;padding-left: 0;">
