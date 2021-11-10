@@ -320,7 +320,7 @@
                     <div class="card pt-2" style="border-radius: 6px">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/badge.png" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+
                             <p class="card-text text-center">Plus de 20 ans d'expérience dans le secteur.</p>
                         </div>
                     </div>
@@ -334,14 +334,14 @@
                     <div class="card pt-2" style="border-radius: 6px">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/algeria.png" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+
                             <p class="card-text text-center">Livraison 58 Wilayas</p>
                         </div>
                     </div>
                     <div class="card pt-2" style="border-radius: 6px">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/high-quality.png" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
+
                             <p class="card-text text-center">Produit de Qualité</p>
                         </div>
                     </div>
@@ -352,36 +352,31 @@
                     <div class="card pt-2" style="border: none">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/cctv-camera.png" class="card-img-top" alt="..." />
                         <div class="card-body text-center" style="padding-right: 0;padding-left: 0;">
-                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
-                            <p class="text-center badge badge-dark">CCTV</p>
+                            <p class="text-center badge badge-dark" style="border-radius: 6px">CCTV</p>
                         </div>
                     </div>
                     <div class="card pt-2" style="border: none">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/alert.png" class="card-img-top" alt="..." />
                         <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
-                            <!--               <h5 class="card-title text-center"> Plus de 3000 Clients Satisfait</h5> -->
-                            <p class="badge badge-dark">INTRUSION</p>
+                            <p class="badge badge-dark" style="border-radius: 6px">INTRUSION</p>
                         </div>
                     </div>
                     <div class="card pt-2" style="border: none">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/settings.png" class="card-img-top" alt="..." />
                         <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
-                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
-                            <p class="text-center badge badge-dark">Matériel IT</p>
+                            <p class="text-center badge badge-dark" style="border-radius: 6px">Matériel IT</p>
                         </div>
                     </div>
                     <div class="card pt-2" style="border: none">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/smart-home.png" class="card-img-top" alt="..." />
                         <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
-                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
-                            <p class=" text-center badge badge-dark">Smart Home</p>
+                            <p class=" text-center badge badge-dark" style="border-radius: 6px">Smart Home</p>
                         </div>
                     </div>
                     <div class="card pt-2" style="border: none">
                         <img style="height: 48px; width: 48px; align-self: center;" src="/signupavinet/static/access-control.png" class="card-img-top" alt="..." />
                         <div class="card-body text-center" style="padding-right: 0; padding-left: 0;">
-                            <!--               <h5 class="card-title text-center">  <i class="fa fa-certificate"> </i> </h5> -->
-                            <p class="text-center badge badge-dark" style="font-size: 10px;">Contrôles D'accés</p>
+                            <p class="text-center badge badge-dark" style="font-size: 10px;border-radius: 6px">Contrôles D'accés</p>
                         </div>
                     </div>
                 </div>
