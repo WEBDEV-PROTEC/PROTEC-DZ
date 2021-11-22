@@ -44,7 +44,7 @@ class ProtecPartners(WebsiteCrmPartnerAssign):
             loc = '/partners/wilaya/%s' % slug(country['state_id'])
             if not qs or qs.lower() in loc:
                 yield {'loc': loc}
-
+# partners search
     @http.route([
         '/partners',
         '/partners/page/<int:page>',
