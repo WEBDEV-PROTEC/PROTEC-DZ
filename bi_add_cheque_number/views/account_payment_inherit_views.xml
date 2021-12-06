@@ -9,7 +9,7 @@
                 <group string="Cheuqe Details">
                     <group name="cheq_num">
                         <field name="cheq_num"/>
-                    </group>
+                    </group>  
                     <group name="cheq_img">
                         <field name="cheq_img" widget="image" options="{&quot;size&quot;: [150, 300]}"/>
                     </group>
