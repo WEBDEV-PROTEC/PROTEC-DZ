@@ -1,0 +1,163 @@
+<odoo>
+    <data>
+        <template id="custom_batch_payment_report" inherit_id="account_batch_payment.print_batch_payment">
+            <xpath expr="//div[@class='page page_batch_payment'][1]" position="replace">
+                <div t-foreach="pages(o)" t-as="page" class="page page_batch_payment">
+                    <!--                     <div class="row batch_details">
+                        <div class="col-4"><h6><t t-esc="page['date']"/></h6></div>
+                        <div class="col-4"><h6>PROTEC SARL copie</h6></div>
+                        <div class="col-4"><h6><t t-esc="page['journal_name']"/> : <t t-esc="page['batch_name']"/></h6></div>
+                        </div>
+                        <table class="table table-bordered table-sm">
+                        <thead><tr>
+                            <th class="text-left">Client</th>
+                            <th class="text-left">Numéro de Cheque</th>
+                            <th class="text-left">Date</th>
+                            <th class="text-left">Memo</th>
+                            <th class="text-right">Total</th>
+                        </tr></thead>
+                        <tr t-foreach="page['payments']" t-as="payment">
+                            <td class="text-left"><t t-esc="payment.partner_id.name"/></td>
+                            <td class="text-left"><t t-esc="payment.cheq_num"/></td>
+                            <td class="text-left"><t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></td>
+                            <td class="text-left"><t t-esc="payment.ref"/></td>
+                            <td class="text-right"><t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/></td>
+                        </tr>
+                        <tfoot t-if="page['total_amount']">
+                            <tr>
+                                <td/>
+                                <td/>
+                                <td/>
+                                <td/>
+                                <td class="text-right"><t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/></td>
+                            </tr>
+                        </tfoot>
+                        </table> -->
+                    <div class="row mb-5">
+                        <div class="col-12 col-lg-4 col-md-4">
+<!--                             <img src="/batch_payment_pdf/static/download.png" alt="" style="height: 64px;"/> -->
+                               <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/>
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-4">
+                            <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/>
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-4">
+                            <span class="p-2">
+                                <h6 style="color: #005187;">
+                                    <t t-esc="page['journal_name']"/>
+                                    : 
+                                    <t t-esc="page['batch_name']"/>
+                                </h6>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 col-lg-9 col-md-9">
+                            <div class="row">
+                                <div class="col-12 col-lg-12 col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left h5">Client</th>
+                                                <th class="text-left h5">Numéro de Cheque</th>
+                                                <th class="text-left h5">Date</th>
+                                                <th class="text-left h5">Memo</th>
+                                                <th class="text-right h5">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="page['payments']" t-as="payment">
+                                                <td class="text-left h5">
+                                                    <t t-esc="payment.partner_id.name"/>
+                                                </td>
+                                                <td class="text-left h5">
+                                                    <t t-esc="payment.cheq_num"/>
+                                                </td>
+                                                <td class="text-left h5">
+                                                    <t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+                                                </td>
+                                                <td class="text-left h5">
+                                                    <t t-esc="payment.ref"/>
+                                                </td>
+                                                <td class="text-right h5">
+                                                    <t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot t-if="page['total_amount']">
+                                            <tr>
+                                                <td/>
+                                                <td/>
+                                                <td/>
+                                                <td><b>Montant total</b></td>
+                                                <td class="text-right">
+                                                    <t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-12 col-lg-6 col-md-6">
+                                    <h4> <b>
+                                        Nombre de cheques: 
+                                        <t t-esc="len(page['payments'])"/>
+                                    </b></h4>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-12 col-md-12">
+                                     <h4> <b>
+                                        Date: 
+                                        <t t-esc="page['date']"/>
+                                    </b></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 col-md-3" style="margin-top: 32px;">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nom ou raison sociale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Adresse</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">N° de compte</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
