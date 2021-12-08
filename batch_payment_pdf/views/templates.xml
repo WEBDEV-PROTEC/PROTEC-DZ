@@ -33,13 +33,31 @@
                             </tr>
                         </tfoot>
                         </table> -->
-                    <div class="row mb-5">
-                        <div class="col-12 col-lg-4 col-md-4">
-<!--                             <img src="/batch_payment_pdf/static/download.png" alt="" style="height: 64px;"/> -->
-                               <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/>
+                      <style>
+                        .check {
+                          margin-left: 5px;
+                          height: 24px;
+                          width: 24px;
+                          border: 3px solid #005187;
+                          display: inherit;
+                          /* align-self: center; */
+                          top: 5px;
+                          position: relative;
+                        }
+                          
+                      th {
+                          background-color: #00518733;
+                          text-align: center;
+                      }
+                      </style>
+                    <div class="roaw mb-5">
+                        <div class="col-6">
+                            <img src="/batch_payment_pdf/static/download.png" alt="" style="height: 90px;"/>
+<!--                                <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/> -->
                         </div>
-                        <div class="col-12 col-lg-4 col-md-4">
-                            <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/>
+                      <div class="col-6 text-center">
+                              <h2 style="color: #005187"> تسليم صكوك</h2>
+                            <h2 style="color: #005187">REMISE DE CHEQUES</h2>
                         </div>
                         <div class="col-12 col-lg-4 col-md-4">
                             <span class="p-2">
@@ -51,36 +69,55 @@
                             </span>
                         </div>
                     </div>
-                    
+
                     <div class="row">
-                        <div class="col-12 col-lg-9 col-md-9">
+                        <div class="col-9">
                             <div class="row">
                                 <div class="col-12 col-lg-12 col-md-12">
-                                    <table class="table table-bordered">
+                                    <div class="row">
+                                         <div class="col-6 col-lg-6 col-md-6">
+                                             <label for=""> <b>ENCAISSEMENT</b> 
+                                                <span class="check"> <i style="top: -9px; position: relative" class="fa fa-check fa-2x"></i></span>
+                                             </label>
+                                         </div>
+                                         <div class="col-6 col-lg-6 col-md-6">
+                                            <label for=""> <b>ESCOMPTE</b>
+                                                <span class="check"> </span>
+                                             </label>
+                                        </div>
+                                     </div>
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th class="text-left h5">Client</th>
-                                                <th class="text-left h5">Numéro de Cheque</th>
-                                                <th class="text-left h5">Date</th>
-                                                <th class="text-left h5">Memo</th>
-                                                <th class="text-right h5">Total</th>
+                                                <th class="text-left">
+                                                    مؤسسة الدفع<br/>
+                                                    Etablissement payeur
+                                                </th>
+                                                <th class="text-left">
+                                                    مكان الدفع
+                                                    <br/>Lieu de payment
+                                                </th>
+<!--                                                 <th class="text-left">Date</th> -->
+                                                <th class="text-left">اسم الساحب<br/>Nom de tireur</th>
+                                                <th class="text-left">رقم الصك<br/>N° de Chéque</th>
+                                                <th class="text-right">المبلغ<br/>Montant</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr t-foreach="page['payments']" t-as="payment">
-                                                <td class="text-left h5">
+                                                <td class="text-left">
                                                     <t t-esc="payment.partner_id.name"/>
                                                 </td>
-                                                <td class="text-left h5">
+                                                <td class="text-left">
+<!--                                                     <t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/> -->
+                                                </td>
+                                                <td class="text-left">
+<!--                                                     <t t-esc="payment.ref"/> -->
+                                                </td>
+                                                <td class="text-left">
                                                     <t t-esc="payment.cheq_num"/>
                                                 </td>
-                                                <td class="text-left h5">
-                                                    <t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
-                                                </td>
-                                                <td class="text-left h5">
-                                                    <t t-esc="payment.ref"/>
-                                                </td>
-                                                <td class="text-right h5">
+                                                <td class="text-right">
                                                     <t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/>
                                                 </td>
                                             </tr>
@@ -90,9 +127,9 @@
                                                 <td/>
                                                 <td/>
                                                 <td/>
-                                                <td><b>Montant total</b></td>
+                                                <td><b style="font-size: 18px">Montant total</b></td>
                                                 <td class="text-right">
-                                                    <t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/>
+                                                    <span style="font-size: 18px"><t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/></span>
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -100,57 +137,61 @@
                                 </div>
                             </div>
                             <div class="row mt-5">
-                                <div class="col-12 col-lg-6 col-md-6">
-                                    <h4> <b>
-                                        Nombre de cheques: 
+                                <div class="col-12 col-lg-6 col-md-6" >
+                                    <b>
+                                        Nombre de cheques:
                                         <t t-esc="len(page['payments'])"/>
-                                    </b></h4>
+                                    </b>
                                 </div>
                                 <hr/>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-lg-12 col-md-12">
-                                     <h4> <b>
+                                    <b>
                                         Date: 
                                         <t t-esc="page['date']"/>
-                                    </b></h4>
+                                    </b>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-3 col-md-3" style="margin-top: 32px;">
+                        <div class="col-3" style="margin-top: 30px;">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nom ou raison sociale</th>
+                                        <th scope="col">
+                                            الاسم أو الغرض الاجتماعي <br/>
+                                            Nom ou raison sociale
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <td scope="row"> <br/><br/>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Adresse</th>
+                                        <th scope="col">العنوان Adresse</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <td scope="row"><br/><br/></td>
                                     </tr>
                                 </tbody>
                             </table>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">N° de compte</th>
+                                        <th scope="col">رقم الحساب N° de compte</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <td scope="row"><br/><br/></td>
                                     </tr>
                                 </tbody>
                             </table>
