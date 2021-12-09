@@ -3,199 +3,335 @@
         <template id="custom_batch_payment_report" inherit_id="account_batch_payment.print_batch_payment">
             <xpath expr="//div[@class='page page_batch_payment'][1]" position="replace">
                 <div t-foreach="pages(o)" t-as="page" class="page page_batch_payment">
-                    <!--                     <div class="row batch_details">
-                        <div class="col-4"><h6><t t-esc="page['date']"/></h6></div>
-                        <div class="col-4"><h6>PROTEC SARL copie</h6></div>
-                        <div class="col-4"><h6><t t-esc="page['journal_name']"/> : <t t-esc="page['batch_name']"/></h6></div>
-                        </div>
-                        <table class="table table-bordered table-sm">
-                        <thead><tr>
-                            <th class="text-left">Client</th>
-                            <th class="text-left">Numéro de Cheque</th>
-                            <th class="text-left">Date</th>
-                            <th class="text-left">Memo</th>
-                            <th class="text-right">Total</th>
-                        </tr></thead>
-                        <tr t-foreach="page['payments']" t-as="payment">
-                            <td class="text-left"><t t-esc="payment.partner_id.name"/></td>
-                            <td class="text-left"><t t-esc="payment.cheq_num"/></td>
-                            <td class="text-left"><t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></td>
-                            <td class="text-left"><t t-esc="payment.ref"/></td>
-                            <td class="text-right"><t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/></td>
-                        </tr>
-                        <tfoot t-if="page['total_amount']">
-                            <tr>
-                                <td/>
-                                <td/>
-                                <td/>
-                                <td/>
-                                <td class="text-right"><t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/></td>
-                            </tr>
-                        </tfoot>
-                        </table> -->
-                      <style>
+                    <style>
                         .check {
-                          margin-left: 5px;
-                          height: 24px;
-                          width: 24px;
-                          border: 3px solid #005187;
-                          display: inherit;
-                          /* align-self: center; */
-                          top: 5px;
-                          position: relative;
+                            margin-left: 5px;
+                            height: 24px;
+                            width: 24px;
+                            border: 3px solid #005187;
+                            display: inherit;
+                            /* align-self: center; */
+                            top: 5px;
+                            position: relative;
                         }
-                          
-                      th {
-                          background-color: #00518733;
-                          text-align: center;
-                      }
-                      </style>
-                    <div class="roaw mb-5">
-                        <div class="col-6">
-                            <img src="/batch_payment_pdf/static/download.png" alt="" style="height: 90px;"/>
-<!--                                <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/> -->
+                        th {
+                            background-color: #cce0ed !important; 
+                            text-align: center;
+                            font-size: 15px;
+                        }
+                        td {
+                            font-size: 14px;
+                        }
+                        table, th, td {
+                            border: 1px solid #005187 !important;
+                        }
+                    </style>
+                    <div t-if="page['journal_name'] == 'AGB Arab Banque Agence Oran'">
+                        <div class="row mb-5">
+                            <div class="col-6">
+                                <img src="/batch_payment_pdf/static/download.png" alt="" style="height: 64px;"/>
+                                <!--                                <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/> -->
+                            </div>
+                            <div class="col-6 text-center">
+                                <h4 style="color: #005187"> تسليم صكوك</h4>
+                                <h4 style="color: #005187">REMISE DE CHEQUES</h4>
+                            </div>
+                            <!--                         <div class="col-12 col-lg-4 col-md-4">
+                                <span class="p-2">
+                                    <h6 style="color: #005187;">
+                                        <t t-esc="page['journal_name']"/>
+                                        : 
+                                        <t t-esc="page['batch_name']"/>
+                                    </h6>
+                                </span>
+                                </div> -->
                         </div>
-                      <div class="col-6 text-center">
-                              <h2 style="color: #005187"> تسليم صكوك</h2>
-                            <h2 style="color: #005187">REMISE DE CHEQUES</h2>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col-12 col-lg-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-6 col-lg-6 col-md-6">
+                                                <label for=""> <b>ENCAISSEMENT</b> 
+                                                <span class="check"> <i style="top: -9px; position: relative" class="fa fa-check fa-2x"></i></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-6 col-lg-6 col-md-6">
+                                                <label for=""> <b>ESCOMPTE</b>
+                                                <span class="check"> </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-left">
+                                                        مؤسسة الدفع<br/>
+                                                        Etablissement payeur
+                                                    </th>
+                                                    <th class="text-left">
+                                                        مكان الدفع
+                                                        <br/>Lieu de payment
+                                                    </th>
+                                                    <!--                                                 <th class="text-left">Date</th> -->
+                                                    <th class="text-left">اسم الساحب<br/>Nom de tireur</th>
+                                                    <th class="text-left">رقم الصك<br/>N° de Chéque</th>
+                                                    <th class="text-right">المبلغ<br/>Montant</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="page['payments']" t-as="payment">
+                                                    <td class="text-left">
+                                                        <t t-esc="payment.partner_id.name"/>
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <!--                                                     <t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/> -->
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <!--                                                     <t t-esc="payment.ref"/> -->
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <t t-esc="payment.cheq_num"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot t-if="page['total_amount']">
+                                                <tr>
+                                                    <td/>
+                                                    <td/>
+                                                    <td/>
+                                                    <td><b>Montant total</b></td>
+                                                    <td class="text-right">
+                                                        <span>
+                                                            <t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12 col-lg-6 col-md-6" >
+                                        <b>
+                                            Nombre de cheques:
+                                            <t t-esc="len(page['payments'])"/>
+                                        </b>
+                                    </div>
+                                    <hr/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-lg-12 col-md-12">
+                                        <b>
+                                            Date: 
+                                            <t t-esc="page['date']"/>
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3" style="margin-top: 30px;">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                الاسم أو الغرض الاجتماعي <br/>
+                                                Nom ou raison sociale
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row"> <br/><br/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">العنوان Adresse</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">70 Avenue Mustapha Ben Boulaid (Ex Albert 1er) Oran 31000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">رقم الحساب N° de compte</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row"><br/><br/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="col-12 col-lg-4 col-md-4">
-                            <span class="p-2">
-                                <h6 style="color: #005187;">
-                                    <t t-esc="page['journal_name']"/>
-                                    : 
-                                    <t t-esc="page['batch_name']"/>
-                                </h6>
-                            </span>
-                        </div>
+                        <!--END/ -->
                     </div>
 
-                    <div class="row">
-                        <div class="col-9">
-                            <div class="row">
-                                <div class="col-12 col-lg-12 col-md-12">
-                                    <div class="row">
-                                         <div class="col-6 col-lg-6 col-md-6">
-                                             <label for=""> <b>ENCAISSEMENT</b> 
-                                                <span class="check"> <i style="top: -9px; position: relative" class="fa fa-check fa-2x"></i></span>
-                                             </label>
-                                         </div>
-                                         <div class="col-6 col-lg-6 col-md-6">
-                                            <label for=""> <b>ESCOMPTE</b>
-                                                <span class="check"> </span>
-                                             </label>
+                    <!--BEA ORAN-60 -->
+                    <div t-if="page['journal_name']=='BEA ORAN-60'">
+                        <div class="row mb-5">
+                            <div class="col-6">
+                                <img src="/batch_payment_pdf/static/bea.png" alt="" style="height: 64px;"/>
+                                <!--<img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/>-->
+                            </div>
+                            <div class="col-6 text-center">
+                                <h4 style="color: #005187"> تسليم صكوك</h4>
+                                <h4 style="color: #005187">REMISE DE CHEQUES</h4>
+                                <p>
+                                    <t t-esc="page['journal_name']"/>
+                                </p>
+                            </div>
+                            <!--<div class="col-12 col-lg-4 col-md-4">
+                                <span class="p-2">
+                                    <h6 style="color: #005187;">
+                                        <t t-esc="page['journal_name']"/>
+                                        : 
+                                        <t t-esc="page['batch_name']"/>
+                                    </h6>
+                                </span>
+                                </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col-12 col-lg-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-6 col-lg-6 col-md-6">
+                                                <label for=""> <b>ENCAISSEMENT</b> 
+                                                    <span class="check"> <i style="top: -9px; position: relative" class="fa fa-check fa-2x"></i></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-6 col-lg-6 col-md-6">
+                                                <label for=""> <b>ESCOMPTE</b>
+                                                    <span class="check"> </span>
+                                                </label>
+                                            </div>
                                         </div>
-                                     </div>
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-left">
-                                                    مؤسسة الدفع<br/>
-                                                    Etablissement payeur
-                                                </th>
-                                                <th class="text-left">
-                                                    مكان الدفع
-                                                    <br/>Lieu de payment
-                                                </th>
-<!--                                                 <th class="text-left">Date</th> -->
-                                                <th class="text-left">اسم الساحب<br/>Nom de tireur</th>
-                                                <th class="text-left">رقم الصك<br/>N° de Chéque</th>
-                                                <th class="text-right">المبلغ<br/>Montant</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr t-foreach="page['payments']" t-as="payment">
-                                                <td class="text-left">
-                                                    <t t-esc="payment.partner_id.name"/>
-                                                </td>
-                                                <td class="text-left">
-<!--                                                     <t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/> -->
-                                                </td>
-                                                <td class="text-left">
-<!--                                                     <t t-esc="payment.ref"/> -->
-                                                </td>
-                                                <td class="text-left">
-                                                    <t t-esc="payment.cheq_num"/>
-                                                </td>
-                                                <td class="text-right">
-                                                    <t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot t-if="page['total_amount']">
-                                            <tr>
-                                                <td/>
-                                                <td/>
-                                                <td/>
-                                                <td><b style="font-size: 18px">Montant total</b></td>
-                                                <td class="text-right">
-                                                    <span style="font-size: 18px"><t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/></span>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-left">
+                                                        مؤسسة الدفع<br/>
+                                                        Etablissement payeur
+                                                    </th>
+                                                    <th class="text-left">
+                                                        مكان الدفع
+                                                        <br/>Lieu de payment
+                                                    </th>
+                                                    <!--<th class="text-left">Date</th> -->
+                                                    <th class="text-left">اسم الساحب<br/>Nom de tireur</th>
+                                                    <th class="text-left">رقم الصك<br/>N° de Chéque</th>
+                                                    <th class="text-right">المبلغ<br/>Montant</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="page['payments']" t-as="payment">
+                                                    <td class="text-left">
+                                                        <t t-esc="payment.partner_id.name"/>
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <!--                                                     <t t-esc="payment.date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/> -->
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <!--                                                     <t t-esc="payment.ref"/> -->
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <t t-esc="payment.cheq_num"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot t-if="page['total_amount']">
+                                                <tr>
+                                                    <td/>
+                                                    <td/>
+                                                    <td/>
+                                                    <td><b>Montant total</b></td>
+                                                    <td class="text-right">
+                                                        <span>
+                                                            <t t-esc="page['total_amount']" t-options="{'widget': 'monetary', 'display_currency': page['currency']}"/>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12 col-lg-6 col-md-6" >
+                                        <b>
+                                            Nombre de cheques:
+                                            <t t-esc="len(page['payments'])"/>
+                                        </b>
+                                    </div>
+                                    <hr/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-lg-12 col-md-12">
+                                        <b>
+                                            Date: 
+                                            <t t-esc="page['date']"/>
+                                        </b>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row mt-5">
-                                <div class="col-12 col-lg-6 col-md-6" >
-                                    <b>
-                                        Nombre de cheques:
-                                        <t t-esc="len(page['payments'])"/>
-                                    </b>
-                                </div>
-                                <hr/>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-lg-12 col-md-12">
-                                    <b>
-                                        Date: 
-                                        <t t-esc="page['date']"/>
-                                    </b>
-                                </div>
+                            <div class="col-3" style="margin-top: 30px;">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                الاسم أو الغرض الاجتماعي <br/>
+                                                Nom ou raison sociale
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row"> <br/><br/><br/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">العنوان Adresse</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">70 Avenue Mustapha Ben Boulaid (Ex Albert 1er) Oran 31000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">رقم الحساب N° de compte</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row"><br/><br/><br/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="col-3" style="margin-top: 30px;">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">
-                                            الاسم أو الغرض الاجتماعي <br/>
-                                            Nom ou raison sociale
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td scope="row"> <br/><br/>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">العنوان Adresse</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td scope="row"><br/><br/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">رقم الحساب N° de compte</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td scope="row"><br/><br/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <!--END/ -->
                     </div>
                 </div>
             </xpath>
