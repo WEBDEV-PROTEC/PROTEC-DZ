@@ -128,29 +128,28 @@
                             <div class="container">
                                 <div class="row sub_company" >
                                     <t t-foreach="product_category" t-as="rec">
-                                          <div class="col-lg-3 col-md-4 col-sm-12 col-xs-6">
-                                        <div class="d-none d-md-block d-lg-block">
-                                            
-                                            <div class="main_box">
-                                                <div class=" img_box">
-                                                    <div class="img_box_inner">
-                                                        <a t-att-href="'/shop/category/%s' % (rec.id)">
-                                                            <div class="comp_img">
-                                                                <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
-                                                                <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>					  								   		
-                                                            </div>
-                                                            <div class="comp_content">
-                                                                <h4 class="title"><span t-if="rec.name" t-field="rec.name"/></h4>
-                                                                <div class="comp_dec">
-                                                                    <p t-if="rec.description" t-field="rec.description"/>							                              
+                                        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-6">
+                                            <div class="d-none d-md-block d-lg-block">
+                                                <div class="main_box">
+                                                    <div class=" img_box">
+                                                        <div class="img_box_inner">
+                                                            <a t-att-href="'/shop/category/%s' % (rec.id)">
+                                                                <div class="comp_img">
+                                                                    <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
+                                                                    <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>					  								   		
                                                                 </div>
-                                                            </div>
-                                                        </a>
+                                                                <div class="comp_content">
+                                                                    <h4 class="title"><span t-if="rec.name" t-field="rec.name"/></h4>
+                                                                    <div class="comp_dec">
+                                                                        <p t-if="rec.description" t-field="rec.description"/>							                              
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </t>
                                 </div>
                             </div>
@@ -301,18 +300,40 @@
                                     <div class="sh_title">
                                         <div class="sh_description">
                                         </div>
-                                        <h2>categories</h2>
+                                        <h2>Produits</h2>
                                     </div>
                                     <div t-if="product_category" class="row sub_company">
                                         <t t-foreach="product_category" t-as="rec">
-                                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-6">
-                                                <div class=" main_box">
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-6">
+                                                <a t-att-href="'/shop/category/%s' % (rec.id)">
+                                                    <div class="card card-hover mb-3" style="max-width: 540px; border-radius: 8px; min-height: 170px;">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters">
+                                                                  <div class="col-md-4">
+                                                                    <div class="comp_img">
+                                                                        <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    <div class="comp_content">
+                                                                        <h5 class="title" style="font-size: 16px"><span t-if="rec.name" t-field="rec.name"/></h5>
+                                                                        <div class="comp_dec">
+                                                                            <p t-if="rec.description" t-field="rec.description"/>							                              
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <!-- <div class=" main_box">
                                                     <div class=" img_box">
                                                         <div class="img_box_inner">
+                                                            
                                                             <a t-att-href="'/shop/category/%s' % (rec.id)">
                                                                 <div class="comp_img">
                                                                     <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
-                                                                    <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>										                          
+                                                                    <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>										                         
                                                                 </div>
                                                                 <div class="comp_content">
                                                                     <h4 class="title"><span t-if="rec.name" t-field="rec.name"/></h4>
@@ -321,9 +342,10 @@
                                                                     </div>
                                                                 </div>
                                                             </a>
+                                                            
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    </div> -->
                                             </div>
                                         </t>
                                     </div>
