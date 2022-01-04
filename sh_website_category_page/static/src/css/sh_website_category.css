@@ -44,7 +44,7 @@ sh_category end
  #sh_company {border: none!important; background: #f7f7f7; padding: 15px;}
  #sh_company{width: 100%;position: relative;}
  #sh_company .sub_company{width: 100%;position: relative;padding:0px 0px 0px; display: flex;flex-direction: row; justify-content: center;}
- #sh_company .sub_company .title{width: 100%;text-align: center;padding-bottom: 1 0px;margin-bottom: 20px;}
+ #sh_company .sub_company .title{width: 100%;text-align: right;padding-bottom: 1 0px;margin-bottom: 20px;}
  #sh_company .sub_company .main_box .img_box .comp_img{display: block;max-width: 100%;position: relative;background: white;overflow: hidden; margin-bottom: 10px; border: 1px solid #e6e6e4;box-shadow: 0px 0px 19px -11px rgba(0,0,0,0.39); min-height: 132px !important;}
  #sh_company .sub_company .main_box .img_box .comp_img img{    object-fit: cover;max-width: 100%;/* transition: all 0.8s; */border: 0;vertical-align: top; min-height: 150px !important;}
  #sh_company .sub_company .main_box .comp_content .title{text-align : center; font-size: 12px;margin:0px;/* line-height: 30px; */}
@@ -120,7 +120,7 @@ sh_category_dec
 git merge bfbc314 && git push -u origin main
 --------------------*/
 #sh_category_dec{width: 100%;position: relative;margin-bottom:25px;}
-#sh_category_dec .sh_category_detail .sh_category_title{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 30px;position: relative;margin: 0 0 24px;padding-bottom: 26px;}
+#sh_category_dec .sh_category_detail .sh_category_title{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 30px;position: relative;margin: 0 0 24px; padding-bottom: 26px;}
 #sh_category_dec .sh_category_detail{padding-left: 0px}
 #sh_category_dec .sh_category_detail .sh_category_title:after { position: absolute;bottom: 0;left: 0;width: 60px;height: 1px;display: inline-block;content: '';background-color: #e52e06;}
 #sh_category_dec .sh_category_detail  .desc{font-size: 16px;line-height: 28px;color: #72797e;margin-bottom:0px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
@@ -143,4 +143,16 @@ sh_category_dec 4
     -webkit-box-shadow: 3px 3px 10px 0 rgba(0,0,0,.75);
     -moz-box-shadow: 3px 3px 10px 0 rgba(0,0,0,.75);
     box-shadow: 3px 3px 10px 0 rgba(0,0,0,.75);
+}
+
+
+.card-hover{
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  cursor: pointer;
+}
+
+.card-hover:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
