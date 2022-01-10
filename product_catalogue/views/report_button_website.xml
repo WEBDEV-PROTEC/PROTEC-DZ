@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
-        <template id="product_quick_view_extended" inherit_id="website_sale.product">
+<!--         <template id="product_quick_view_extended" inherit_id="website_sale.product">
             <xpath expr="//t[@t-call='website.layout']" position="inside">
                 <xpath expr="//div[@id='product_details']" position="after">
                     <div>
@@ -13,6 +13,6 @@
                     </div>
                 </xpath>
             </xpath>
-        </template>
+        </template> -->
     </data>
 </odoo>
