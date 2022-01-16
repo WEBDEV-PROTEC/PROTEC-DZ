@@ -59,7 +59,7 @@ sh_content
 
 
 
-.sh_title{text-align:left;font-family: 'Josefin Sans', sans-serif;}
+.sh_title{text-align:center;font-family: 'Josefin Sans', sans-serif; padding: 24px 0;}
 .sh_description{position: relative;color: #84858a;font-size: 16px;letter-spacing: 1px;font-weight: 600;padding-top: 30px;margin-bottom: -10px;text-transform: capitalize;}
 .sh_description:before{left: 50%;margin-left: -3px;top:0;position: absolute;content: '';width: 6px;height: 6px;background-color: #7e7bb1;}
 .sh_title h2{position: relative;color: #a52a1a;font-weight: 700;line-height: 1.2em;
