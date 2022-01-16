@@ -300,7 +300,7 @@
                                     <div class="sh_title">
                                         <div class="sh_description">
                                         </div>
-                                        <h2>Produits</h2>
+                                        <h2>CATÉGORIES DE PRODUITS</h2>
                                     </div>
                                     <div t-if="product_category" class="row sub_company">
                                         <t t-foreach="product_category" t-as="rec">
