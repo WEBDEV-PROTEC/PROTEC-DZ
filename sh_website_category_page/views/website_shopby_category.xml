@@ -132,13 +132,13 @@
                                             <div class="d-none d-md-block d-lg-block">
                                                 <div class="main_box">
                                                     <div class=" img_box">
-                                                        <div class="img_box_inner">
+                                                        <div class="img_box_inner card-hover">
                                                             <a t-att-href="'/shop/category/%s' % (rec.id)">
                                                                 <div class="comp_img">
                                                                     <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
                                                                     <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>					  								   		
                                                                 </div>
-                                                                <div class="comp_content">
+                                                                <div class="comp_content_sub_category">
                                                                     <h4 class="title"><span t-if="rec.name" t-field="rec.name"/></h4>
                                                                     <div class="comp_dec">
                                                                         <p t-if="rec.description" t-field="rec.description"/>							                              
