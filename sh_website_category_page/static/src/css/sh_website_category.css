@@ -76,6 +76,12 @@ sh_category end
     color: #f9f9f9 !important;
 }
 
+#sh_category_dec .sh_category_img img {
+    width: 54%;
+    height: auto;
+    object-fit: cover;
+}
+
  #sh_company .comp_content .comp_dec{margin-top: 5px}
  #sh_company .comp_content .comp_dec p{font-family: "Roboto",sans-serif;font-size: 15px;line-height: 1.6;
 -webkit-box-orient: vertical;color: #838383;-webkit-line-clamp: 4;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;}
@@ -151,7 +157,7 @@ git merge bfbc314 && git push -u origin main
 #sh_category_dec .sh_category_detail{padding-left: 0px}
 #sh_category_dec .sh_category_detail .sh_category_title:after { position: absolute;bottom: 0;left: 0;width: 60px;height: 1px;display: inline-block;content: '';background-color: #e52e06;}
 #sh_category_dec .sh_category_detail  .desc{font-size: 16px;line-height: 28px;color: #72797e;margin-bottom:0px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
-#sh_category_dec .sh_category_img img{width: 100%;height: 250px;object-fit: cover;}
+/* #sh_category_dec .sh_category_img img{width: 100%;height: 250px;object-fit: cover;} */
 /*--------------------
 sh_category_dec
 --------------------*/
