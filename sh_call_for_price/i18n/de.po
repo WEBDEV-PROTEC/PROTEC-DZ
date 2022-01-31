@@ -1,0 +1,191 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_call_for_price
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-22 12:28+0000\n"
+"PO-Revision-Date: 2020-10-22 12:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_call_for_price
+#: model:ir.actions.act_window,name:sh_call_for_price.action_menu_sale_call_for_price
+#: model:ir.model,name:sh_call_for_price.model_sale_call_for_price
+#: model:ir.ui.menu,name:sh_call_for_price.menu_sale_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Call For Price"
+msgstr "Preis bitte erfragen"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_product_product__call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_product_template__call_for_price
+msgid "Call For Price ?"
+msgstr "Preis anfragen?"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields.selection,name:sh_call_for_price.selection__sale_call_for_price__state__cancel
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_sale_call_for_price_form_view
+msgid "Cancel"
+msgstr "Stornieren"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Close"
+msgstr "Schließen"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__contact_no
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Contact No."
+msgstr "Kontakt Nr."
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Contact No..."
+msgstr "Kontakt Nr ..."
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_product_template__display_name
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields.selection,name:sh_call_for_price.selection__sale_call_for_price__state__done
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_sale_call_for_price_form_view
+msgid "Done"
+msgstr "Erledigt"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields.selection,name:sh_call_for_price.selection__sale_call_for_price__state__draft
+msgid "Draft"
+msgstr "Entwurf"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__email
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Email"
+msgstr "Email"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Email..."
+msgstr "Email..."
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__first_name
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "First Name"
+msgstr "Vorname"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "First Name..."
+msgstr "Vorname..."
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_sale_call_for_price_search_view
+msgid "Group By"
+msgstr "Gruppiere nach"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_product_template__id
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__id
+msgid "ID"
+msgstr "ICH WÜRDE"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_product_template____last_update
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price____last_update
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__last_name
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Last Name"
+msgstr "Nachname"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Last Name..."
+msgstr "Nachname..."
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__message
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Message"
+msgstr "Botschaft"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Message..."
+msgstr "Botschaft..."
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__name
+msgid "Product"
+msgstr "Produkt"
+
+#. module: sh_call_for_price
+#: model:ir.model,name:sh_call_for_price.model_product_template
+msgid "Product Template"
+msgstr "Produktvorlage"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__quantity
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Quantity"
+msgstr "Menge"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Quantity..."
+msgstr "Menge..."
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_call_for_price_website_sales_template_product_detail_inherit
+msgid "Send"
+msgstr "Senden"
+
+#. module: sh_call_for_price
+#: model:ir.model.fields,field_description:sh_call_for_price.field_sale_call_for_price__state
+msgid "State"
+msgstr "Zustand"
+
+#. module: sh_call_for_price
+#: model_terms:ir.ui.view,arch_db:sh_call_for_price.sh_sale_call_for_price_search_view
+msgid "Status"
+msgstr "Status"

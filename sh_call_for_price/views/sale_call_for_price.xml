@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="sh_sale_call_for_price_form_view" model="ir.ui.view">
+        <field name="name">sale.call.for.price.form</field>
+        <field name="model">sale.call.for.price</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="button_done" states="draft" string="Done" type="object" groups="sales_team.group_sale_manager" />
+                    <button name="button_cancel" states="done" string="Cancel" type="object" groups="sales_team.group_sale_manager" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel" readonly="1" />
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="first_name" />
+                            <field name="email" />
+                            <field name="message" />
+                        </group>
+                        <group>
+                            <field name="quantity" />
+                            <field name="last_name" />
+                            <field name="contact_no" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_sale_call_for_price_tree_view" model="ir.ui.view">
+        <field name="name">sale.call.for.price.tree</field>
+        <field name="model">sale.call.for.price</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="quantity" />
+                <field name="first_name" />
+                <field name="last_name" />
+                <field name="email" />
+                <field name="contact_no" />
+                <field name="message" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_sale_call_for_price_search_view" model="ir.ui.view">
+        <field name="name">sale.call.for.price.search</field>
+        <field name="model">sale.call.for.price</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|','|','|',('name','ilike',self),('first_name','ilike',self),('last_name','ilike',self),('state','ilike',self)]" />
+                <field name="first_name" />
+                <field name="last_name" />
+                <field name="email" />
+                <field name="contact_no" />
+                <field name="state" />
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="group_status" string="Status" context="{'group_by': 'state'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_menu_sale_call_for_price" model="ir.actions.act_window">
+        <field name="name">Call For Price</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.call.for.price</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+    <record id="sh_product_template_call_for_price_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.call.for.price.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="website_sale.product_template_form_view" />
+        <field name="arch" type="xml">
+            <field name="website_ribbon_id" position="after">
+                <field name="call_for_price" />
+            </field>
+        </field>
+    </record>
+
+    <menuitem id="menu_sale_call_for_price" name="Call For Price" action="action_menu_sale_call_for_price" parent="sale.sale_order_menu" groups="sales_team.group_sale_manager" />
+</odoo>
