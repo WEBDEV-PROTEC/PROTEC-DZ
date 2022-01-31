@@ -8,7 +8,7 @@
             </xpath>
         </template>
         <template id="sh_website_category_page_description" inherit_id="website_sale.products" customize_show="True" name="Category Description">
-            <xpath expr="//div[hasclass('products_pager')]" position="after">
+            <xpath expr="//div[hasclass('products_pager')]" position="before">
                 <section t-if="not website.category_header_style" id="no_category_style">
                     <div class="container">
                     <div class="row">
@@ -23,7 +23,7 @@
                     </div>
                 </section>
                 <!--category_dec-with-img-style-1-->
-                <!--  <section t-if="website.category_header_style and website.category_header_style=='style1'" id="sh_category_dec">
+                  <section t-if="website.category_header_style and website.category_header_style=='style1'" id="sh_category_dec">
                     <div class="container">
                     	
                     	
@@ -49,7 +49,7 @@
                     		
                     	</div>
                     
-                    </section> -->
+                    </section> 
                 <!--category_dec-with-img-style-1-->
                 <!--category_dec-without-img-style-2-->
                 <!-- 	<section t-if="website.category_header_style and website.category_header_style=='style2'" id="sh_category_dec">
@@ -132,13 +132,13 @@
                                             <div class="d-none d-md-block d-lg-block">
                                                 <div class="main_box">
                                                     <div class=" img_box">
-                                                        <div class="img_box_inner card-hover ">
+                                                        <div class="img_box_inner card-hover">
                                                             <a t-att-href="'/shop/category/%s' % (rec.id)">
                                                                 <div class="comp_img">
                                                                     <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
-                                                                    <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>					  								   		
+                                                                    <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>				  								   		
                                                                 </div>
-                                                                <div class="comp_content_sub_category ">
+                                                                <div class="comp_content_sub_category">
                                                                     <h4 class="title"><span t-if="rec.name" t-field="rec.name"/></h4>
                                                                     <div class="comp_dec">
                                                                         <p t-if="rec.description" t-field="rec.description"/>							                              
