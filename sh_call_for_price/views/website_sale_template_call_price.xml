@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <template id="sh_sale_order_call_for_price_assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="script[last()]" position="after">
+            <script type="text/javascript" src="/sh_call_for_price/static/src/js/custom.js" />
+        </xpath>
+    </template>
+
+    <template id="sh_call_for_price_website_sales_template_product_detail_inherit" inherit_id="website_sale.product" name="Call For Price Product Price Detail">
+        <xpath expr="//div[@id='product_details']/h1" position="after">
+            <div class="row">
+                <div id="alertmsg" style="padding: 0% 1%;" />
+            </div>
+
+            <a id="btn_call_for_price" t-if="product.call_for_price == true" class="btn btn-primary btn-lg mt8" data-toggle="modal" data-target="#product_call_for_price_modal" data-backdrop="static" data-keyboard="false" href="#">
+                Call For Price
+            </a>
+
+            <div class="modal fade" id="product_call_for_price_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Call For Price</h4>
+                        </div>
+                        <form action="" method="POST" id="frm_register" role="form">
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" for="input_firstname">First Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="input_firstname" id="input_firstname" placeholder="First Name..." required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" for="input_lastname">Last Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="input_lastname" id="input_lastname" placeholder="Last Name..." required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" for="input_email">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" name="input_email" id="input_email" placeholder="Email..." required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" for="input_contactno">Contact No.</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="input_contactno" id="input_contactno" placeholder="Contact No..." required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" for="input_quantity">Quantity</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="input_quantity" id="input_quantity" placeholder="Quantity..." required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" for="input_message">Message</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="input_message" id="input_message" placeholder="Message..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default closemodel_btn" data-dismiss="modal">Close</button>
+                                <button type="reset" class="btn btn-default" id="bttn_reset">Reset</button>
+                                <button type="submit" class="btn btn-primary" id="bttn_save_changes">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="sh_call_for_price_website_sales_product_price_inherit" inherit_id="website_sale.product_price" name="Call For Price Hide Product price">
+        <xpath expr="//div[hasclass('product_price','mt16')]" position="attributes">
+            <attribute name="t-if">product.call_for_price == false</attribute>
+        </xpath>
+    </template>
+
+    <template id="sh_call_for_price_website_sale_product_qty_inherit" inherit_id="website_sale.product_quantity" name="Call For Price Hide Cart Quantity">
+        <xpath expr="//div[hasclass('css_quantity','input-group')]" position="attributes">
+            <attribute name="t-att-style">'display: none;' if product.call_for_price else ''</attribute>
+        </xpath>
+    </template>
+
+    <template id="sh_call_for_price_website_sales_proudct_addcart_inherit" inherit_id="website_sale.product" name="Call For Price Sale Product">
+        <xpath expr="//a[@id='add_to_cart']" position="attributes">
+            <attribute name="t-if">product.call_for_price == false</attribute>
+        </xpath>
+    </template>
+
+    <template id="sh_call_for_price_sales_proudcts_addcart_icon_inherit" inherit_id="website_sale.products_add_to_cart" name="Call for Price Product Add to Cart">
+        <xpath expr="//t[@t-if='product_variant_id']/a" position="attributes">
+            <attribute name="t-att-style">'display: none;' if product.call_for_price else ''</attribute>
+        </xpath>
+    </template>
+
+    <template id="sh_call_for_price_website_sales_products_item_inherit" inherit_id="website_sale.products_item" name="Call For Price Product Item">
+        <xpath expr="//div[hasclass('product_price')]" position="attributes">
+            <attribute name="t-if">product.call_for_price == false</attribute>
+        </xpath>
+    </template>
+</odoo>
