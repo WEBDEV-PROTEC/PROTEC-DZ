@@ -77,8 +77,8 @@ sh_category end
 }
 
 #sh_category_dec .sh_category_img img {
-    width: 54%;
-    height: auto;
+    width: auto;
+    height: 50%;
     object-fit: cover;
 }
 
