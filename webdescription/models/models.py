@@ -13,9 +13,16 @@ class webdescription(models.Model):
     
     @api.onchange('website_description')
     def _onchange_webdescription(self):
-        aa = self.website_description.strip('<p>').strip('</').split('\n')
-        for elt in aa:
-            aa[aa.index(elt)] = "<p>" + elt + "</p>"
+        try:
+            aa = []
+            aa = self.website_description.strip('<p>').strip('</').split('\n')
+            for elt in aa:
+                aa[aa.index(elt)] = "<p>" + elt + "</p>"
+            if len(aa)>1:
+                self.website_description  = "".join(aa)
+        except:
+            pass
+        
             
-        self.website_description  = "".join(aa)
+        
     
