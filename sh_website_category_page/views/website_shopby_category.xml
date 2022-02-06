@@ -52,26 +52,27 @@
                     </section> 
                 <!--category_dec-with-img-style-1-->
                 <!--category_dec-without-img-style-2-->
-                <!-- 	<section t-if="website.category_header_style and website.category_header_style=='style2'" id="sh_category_dec">
+             	<section t-if="website.category_header_style and website.category_header_style=='style2'" id="sh_category_dec">
                     <div class="container">
                     		<div t-if="category" class=" row sub_category">			
                     			<div t-if="category.name" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     				<div class="sh_category_detail">					
-                    					<h4 class="sh_category_title">
+<!--                     					<h4 class="sh_category_title">
                     						<span t-if="category.name" t-field="category.name"/>
-                    					</h4>
-                    					<p class="desc" t-if="category.description" t-field="category.description"/>
+                    					</h4> -->
+<!--                     					<p class="desc" t-if="category.description" t-field="category.description"/> -->
+                                        <img t-if="category.dr_category_cover_image" t-attf-src="data:image/gif;base64, #{category.dr_category_cover_image}" alt="category.name"/> 
                     				</div>
                     			</div>
                     		</div>
                     	</div>
-                    </section> -->
+                    </section>
                 <!--category_dec-without-img-style-2-->
                 <!--category_dec-background-img-style-3-->
                 <section t-if="website.category_header_style and website.category_header_style=='style3'" id="sh_content">
-                    <div class="container">
+                    <div class="d-inline">
                         <div t-if="category" class="row">
-                            <ul class="caption-style">
+<!--                             <ul class="caption-style">
                                 <li>
                                     <a href="#" class="container-profile-dark">
                                         <div class="inner-content">
@@ -86,7 +87,16 @@
                                         </div>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
+                            <div class="col-12">
+<!--                                 <img t-if="category.dr_category_cover_image" t-attf-src="data:image/gif;base64, #{category.dr_category_cover_image}" alt="category.name" style="width: 100%;"/> -->
+                                <div t-if="category.dr_category_cover_image" class="position-relative full-img" t-attf-style="background-image: url('data:image/png;base64, #{category.dr_category_cover_image}"> 
+                                    <div class="cat-title-container">
+                                        <h2><span t-if="category" t-field="category.name"/></h2>
+                                        <p class="desc" t-if="category" t-field="category.description"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

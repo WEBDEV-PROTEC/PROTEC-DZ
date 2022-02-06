@@ -82,6 +82,20 @@ sh_category end
     object-fit: cover;
 }
 
+.full-img {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.cat-title-container {
+    padding: 30px;
+    background-color: #d1d1d1;
+    width: fit-content;
+    margin: 0 0 0px 41px;
+}
+
  #sh_company .comp_content .comp_dec{margin-top: 5px}
  #sh_company .comp_content .comp_dec p{font-family: "Roboto",sans-serif;font-size: 15px;line-height: 1.6;
 -webkit-box-orient: vertical;color: #838383;-webkit-line-clamp: 4;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;}
