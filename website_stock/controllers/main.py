@@ -98,6 +98,7 @@ class WebsiteSale(WebsiteSale):
     @http.route(['/shop/cart/update/msg'], type='json', auth="public", methods=['POST'], website=True)
     def cart_update_msg(self, product_id, add_qty=1, set_qty=0, **kw):
         result = {'status': 'allow'}
+        add_qty = float(0 if add_qty is None else add_qty)
         if float(add_qty) == 0.0:
             add_qty = '1'
         allow_order = request.website.check_if_allowed(int(product_id))
