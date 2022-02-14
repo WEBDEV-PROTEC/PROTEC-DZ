@@ -3,7 +3,7 @@
     <template id="stamp_duty_sale_report" inherit_id="sale.report_saleorder_document">
         <xpath expr="//div[@id='total']/div/table/t" position="after">
             <t t-if="doc.stamp_duty_tax > 0">
-                <tr>
+                <!-- <tr>
                     <td>
                         <span>Stamp Duty </span>
                     </td>
@@ -11,7 +11,7 @@
                         <span t-field="doc.stamp_duty_tax"
                               t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                     </td>
-                </tr>
+                </tr> -->
             </t>
         </xpath>
     </template>
