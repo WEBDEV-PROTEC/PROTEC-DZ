@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="tags_product" name="Tags for product" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='product_details']/h1" position="after">
+            <div class="row"> 
+                <style> 
+                    
+                    :root {
+                        /* Theme */
+                        --primary-color: #1662f3;
+                        --light-color: #d0dffc;
+                        --dark-color: #283b70;
+                        --regular-font: 'Inter', sans-serif;
+                    }
+                    .tags {
+                        margin: 0;
+                        padding: 0;
+                        list-style-type: none;
+                        display: flex;
+                        gap: 1rem;
+                    }
+
+                    .tag {
+                        --color: var(--light-color);
+                        font-family: var(--regular-font);
+                        font-size: .9rem;
+                        border-radius: 100rem;
+                        box-shadow: 0 0 0 1.5px var(--light-color);
+                        background-color: transparent;
+                        color: #0095ed;
+                        font-weight: bold;
+                        transition: background-color 250ms ease, box-shadow 314ms ease;
+                    }
+
+                    .tag>a {
+                        display: inline-block;
+                        position: relative;
+                        color: var(--dark-color);
+                        text-decoration: none;
+                        padding: 0.5rem;
+                    }
+                    .tag:hover {
+                        background-color: var(--light-color);
+                        box-shadow: 0 0 0 calc(2px + .25rem) var(--light-color);
+                    }
+                </style>
+                <div class="col-12"> 
+                <!--tags -->
+                    <div t-if="product.dr_tag_ids">
+                        <hr style="margin-top: 16px;" />
+<!--                         <div t-foreach="product.dr_tag_ids" t-as="tag"> 
+                            <span t-field="tag.name"/>
+                        </div>  -->
+                        <ul style="padding: 18px 0;" class="tags">
+                            <li class="tag" style="--color: #efd81d;" t-foreach="product.dr_tag_ids" t-as="tag" >
+                                 <a t-field="tag.name"/>
+                            </li>
+                        </ul>
+                        <hr/>
+                    </div>
+                </div>
+            </div> 
+         </xpath>
+    </template>
+</odoo>
