@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    
+    <template id="sku_after_product" name="SKU after product" inherit_id="website_sale.product"> 
+        <xpath  expr="//div[@id='product_details']/h1" position="after">
+            <div class="te_p_sku">
+                <div class="te_sku">SKU:</div>
+                <div class="js_sku_div" itemprop="sku">N/A</div>
+                <span t-if="product.barcode" class="d-inline">| EAN:
+                    <span t-esc="product.barcode"/>
+                </span>
+            </div>
+        </xpath>
+    </template>
     <template id="tags_product" name="Tags for product" inherit_id="website_sale.product">
         <xpath expr="//div[@id='product_details']/h1" position="after">
             <div class="row"> 
@@ -59,7 +71,7 @@
                                 <a t-else="" t-field="tag.name"/>                        
                             </li>
                         </ul>
-                        <hr/>
+<!--                         <hr/> -->
                     </div>
                 </div>
             </div> 
