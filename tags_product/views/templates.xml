@@ -3,7 +3,7 @@
     
     <template id="sku_after_product" name="SKU after product" inherit_id="website_sale.product"> 
         <xpath  expr="//div[@id='product_details']/h1" position="after">
-            <div class="te_p_sku">
+            <div class="te_p_sku mt-2 mb-2">
                 <div class="te_sku">SKU:</div>
                 <div class="js_sku_div" itemprop="sku">N/A</div>
                 <span t-if="product.barcode" class="d-inline">| EAN:
