@@ -13,7 +13,7 @@
                 <div id="alertmsg" style="padding: 0% 1%;" />
             </div>
 
-            <a id="btn_call_for_price" t-if="product.call_for_price == true" class="btn btn-primary btn-lg mt8" data-toggle="modal" data-target="#product_call_for_price_modal" data-backdrop="static" data-keyboard="false" href="#">
+            <a id="btn_call_for_price" t-if="product.call_for_price == true" class="btn btn-info btn-lg mt8" data-toggle="modal" data-target="#product_call_for_price_modal" data-backdrop="static" data-keyboard="false" href="#">
                 Call For Price
             </a>
 
