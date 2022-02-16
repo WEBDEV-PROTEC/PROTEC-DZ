@@ -4,7 +4,6 @@
         <xpath expr="//div[@id='product_details']/h1" position="after">
             <div class="row"> 
                 <style> 
-                    
                     :root {
                         /* Theme */
                         --primary-color: #1662f3;
@@ -17,19 +16,21 @@
                         padding: 0;
                         list-style-type: none;
                         display: flex;
-                        gap: 1rem;
+                        gap: 1.1rem;
+                        flex-wrap: wrap;
                     }
 
                     .tag {
                         --color: var(--light-color);
                         font-family: var(--regular-font);
-                        font-size: 1.2rem;
+                        font-size: .9rem;
                         border-radius: 100rem;
-                        box-shadow: 0 0 0 1.5px var(--light-color);
+                        /* box-shadow: 0 0 0 1.5px var(--light-color); */
                         background-color: transparent;
                         color: #0095ed;
                         font-weight: bold;
-                        transition: background-color 250ms ease, box-shadow 314ms ease;
+<!--                         transition: background-color 250ms ease, box-shadow 314ms ease; -->
+                        width: fit-content;
                     }
 
                     .tag>a {
@@ -39,9 +40,9 @@
                         text-decoration: none;
                         padding: 0.5rem;
                     }
-                    .tag:hover {
-                        background-color: var(--light-color);
-                        box-shadow: 0 0 0 calc(2px + .25rem) var(--light-color);
+
+                    .tag-image {
+                        max-height: 64px;
                     }
                 </style>
                 <div class="col-12"> 
@@ -53,7 +54,9 @@
                         </div>  -->
                         <ul style="padding: 18px 0;" class="tags">
                             <li class="tag" style="--color: #efd81d;" t-foreach="product.dr_tag_ids" t-as="tag" >
-                                 <a t-field="tag.name"/>
+<!--                              <a t-field="tag.name"/> -->
+                                <img class="tag-image" t-if="tag.image" t-attf-src="data:image/gif;base64, #{tag.image}" alt="category.name"/>
+                                <a t-else="" t-field="tag.name"/>                        
                             </li>
                         </ul>
                         <hr/>
