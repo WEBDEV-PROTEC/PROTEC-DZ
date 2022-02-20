@@ -31,7 +31,7 @@
                                 <h4 class="sh_category_title">
                                     <span t-if="category.name" t-field="category.name"/>
                                 </h4>
-                                <img t-if="category.icon" style="max-width: 154px;margin: 16px 0;" t-attf-src="data:image/gif;base64, #{category.icon}" alt="category.name"/>
+                                <img t-if="category.icon" style="max-width: 154px;max-height: 96px;margin: 16px 0;" t-attf-src="data:image/gif;base64, #{category.icon}" alt="category.name"/>
                                 <p class="desc" t-if="category.description" t-field="category.description"/>
                             </div>
                         </div>
