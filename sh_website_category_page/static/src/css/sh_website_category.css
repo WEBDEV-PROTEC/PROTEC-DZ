@@ -80,6 +80,7 @@ sh_category end
     width: auto;
     max-height: 100%;
     object-fit: cover;
+    float: right
 }
 
 .full-img {
