@@ -26,16 +26,16 @@
                 <!--category_dec-with-img-style-1-->
                 <section t-if="website.category_header_style and website.category_header_style=='style1'" id="sh_category_dec">
                     <div t-if="category" class="row sub_category">
-                        <div class="col-12 col-md-6 col-lg-6">
+                        <div class="col-12 col-md-8 col-lg-8">
                             <div class="sh_category_detail">
                                 <h4 class="sh_category_title">
                                     <span t-if="category.name" t-field="category.name"/>
                                 </h4>
-                                <img t-if="category.icon" style="max-width: 154px;max-height: 96px;margin: 16px 0;" t-attf-src="data:image/gif;base64, #{category.icon}" alt="category.name"/>
+                                <img t-if="category.icon" style="max-width: 154px;     max-height: 96px; margin: 16px 0;" t-attf-src="data:image/gif;base64, #{category.icon}" alt="category.name"/>
                                 <p class="desc" t-if="category.description" t-field="category.description"/>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-6">
+                        <div class="col-12 col-md-4 col-lg-4">
                             <div class="sh_category_inner mb-3 text-center">
                                 <div class="sh_category_img">
                                     <img t-if="category.image_1920" t-attf-src="data:image/gif;base64, #{category.image_1920}" alt="category.name"/> 

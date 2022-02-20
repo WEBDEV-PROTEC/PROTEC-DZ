@@ -1,12 +1,21 @@
-/*--------------------
-sh_category_dec
---------------------*/
+
 #sh_category_dec{display: inline-block;width: 100%;position: relative;/* border-bottom:  1px solid gray */;padding:25px 0px;}
-#sh_category_dec .sub_category{float: left; width: 100%; position: relative; padding:0px 0px 0px!important; background-color: #e1e1e19e;}
+
+#sh_category_dec .sub_category{
+    float: left; 
+/*     width: 100%;  */
+    position: relative; 
+    padding:0px 0px 0px!important; 
+    background-image: url(/sh_website_category_page/static/src/img/bg.png);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #f1f1f1;
+}
 #sh_category_dec .sh_category_detail .sh_category_title{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 30px;position: relative;margin: 0 0 24px;padding-bottom: 26px;text-transform: uppercase;letter-spacing: 2px}
 #sh_category_dec .sh_category_detail{padding-left: 15px}
 #sh_category_dec .sh_category_detail .sh_category_title:after { position: absolute;bottom: 0;left: 0;width: 60px;height: 1px;display: inline-block;content: '';background-color:#3498DB;}
-#sh_category_dec .sh_category_detail .desc{font-size: 16px;line-height: 28px;color: #72797e;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;margin-bottom:0px;}
+#sh_category_dec .sh_category_detail .desc{font-size: 16px;line-height: 28px; color: #2e2e2e; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;margin-bottom:0px;}
 #sh_category_dec .sh_category_img img{width: 100%;height: 250px;object-fit: cover;}
 /*--BACKGROUND-IMG-PART--*/
 #sh_category_dec .sub_category_back{float: left;width: 100%;position: relative;/* border-top: 1px solid gray; *//* border-bottom:  1px solid gray; */margin-bottom: 50px;background: url(/home/softhealer/Pictures/laptop-mock-up-lateral-view_1310-199.jpg);background-position: center;background-size:cover;background-repeat: no-repeat;height: auto;}
@@ -69,6 +78,6 @@ sh_content
     display: none!important;
 }
 
-sh_company .comp_content {
+.sh_company .comp_content {
     height: 109px!important;
 }

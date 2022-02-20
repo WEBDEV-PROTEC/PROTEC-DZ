@@ -178,7 +178,7 @@ git merge bfbc314 && git push -u origin main
 
 #sh_category_dec .sh_category_detail{padding-left: 0px; margin: 36px 0px 16px 16px}
 #sh_category_dec .sh_category_detail .sh_category_title:after { position: absolute;bottom: 0;left: 0;width: 60px;height: 1px;display: inline-block;content: '';background-color: #e52e06;}
-#sh_category_dec .sh_category_detail  .desc{font-size: 16px;line-height: 28px;color: #72797e;margin-bottom:0px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+#sh_category_dec .sh_category_detail  .desc{font-size: 16px;line-height: 28px;color: #2e2e2e; margin-bottom:0px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 /* #sh_category_dec .sh_category_img img{width: 100%;height: 250px;object-fit: cover;} */
 /*--------------------
 sh_category_dec
