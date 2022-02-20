@@ -3,7 +3,7 @@
 
 #sh_category_dec .sub_category{
     float: left; 
-/*     width: 100%;  */
+    width: 100%; 
     position: relative; 
     padding:0px 0px 0px!important; 
     background-image: url(/sh_website_category_page/static/src/img/bg.png);
