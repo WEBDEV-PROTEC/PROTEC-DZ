@@ -1,5 +1,5 @@
 
-#sh_category_dec{display: inline-block;width: 100%;position: relative;/* border-bottom:  1px solid gray */;padding:25px 0px;}
+#sh_category_dec{display: inline-block;width: 100%;position: relative;/* border-bottom:  1px solid gray */;}
 
 #sh_category_dec .sub_category{
     float: left; 
@@ -16,7 +16,7 @@
 #sh_category_dec .sh_category_detail{padding-left: 15px}
 #sh_category_dec .sh_category_detail .sh_category_title:after { position: absolute;bottom: 0;left: 0;width: 60px;height: 1px;display: inline-block;content: '';background-color:#3498DB;}
 #sh_category_dec .sh_category_detail .desc{font-size: 16px;line-height: 28px; color: #2e2e2e; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;margin-bottom:0px;}
-#sh_category_dec .sh_category_img img{width: 100%;height: 250px;object-fit: cover;}
+#sh_category_dec .sh_category_img img{width: 100%;height: 250px;object-fit: cover; float: right}
 /*--BACKGROUND-IMG-PART--*/
 #sh_category_dec .sub_category_back{float: left;width: 100%;position: relative;/* border-top: 1px solid gray; *//* border-bottom:  1px solid gray; */margin-bottom: 50px;background: url(/home/softhealer/Pictures/laptop-mock-up-lateral-view_1310-199.jpg);background-position: center;background-size:cover;background-repeat: no-repeat;height: auto;}
 #sh_category_dec .sub_category_back .sh_overly_box{float: left; width: 100%; position: relative;background: #020101b3;}
