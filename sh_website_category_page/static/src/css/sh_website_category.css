@@ -40,7 +40,7 @@ sh_category end
 /*-----------------
 #sh_company stat
 ------------------*/
-.main_box {margin: 0 16px !important;}
+/* .main_box {margin: 0 16px !important;} */
  #sh_company {border: none!important; background: #f7f7f7; padding: 15px;}
  #sh_company{width: 100%;position: relative;}
  #sh_company .sub_company{width: 100%;position: relative;padding:0px 0px 0px; display: flex;flex-direction: row; justify-content: center;}
