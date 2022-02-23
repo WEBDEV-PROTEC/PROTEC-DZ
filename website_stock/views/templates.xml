@@ -131,9 +131,9 @@
             </t>
         </xpath>
     </template>
-
+                                                                                                <!--********************** If connected display stock available **********************-->
     <template id="show_stock_msg" name="Show Stock Message">
-        <t t-if="product_quantity &gt; 0">
+        <t t-if="product_quantity &gt; 0 and not request.env.user.has_group('base.group_public')">
             <t t-if="product.type == 'service'">
                 <t t-call="website_stock.in_stock_msg" />
             </t>
@@ -153,7 +153,7 @@
             </t>
         </t>
 
-        <t t-if="not product_quantity &gt; 0">
+<!--         <t t-if="not product_quantity &gt; 0">
             <t t-if="not product_obj.wk_override_default">
                 <t t-if="config_setting.get('wk_out_of_stock_msg')">
                     <div t-attf-class="out-stock-msg stock-status mt8 #{'float-right' if not_float else ''}" t-attf-style="background:#{color_array[1][0]};color:#{color_array[1][1]};">
@@ -168,7 +168,7 @@
                     </div>
                 </t>
             </t>
-        </t>
+        </t> -->
     </template>
 
     <template id="in_stock_msg">
