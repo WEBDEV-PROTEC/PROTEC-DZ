@@ -28,7 +28,7 @@
                         padding: 0;
                         list-style-type: none;
                         display: flex;
-                        gap: 1.1rem;
+                        gap: 2rem;
                         flex-wrap: wrap;
                     }
 
@@ -54,7 +54,7 @@
                     }
 
                     .tag-image {
-                        max-height: 64px;
+                        max-height: 36px;
                     }
                 </style>
                 <div class="col-12"> 
