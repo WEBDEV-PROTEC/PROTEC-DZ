@@ -46,14 +46,13 @@
                     </div>
                 </section>
                 <!--category_dec-with-img-style-1-->
-                
                 <!--category_dec-without-img-style-2-->
                 <section t-if="website.category_header_style and website.category_header_style=='style2'" id="sh_category_dec">
                     <div class="container">
                         <div t-if="category" class=" row sub_category">
                             <div t-if="category.name" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <div class="sh_category_detail">
-                                    <!--                     					<h4 class="sh_category_title">
+                                    <!-- <h4 class="sh_category_title">
                                         <span t-if="category.name" t-field="category.name"/>
                                         </h4> -->
                                     <!--<p class="desc" t-if="category.description" t-field="category.description"/> -->
@@ -65,7 +64,6 @@
                 </section>
                 <!--category_dec-without-img-style-2-->
                 <!--category_dec-background-img-style-3-->
-                
                 <section t-if="website.category_header_style and website.category_header_style=='style3'" id="sh_content">
                     <div class="d-inline">
                         <div t-if="category" class="row">
@@ -80,7 +78,6 @@
                         </div>
                     </div>
                 </section>
-                
                 <!--category_dec-background-img-style-3-->
                 <!--sh_category Sub Category-->
                 <t t-if="category">
@@ -111,18 +108,18 @@
                         <style>.row.mt-3 { display: none!important;} .products_pager.form-inline.justify-content-center {display: none!important;}</style>
                     </t>
                 </t>
-                <!-- sh_compan subcategory 2 -->
+                <!-- sh_compan subcategory 2  **************-->
                 <t t-if="category">
                     <t t-set="product_category" t-value="request.env['product.public.category'].sudo().search([('show_category','=',True),('parent_id','=',category.id)],order ='sequence asc')"/>
                     <t t-if="product_category">
                         <section t-if="website.sub_category_style and website.sub_category_style == 'style2'" id="sh_company" style="border-bottom: 1px solid #818181;" class="d-md-block d-lg-block">
                             <div class="container">
-                                <div class="row sub_company" >
+                                <div class="row sub_company">
                                     <t t-foreach="product_category" t-as="rec">
                                         <div class="col-lg-3 col-md-4 col-6">
                                             <div class="d-md-block d-lg-block">
                                                 <div class="main_box">
-                                                    <div class=" img_box">
+                                                    <div class="img_box">
                                                         <div class="img_box_inner card-hover">
                                                             <a t-att-href="'/shop/category/%s' % (rec.id)">
                                                                 <div class="comp_img">
@@ -131,9 +128,6 @@
                                                                 </div>
                                                                 <div class="comp_content_sub_category">
                                                                     <h4 class="title"><span t-if="rec.name" t-field="rec.name"/></h4>
-<!--                                                                     <div class="comp_dec">
-                                                                        <p t-if="rec.description" t-field="rec.description"/>							                              
-                                                                    </div> -->
                                                                 </div>
                                                             </a>
                                                         </div>
@@ -154,30 +148,27 @@
                     <t t-set="product_category" t-value="request.env['product.public.category'].sudo().search([('show_category','=',True),('parent_id','=',category.id)],order ='sequence asc')"/>
                     <t t-if="product_category">
                         <section t-if="website.sub_category_style and website.sub_category_style == 'style3'" id="shop_category_1" style="border-bottom: 1px solid #818181;   ">
-                            <div class="container">
-                                <div class="row">
-                                    <t t-foreach="product_category" t-as="rec">
-                                        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-6">
-                                            <a t-att-href="'/shop/category/%s' % (rec.id)">
-                                                <div class="shop_cate">
-                                                    <div class="img_box">
-                                                        <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
-                                                        <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>													
-                                                    </div>
-                                                    <div class="sh_text">
-                                                        <h4><span t-if="rec.name" t-field="rec.name"/></h4>
-                                                    </div>
-                                                    <div class="cate_menu">
-                                                        <div class="menu_title">
-                                                            <span t-if="rec.name" t-field="rec.name"/>
+                            <div class="row sub_company" style="justify-content: center !important;">
+                                <t t-foreach="product_category" t-as="rec">
+                                    <div class="col-6 col-md-2 col-lg-2 col-sm-3">
+                                        <a t-att-href="'/shop/category/%s' % (rec.id)">
+                                            <div class="card card-hover mb-3" style="border-radius: 8px; max-height: 195px; min-height: 192px;">
+                                                <div class="card-body text-center" style="padding: 1.25rem 1.25rem 1.25rem 0.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-12">
+                                                            <img style="max-height: 94px;" t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
                                                         </div>
-<!--                                                         <p class="site_cate" t-if="rec.description" t-field="rec.description"/> -->
+                                                    </div>
+                                                    <div class="row no-gutters">
+                                                         <div class="col-12 text-center">
+                                                            <h5 style="font-size: 16px;" class="title"><span t-if="rec.name" t-field="rec.name"/></h5>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </a>
-                                        </div>
-                                    </t>
-                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </t>
                             </div>
                         </section>
                         <style>.row.mt-3 { display: none!important;}</style>
@@ -295,22 +286,20 @@
                                     </div>
                                     <div t-if="product_category" class="row sub_company">
                                         <t t-foreach="product_category" t-as="rec">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-6">
+                                            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
                                                 <a t-att-href="'/shop/category/%s' % (rec.id)">
-                                                    <div class="card card-hover mb-3" style="max-width: 540px; border-radius: 8px; min-height: 170px;">
-                                                        <div class="card-body" style="padding: 1.25rem 1.25rem 1.25rem 0.5rem;">
+                                                    <div class="card card-hover mb-3" style="border-radius: 8px; max-height: 164px; min-height: 195px;">
+                                                        <div class="card-body text-center" style="padding: 1.25rem 1.25rem 1.25rem 0.5rem;display: flex;flex-direction: column; justify-content: space-between;">
                                                             <div class="row no-gutters">
-                                                                <div class="col-md-5">
-                                                                    <div class="comp_img">
-                                                                        <img style="width: 100%" t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
-                                                                    </div>
+                                                                <div class="col-12">
+                                                                    <img style="max-height: 94px;" t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}" alt="rec.name"/>
                                                                 </div>
-                                                                <div class="col-md-7">
-                                                                    <div class="comp_content">
-                                                                        <h5 class="title" style="font-size: 18px;"><span t-if="rec.name" t-field="rec.name"/></h5>
-                                                                        <div class="comp_dec">
-                                                                            <p t-if="rec.description" t-field="rec.description"/>							                              
-                                                                        </div>
+                                                            </div>
+                                                            <div class="row no-gutters">
+                                                                <div class="comp_content">
+                                                                    <h5 class="title"><span t-if="rec.name" t-field="rec.name"/></h5>
+                                                                    <div class="comp_dec">
+                                                                        <p t-if="rec.description" t-field="rec.description"/>							                              
                                                                     </div>
                                                                 </div>
                                                             </div>
