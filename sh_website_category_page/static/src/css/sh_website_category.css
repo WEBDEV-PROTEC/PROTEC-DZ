@@ -44,7 +44,7 @@ sh_category end
  #sh_company {border: none!important; background: #f7f7f7; padding: 15px;}
  #sh_company{width: 100%;position: relative;}
  #sh_company .sub_company{width: 100%;position: relative;padding:0px 0px 0px; display: flex;flex-direction: row; justify-content: center;}
- #sh_company .sub_company .title{width: 100%;text-align: right;padding-bottom: 1 0px;margin-bottom: 20px;}
+ #sh_company .sub_company .title{width: 100%;text-align: center;padding-bottom: 1 0px;margin-bottom: 20px;font-size: 16px;}
  #sh_company .sub_company .main_box .img_box .comp_img{display: block;max-width: 100%;position: relative;background: white;overflow: hidden; border: 1px solid #e6e6e4; min-height: 132px !important;}
  #sh_company .sub_company .main_box .img_box .comp_img img{    object-fit: cover;max-width: 100%;/* transition: all 0.8s; */border: 0;vertical-align: top; min-height: 100px !important;}
 /*  #sh_company .sub_company .main_box .comp_content .title{text-align : center; font-size: 12px;margin:0px;} */
