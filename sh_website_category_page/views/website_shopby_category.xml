@@ -147,7 +147,7 @@
                 <t t-if="category">
                     <t t-set="product_category" t-value="request.env['product.public.category'].sudo().search([('show_category','=',True),('parent_id','=',category.id)],order ='sequence asc')"/>
                     <t t-if="product_category">
-                        <section t-if="website.sub_category_style and website.sub_category_style == 'style3'" id="shop_category_1" style="border-bottom: 1px solid #818181;   ">
+                        <section t-if="website.sub_category_style and website.sub_category_style == 'style3'" id="shop_category_1" style="border-bottom: 2px solid #d8d8d8;">
                             <div class="row sub_company" style="justify-content: center !important;">
                                 <t t-foreach="product_category" t-as="rec">
                                     <div class="col-6 col-md-2 col-lg-2 col-sm-3">
