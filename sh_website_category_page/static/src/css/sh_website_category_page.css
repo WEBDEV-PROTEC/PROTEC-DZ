@@ -2,8 +2,8 @@
 #sh_category_dec{display: inline-block;width: 100%;position: relative;/* border-bottom:  1px solid gray */;}
 
 #sh_category_dec .sub_category{
-    float: left; 
-    width: 100%; 
+    /* float: left; 
+    width: 100%;  */
     position: relative; 
     padding:0px 0px 0px!important; 
     background-image: url(/sh_website_category_page/static/src/img/bg.png);
@@ -41,7 +41,7 @@ sh_content
 #sh_content .caption-style li {display: block;padding: 0px 15px;}
 #sh_content .container-profile-dark .inner-content {padding: 0px;position: relative;overflow: hidden; margin-top: -8em;}
 #sh_content .caption-text {z-index: 10;color: #fff;position: absolute;width: 250px;height: 250px;top: 80px;}
-#sh_content .container-profile-dark .caption-bg {opacity: 0; cursor: pointer;position: absolute;left: calc(50% - 140px);background-color: rgba(215, 81, 107, .7);z-index: 100;width: 250px;height: 250px;border: 10px solid #EBEBEB;-webkit-border-radius: 100%;-moz-border-radius: 100%; transition: all 0.3s ease-in-out;}
+#sh_content .container-profile-dark .caption-bg {opacity: 0; cursor: pointer;position: absolute;left: calc(50% - 140px);background-color: rgba(215, 81, 107, .7);z-index: 100;width: 250px;height: 250px;border: 10px solid #EBEBEB; -webkit-border-radius: 100%;-moz-border-radius: 100%; transition: all 0.3s ease-in-out;}
 #sh_content .container-profile-dark img {padding: 0px; position: absolute;left: calc(50% - 140px);z-index: 10; width: 250px; height: 250px; border-radius: 50%;border: 10px solid #EBEBEB;-webkit-border-radius: 50; -moz-border-radius: 50%;margin: 0 0 1em;}
 #sh_content .container-profile-dark h4{text-transform: uppercase;font-size: 24px;margin-bottom: 0;display: inline-block;font-weight: 300;}
 /* Image hover */
