@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2019-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<odoo>
+    <data>
+        <template id="assets_frontend" name="website_ribbon_assets_frontend" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/website_product_pack/static/src/css/website_product_pack.css" />
+                <script type="text/javascript" src="/website_product_pack/static/src/js/website_pack_product.js"></script>
+            </xpath>
+        </template>
+
+        <template id="website_product_pack_ribbon_wrapper" inherit_id="website_sale.products_item">
+            <xpath expr="//form//div[hasclass('o_wsale_product_information')]" position="after">
+                <div t-if="product.is_pack" class="wk_pack_product_wrapper">
+                    <div class="wk_pack_ribbon">Kit</div>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="website_product_pack_save_price" inherit_id="website_sale.product_price" name="pack_save_price">
+            <xpath expr="//div/h4[hasclass('css_non_editable_mode_hidden')]" position="after">
+                <t t-if="product.is_pack == True">
+                    <span>
+                        <t t-set="remaning_amount" t-value="product.get_discounted_pack_price(product.id)" />
+                        <div t-if="remaning_amount &gt; 0" class="wk_price_save_cart btn-danger">
+                            <span class="wk_span_save">économisés</span>
+                            <span t-esc="remaning_amount" style="white-space: nowrap;" t-options="{'widget': 'monetary','from_currency': product.currency_id, 'display_currency': website.currency_id}" />
+                        </div>
+                    </span>
+                    <div>
+                        <button style="padding: 0;" type="button" class="btn btn-link" data-toggle="modal" data-target="#open_products_modal">Détails du kit</button>
+                    </div>
+                </t>
+                <div id="open_products_modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            
+                            <div class="modal-header">
+                                <h4 class="modal-title text-center">DÉTAILS DES PRODUITS DANS LE KIT</h4>
+                                <button type="button" class="btn btn-default" data-dismiss="modal" style="cursor: pointer;">X</button>
+                            </div>
+
+                            <div class="modal-body col-md-12" style="clear: both;">
+                                <div class="row">
+                                <t t-foreach="product.wk_product_pack" t-as="pack">
+                                    
+                                    <div class="card oe_product_cart col-md-3 ml-2">
+                                        <t t-set="pack_id" t-value="pack.get_product_id(pack.id)" />
+
+                                        <t t-if="pack_id.product_id.website_published == True ">
+                                            <div class="card-body p-1 oe_product_image" style="height: 100%;">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+<!--                                                 <a t-att-href="product_href" class="d-block h-100" itemprop="url">
+                                                    <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                                                    <span t-field="image_holder.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}" class="d-flex h-100 justify-content-center align-items-center"/>
+                                                </a> -->
+                                                 <a class="d-block h-100"  itemprop="url" t-att-href="keep('/shop/product/%s' % slug(pack_id.product_id.product_tmpl_id))">
+                                                    <span class="d-flex h-100 justify-content-center align-items-center" t-field="pack_id.wk_image" t-options='{"widget": "image", "class": "img-rounded"}' />
+                                                </a>
+                                            </div>
+                                            <div class="card-body p-0 o_wsale_product_information">
+                                                <div class="p-2 o_wsale_product_information_text">
+                                                    <h6 class="o_wsale_products_item_title">
+                                                       <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(pack_id.product_id.product_tmpl_id))" class="te_2_line product_name">
+                                                            <span style="color: #42a5f5; margin-bottom: 6px; margin-top: -10px;" t-esc="pack_id.product_id.name" />
+                                                        </a>                                                        
+<!--                                                     <a role="button" t-if="not product.website_published" t-att-href="product_href" class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished</a> -->
+                                                    </h6>
+                                                    <div style="font-size: 0.8rem;">
+                                                        Réf: <span t-if ="pack_id.product_id.default_code" t-field="pack_id.product_id.default_code"></span>
+                                                        <span t-else="" >N/A</span>
+                                                    </div>
+<!--                                                     <div style="font-size: 0.8rem;">
+                                                        SKU: <span t-if ="pack.default_code" t-field="pack.default_code"></span>
+                                                        <span t-else="" >N/A</span>
+                                                    </div> -->
+                                                    <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                                          
+                                                    <span t-field="pack_id.product_id.price" class="wk_pack_product_unit_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                                                    <div>Quantité <span style="margin-left: 10px; color: #b71c1c;" t-esc="pack.product_quantity" /></div>
+                                                    </div>
+                                                </div>
+                                                <div class="o_wsale_product_btn"/>
+                                            </div>
+                                            
+                                        </t>
+                                        <t t-if="pack_id.product_id.website_published == False ">
+                                            <div class="image_div" style="opacity: 0.3;">
+                                                <span t-field="pack_id.wk_image" t-options='{"widget": "image", "class": "img-rounded"}' />
+                                                <div class="wk_modal_text">
+                                                    <span style="display: block; color: #bbdefb; margin-bottom: 6pxpx; margin-top: -10px;" t-esc="pack_id.product_id.name" />
+                                                    Prix unitaire
+                                                    <span
+                                                        t-esc="pack_id.product_id.lst_price"
+                                                        class="wk_pack_product_unit_price"
+                                                        t-options="{'widget': 'monetary','from_currency': product.currency_id, 'display_currency': website.currency_id}"
+                                                    />
+                                                    <div>
+                                                        Quantité
+                                                        <span style="margin-left: 10px; color: #b71c1c;" t-esc="pack.product_quantity" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                    
+<!--                                     <form action="/shop/cart/update" method="post" class="card oe_product_cart" t-att-data-publish="product.website_published and 'on' or 'off'" itemscope="itemscope" itemtype="http://schema.org/Product">
+                                            <div class="card-body p-1 oe_product_image">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                <a t-att-href="product_href" class="d-block h-100" itemprop="url">
+                                                    <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                                                    <span t-field="image_holder.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}" class="d-flex h-100 justify-content-center align-items-center"/>
+                                                </a>
+                                            </div>
+                                            <div class="card-body p-0 text-center o_wsale_product_information">
+                                                <div class="p-2 o_wsale_product_information_text">
+                                                    <h6 class="o_wsale_products_item_title">
+                                                        <a itemprop="name" t-att-href="product_href" t-att-content="product.name" t-field="product.name"/>
+                                                        <a role="button" t-if="not product.website_published" t-att-href="product_href" class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished</a>
+                                                    </h6>
+                                                    <div style="font-size: 0.8rem;">
+                                                        SKU: <span t-if ="product.default_code" t-field="product.default_code"></span>
+                                                        <span t-else="" >N/A</span>
+                                                    </div>
+                                                    <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                                                        <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                        <span t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                        <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                                                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                                                    </div>
+                                                </div>
+                                            <div class="o_wsale_product_btn"/>
+                                            </div>
+                                            <t t-set="bg_color" t-value="td_product['ribbon']['bg_color'] or ''"/>
+                                            <t t-set="text_color" t-value="td_product['ribbon']['text_color']"/>
+                                            <t t-set="bg_class" t-value="td_product['ribbon']['html_class']"/>
+                                            <span t-attf-class="o_ribbon #{bg_class}" t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}" t-raw="td_product['ribbon']['html'] or ''"/>
+                                        </form> -->
+                                    
+                                
+                                </t>
+                            </div>
+                            </div>
+
+                            <!--<div class="modal-footer">
+                                
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
