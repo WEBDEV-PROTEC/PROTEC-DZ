@@ -37,8 +37,8 @@
                         </div>
                         <div class="col-12 col-md-4 col-lg-4">
                             <div class="sh_category_inner mb-3 text-center">
-                                <div class="sh_category_img">
-                                    <img t-if="category.image_1920" t-attf-src="data:image/gif;base64, #{category.image_1920}" alt="category.name"/> 
+                                <div>
+                                    <img style="width:100%" t-if="category.image_1920" t-attf-src="data:image/gif;base64, #{category.image_1920}" alt="category.name"/> 
                                     <img t-if="not category.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>
                                 </div>
                             </div>
@@ -248,29 +248,34 @@
                                     <div class="sh_title">
                                         <div class="sh_description">
                                         </div>
-                                        <h2>categories</h2>
+                                        <h1 style="color: #6f6f6f; font-weight: 300;">Produits</h1>
+                                        <hr/>
                                     </div>
-                                    <div class="row sh_sub_category">
-                                        <t t-if="product_category" >
-                                            <t t-foreach="product_category" t-as="rec">
-                                                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                                                    <a t-att-href="'/shop/category/%s' % (rec.id)">
-                                                        <figure class="sh_effect">
-                                                            <div class="">
-                                                                <img t-if="rec.image_128" t-attf-src="data:image/gif;base64, #{rec.image_128}"  alt="rec.name"/>
-                                                                <img t-if="not rec.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>																	
+                                    <div t-if="product_category" class="row sub_company">
+                                        <t t-foreach="product_category" t-as="rec">
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                                                <a t-att-href="'/shop/category/%s' % (rec.id)">
+                                                    <div class="card shadow-sm mb-3" style="border-radius: 4px;height: 240px;">
+                                                        <div class="card-body text-center" style="padding: 1.25rem 1.25rem 1.25rem 0.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                                            <div class="row">
+                                                                <div class="col-12 text-left">
+                                                                    <div class="comp_content">
+                                                                        <h5 style="color: #6f6f6f;text-align: left;" class="title"><span t-if="rec.name" t-field="rec.name"/></h5>
+                                                                    </div>
+                                                                    <hr/>
+                                                                </div>
+                                                                 <hr/>
                                                             </div>
-                                                            <figcaption>
-                                                                <h2 t-if="rec.name" t-field="rec.name"/>
-                                                                <span t-if="rec.description" t-field="rec.description"/>
-                                                                <span  t-if="website._get_dr_theme_config('json_shop_filters')['show_attrib_count'] and get_brands_count.get(brand.id)">
-                                                                    <t t-esc="get_brands_count.get(brand.id)" />
-                                                                </span>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </a>
-                                                </div>
-                                            </t>
+                                                              
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <img style="max-height: 94px;" t-if="rec.icon" t-attf-src="data:image/gif;base64, #{rec.icon}" alt="rec.name"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </t>
                                     </div>
                                 </div>
