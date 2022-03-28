@@ -37,8 +37,8 @@
                         </div>
                         <div class="col-12 col-md-4 col-lg-4">
                             <div class="sh_category_inner mb-3 text-center">
-                                <div>
-                                    <img style="width:100%" t-if="category.image_1920" t-attf-src="data:image/gif;base64, #{category.image_1920}" alt="category.name"/> 
+                                <div class="sh_category_img">
+                                    <img t-if="category.image_1920" t-attf-src="data:image/gif;base64, #{category.image_1920}" alt="category.name"/> 
                                     <img t-if="not category.image_128" src="/sh_website_category_page/static/src/img/default.png" alt="Default Image"/>
                                 </div>
                             </div>
