@@ -246,9 +246,7 @@
                             <section t-if="website.category_style and website.category_style=='style1'" id="sh_category" >
                                 <div class="container">
                                     <div class="sh_title">
-                                        <div class="sh_description">
-                                        </div>
-                                        <h1 style="color: #6f6f6f; font-weight: 300; text-align: left">Produits</h1>
+                                            <h1 style="color: #6f6f6f; font-weight: 300; text-align: left">Produits</h1>
                                         <hr/>
                                     </div>
                                     <div t-if="product_category" class="row sub_company">
