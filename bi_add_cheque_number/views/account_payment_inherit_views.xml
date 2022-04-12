@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.view_account_payment_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[1]" position="after">
-                <group string="Cheuqe Details">
+                <group string="Cheque Details">
                     <group name="cheq_num">
                         <field name="cheq_num"/>
                     </group>  
