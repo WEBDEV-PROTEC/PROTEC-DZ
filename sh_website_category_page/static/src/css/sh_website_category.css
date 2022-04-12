@@ -77,10 +77,11 @@ sh_category end
 }
 
 #sh_category_dec .sh_category_img img {
-    width: 100%;
+    width: 60%;
     height: 100%;
     object-fit: cover;
     float: none;
+    margin: 10px auto;
 }
 
 .full-img {
