@@ -43,16 +43,15 @@ class AccountMove(models.Model):
                 #     else:
                 #         stamp_duty_tax = (move.amount_untaxed * percentage) / 100
                 total = move.amount_tax + move.amount_untaxed
-                if total < 10000:
-                    stamp_duty_tax = 100
-                elif total > 10000 and total < 250000:
-                    stamp_duty_tax = total / 100
-                elif total > 250000:
-                    stamp_duty_tax = 2500
-            move.stamp_duty_tax = stamp_duty_tax
+#                 if total < 10000:
+#                     stamp_duty_tax = 100
+#                 elif total > 10000 and total < 250000:
+#                     stamp_duty_tax = total / 100
+#                 elif total > 250000:
+#                     stamp_duty_tax = 2500
+                stamp_duty_tax = total / 100
+                move.stamp_duty_tax = stamp_duty_tax
             
-
-
     @api.depends(
         'line_ids.matched_debit_ids.debit_move_id.move_id.line_ids.amount_residual',
         'line_ids.matched_debit_ids.debit_move_id.move_id.line_ids.amount_residual_currency',
@@ -141,13 +140,13 @@ class AccountMove(models.Model):
                 #         stamp_duty_tax = (move.amount_untaxed * percentage) / 100
 
                 total = move.amount_tax + move.amount_untaxed
-                if total < 10000:
-                    stamp_duty_tax = 100
-                elif total > 10000 and total < 250000:
-                    stamp_duty_tax = total / 100
-                elif total > 250000:
-                    stamp_duty_tax = 2500
-
+#                 if total < 10000:
+#                     stamp_duty_tax = 100
+#                 elif total > 10000 and total < 250000:
+#                     stamp_duty_tax = total / 100
+#                 elif total > 250000:
+#                     stamp_duty_tax = 2500
+                stamp_duty_tax = total / 100
             amount_total = sign * (total_currency if len(currencies) == 1 else total)
             move.amount_total = amount_total + stamp_duty_tax
             move.amount_residual = -sign * (total_residual_currency if len(currencies) == 1 else total_residual)
