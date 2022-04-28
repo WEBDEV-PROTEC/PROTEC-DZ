@@ -25,12 +25,9 @@ class SaleOrder(models.Model):
             #         else:
             #             stamp_duty_tax = (amount_untaxed * percentage) / 100
                 total = amount_untaxed + amount_tax 
-                if total < 10000:
-                    stamp_duty_tax = 0
-                elif total > 10000 and total < 250000:
-                    stamp_duty_tax = total / 100
-                elif total > 250000:
-                    stamp_duty_tax = 2500
+
+                stamp_duty_tax = total / 100
+
             order.update({
                 'amount_untaxed': amount_untaxed,
                 'amount_tax': amount_tax,
