@@ -71,7 +71,7 @@ class AccountMove(models.Model):
         )
     def _compute_amount(self):
         for move in self:
-
+            stamp_duty_tax = 0.0
             if move.payment_state == 'invoicing_legacy':
                 # invoicing_legacy state is set via SQL when setting setting field
                 # invoicing_switch_threshold (defined in account_accountant).
@@ -92,6 +92,9 @@ class AccountMove(models.Model):
             currencies = set()
 
             for line in move.line_ids:
+                
+                if self.cash_ == False:
+                    self.stamp_duty_tax = 0.0
                 if line.currency_id:
                     currencies.add(line.currency_id)
 
@@ -182,6 +185,8 @@ class AccountMove(models.Model):
             move.payment_state = new_pmt_state
 
     def create_update_stamp_duty_move_line(self):
+        
+        
         if self.payment_method_id.journal_id.type=="cash" and self.move_type == 'out_invoice':
             aml_obj =  self.env['account.move.line']
             name = self.payment_method_id.stamp_duty_config_id.name
@@ -189,6 +194,7 @@ class AccountMove(models.Model):
             aml_debit_id = aml_obj.search([('move_id', '=', self.id), ('debit', '>', 0.0)], limit=1, order='id desc' )
             account_id = self.payment_method_id.stamp_duty_config_id.account_id.id
             
+                
             if not aml_stamp_duty_id:
                 self._cr.execute("""INSERT INTO account_move_line (
                     name, 
@@ -248,6 +254,7 @@ class AccountMove(models.Model):
             self.payment_method_id = cash_method
         else:
             self.payment_method_id = None 
+            self.stamp_duty_tax = 0.0
             
             
             
