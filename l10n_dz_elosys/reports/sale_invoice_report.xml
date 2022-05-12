@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <template id="report_sale_invoice_document_custom_base" inherit_id="sale.report_saleorder_document">
+
+        <xpath expr="//t[@t-set='address']" position="replace">
+            <t t-set="address">
+                <div style="line-height: 50%; padding-top:10px; font-size:12px;">
+                    <div>
+                        <strong><span t-field="doc.partner_id.name"/></strong>
+                    </div>
+                    <div style="padding-top:10px;">
+                        <span t-field="doc.partner_id.street"/>
+                    </div>
+                    <div style="padding-top:10px;">
+                        <span t-field="doc.partner_id.street2"/>
+                    </div>
+                    <div style="padding-top:10px;">
+                        <span t-field="doc.partner_id.zip"/> <span t-field="doc.partner_id.city"/> <span t-if="doc.partner_id.state_id">(<span t-field="doc.partner_id.state_id"/>)<span t-if="doc.partner_id.country_id">,</span></span> <span t-field="doc.partner_id.country_id"/>
+                    </div>
+                    <div style="padding-top:10px;">
+                        <span t-if="doc.partner_id.phone">Tél:<span t-field="doc.partner_id.phone"/><span t-if="doc.partner_id.mobile">-</span></span><span t-if="doc.partner_id.mobile"> Mobile:<span t-field="doc.partner_id.mobile"/><span t-if="doc.partner_id.fax"> -</span></span><span t-if="doc.partner_id.fax"> Fax:<span t-field="doc.partner_id.fax"/></span>
+                    </div>
+                </div>
+                <div style="line-height: 50%; padding-top:15px; font-size:11px;">
+                    <div>
+                        <span t-if="doc.partner_id.rc">RC N°: <span t-field="doc.partner_id.rc"/></span>
+                        <span t-if="doc.partner_id.ai">AI : <span t-field="doc.partner_id.ai"/></span>
+                    </div>
+                    <div style="padding-top:10px;">
+                        <span t-if="doc.partner_id.nif">NIF : <span t-field="doc.partner_id.nif" style="text-align:left"/></span>
+                        <span t-if="doc.partner_id.nis">NIS :  <span t-field="doc.partner_id.nis" style="text-align:left"/></span>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+
+    	<xpath expr="//div[@class='clearfix']" position="inside">
+            <p class="col-xs-8 pull-left" name="montant" style="page-break-inside: always;">
+	            <div>
+	                <strong t-if="doc.state not in ['draft','sent']">Arrêtée le présent Bon de commande à la somme de:</strong>
+	                <strong t-if="doc.state in ['draft','sent']">Arrêtée le présent devis à la somme de :</strong>
+	                <p t-esc="doc.custom_amount_to_text(doc.amount_total)"/>
+	            </div>
+	        </p>
+            <br/>
+            <table style="width: 100%; height: 140px; padding-top:10px; padding-bottom:15px; padding-left:4px; page-break-before: auto;">
+                <tr>
+                    <th style="border: 1px solid black; width:25%; font-size:13px;">
+                        <p style="padding-top:5px; text-align:center;">
+	                        Visa / Signature client: <br/> <strong class="list-inline-item" style="text-align:center;">Solde actuel: <span t-field="doc.amount_total"/></strong>
+	                    </p>
+                    </th>
+                    <th style="width:50%;">
+                    </th>
+                    <th style="border: 1px solid black; width:25%; font-size:13px;">
+                        <p style="text-decoration:underline;padding-top:5px; text-align:center;">
+	                        Visa / Signature :
+	                    </p>
+                    </th>
+                </tr>
+            </table>
+        </xpath>
+        <!-- <xpath expr="//div[@class='clearfix']" position="after">
+            <div class="clearfix">
+                <table style="width: 100%; height: 140px; padding-top:10px; padding-bottom:15px; padding-left:4px; page-break-before: auto;">
+                <tr>
+                    <th style="border: 0px; width:70%;">
+                    </th>
+                    <td style="border: 1px solid black; width:30%; font-size:13px;">
+                        <p style="text-decoration:underline;padding-top:5px; text-align:center;"><strong>
+	                        Visa / Signature: <br/>
+	                    </strong></p>
+                        <p style="text-align:left;padding-left: 5px; font-size:10px;">
+                            <t t-esc="doc.user_id.partner_id.name"/><br/>
+                            <strong>Tel : </strong><t t-esc="doc.user_id.partner_id.mobile"/><br/>
+                            <t t-esc="doc.user_id.partner_id.email"/>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </xpath> -->
+    </template>
+
+</odoo>

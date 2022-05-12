@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="move_form_extend" model="ir.ui.view">
+        <field name="name">account.move.form.extend</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='other_info']" position="after">
+
+                <page string="Impression Facture" name="impression_facture">
+                    <group>
+                        <group string="Calcule montant" >
+                            <div class="text-muted" colspan="2"></div>
+                            
+                                <field name="equation_montant" />
+                                <field name="montant_en_lettres"/>
+                        </group>
+                                    
+                    </group>
+                </page>
+    
+            </xpath>
+        </field>
+    </record>
+</odoo>
