@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="external_layout_footer_inherit_3_base" inherit_id="web.external_layout_clean">
+
+        <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="attributes">
+            <attribute name="style">font-size:12px;</attribute>
+        </xpath>
+
+        <xpath expr="//div[@name='company_address']" position="replace">
+            <div class="col-6" name="company_address">
+                <div> <strong><span t-field="company.name"/></strong></div>
+                <div> <span t-field="company.street"/> </div>
+                <div> <span t-field="company.street2"/> </div>
+                <div> <span t-field="company.zip"/> <span t-field="company.city"/> <span t-if="company.state_id">(<span t-field="company.state_id"/>),</span> <span t-field="company.country_id"/> </div>
+            </div>
+        </xpath>
+
+         <xpath expr="//div[@t-attf-class='footer o_clean_footer o_company_#{company.id}_layout']" position="replace">
+            <div t-attf-class="footer o_clean_footer o_company_#{company.id}_layout">
+                <div class="text-center" style="border-top: 1px solid black; font-size:10px; padding-top:5px;">
+                    <ul class="list-inline mb4">
+                        <li t-if="company.capital_social" style="display:inline;"><span t-field="company.name"/><span> au capital Social: </span><span t-field="company.capital_social"/> <span t-field="company.currency_id.symbol"/>,</li>
+                        <li t-if="company.phone" style="display:inline;">Tél: <span t-field="company.phone"/> |</li>
+                        <li t-if="company.fax" style="display:inline;">Fax: <span t-field="company.fax"/> |</li>
+                        <li t-if="company.email" style="display:inline;">Courriel: <span t-field="company.email"/> |</li>
+                        <li t-if="company.website" style="display:inline;">Site web: <span t-field="company.website"/></li>
+                        <br/>
+                        <li t-if="company.rc" style="display:inline; padding-top:2px;"><span>RC N° : </span><span t-field="company.rc"/> |</li>
+                        <li t-if="company.ai" style="display:inline; padding-top:2px;"><span>AI : </span><span t-field="company.ai"/> |</li>
+                        <li t-if="company.nif" style="display:inline; padding-top:2px;"><span>NIF : </span><span t-field="company.nif"/> |</li>
+                        <li t-if="company.nis" style="display:inline; padding-top:2px;"><span>NIS : </span><span t-field="company.nis"/></li>
+                        <br/>
+                        <li t-if="company.partner_id.bank_ids" style="display:inline;">N° de compte: <span t-field="company.partner_id.bank_ids[0].bank_id"/> <span t-field="company.partner_id.bank_ids[0].acc_number"/></li>
+                    </ul>
+
+                    <div name="financial_infos">
+                        <span t-field="company.report_footer"/>
+                    </div>
+
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page"/> / <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+        <!--*********************-->
+       
+    </template>
+
+</odoo>

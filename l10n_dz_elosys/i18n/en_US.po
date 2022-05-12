@@ -1,0 +1,559 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_dz_elosys
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20201218\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-03 14:14+0000\n"
+"PO-Revision-Date: 2021-11-03 14:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "<span> au capital Social: </span>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "<span>AI : </span>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "<span>NIF : </span>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "<span>NIS : </span>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "<span>RC N° : </span>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid ""
+"<strong> result = invoice.X <strong>\"</strong>Opération "
+"mathématique<strong>\"</strong> invoice.Y </strong>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid ""
+"<strong>Opération mathématique</strong> C'est la somme (+), la "
+"multibplication (*), la division (/), ou la sustraction (-) selon le besion "
+"du client"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid ""
+"<strong>X</strong> et <strong>Y</strong> Sont des variables qui pouvont "
+"prendre la valeur d'un champ monetaire, flottant ou entier"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid ""
+"<strong>invoice</strong> C'est le dictionnaire des champs de la facture."
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid ""
+"<strong>result</strong> C'est la nouvelle valeur du montant de la facture"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__ai
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__ai
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__ai
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_users__ai
+msgid "A.I"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "AI :"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_account_chart_template
+msgid "Account Chart Template"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+msgid "Arrêtée la présente facture à la somme de:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+msgid "Arrêtée la présente proforma à la somme de:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Arrêtée le présent Bon de commande à la somme de:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Arrêtée le présent devis à la somme de :"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.move_form_extend
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid "Calcule montant"
+msgstr "Amount calculate"
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__capital_social
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__capital_social
+msgid "Capital Social"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid "Cette équation a une syntaxe à respecter comme suit:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__code
+msgid "Code"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid "Comment définir le champ Equation du montant"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_base_document_layout
+msgid "Company Document Layout"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_res_country_state
+msgid "Country state"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "Courriel:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_chart_template__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_journal__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_country_state__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__display_name
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_sale_order__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_bank_statement_line__equation_montant
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_move__equation_montant
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_payment__equation_montant
+msgid "Equation du montant"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__fax
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__fax
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__fax
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_users__fax
+msgid "Fax"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Fax:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__forme_juridique
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__forme_juridique
+msgid "Forme juridique"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_chart_template__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_journal__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_country_state__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__id
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.move_form_extend
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid "Impression Facture"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.res_partner_form_l10n_dz_enhanced
+msgid "Information fiscale"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_chart_template____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_journal____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_move____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_country_state____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner____last_update
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid ""
+"Le champ <strong>Equation du montant </strong> est un champ\n"
+"                                    texte qui vous permet de déclarer un code python qui représente une\n"
+"                                    équation pour calculer le montant de la facture en lettre."
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Mobile:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_bank_statement_line__montant_en_lettres
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_move__montant_en_lettres
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_payment__montant_en_lettres
+msgid "Montant calculé"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_account_journal__equation_montant
+msgid "Montant en lettre"
+msgstr "Amount in letter"
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__nif
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__nif
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__nif
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_users__nif
+msgid "N.I.F"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__nis
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__nis
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__nis
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_users__nis
+msgid "N.I.S"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "NIF :"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "NIS :"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_forme_juridique__name
+msgid "Nom"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__rc
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_company__rc
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__rc
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_users__rc
+msgid "N° RC"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "N° de compte:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_partner__fiscal_position
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_res_users__fiscal_position
+msgid "Position fiscal"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "RC N°:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.ui.menu,name:l10n_dz_elosys.account_report
+msgid "Rapports"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+msgid "Site web:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Solde actuel:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_intra_10
+msgid "TVA -10.0%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_intra_21
+msgid "TVA -2.1%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_intra_20
+msgid "TVA -20.0%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_intra_55
+msgid "TVA -5.5%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_intra_85
+msgid "TVA -8.5%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_0
+msgid "TVA 0%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_10
+msgid "TVA 10%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_19
+msgid "TVA 19%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_21
+msgid "TVA 2.1%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_20
+msgid "TVA 20%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_55
+msgid "TVA 5.5%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_85
+msgid "TVA 8.5%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:account.tax.group,name:l10n_dz_elosys.tax_group_tva_9
+msgid "TVA 9%"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_1_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_2_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_3_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.external_layout_footer_inherit_4_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Tél:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Visa / Signature :"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_account_invoice_document_custom_base
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.report_sale_invoice_document_custom_base
+msgid "Visa / Signature client: <br/>"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.res_company_form_l10n_dz_enhanced
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.res_partner_form_l10n_dz_enhanced
+msgid "Wilaya"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: code:addons/l10n_dz_elosys/models/res_company.py:0
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__city
+#, python-format
+msgid "city"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: code:addons/l10n_dz_elosys/models/res_company.py:0
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__country_id
+#, python-format
+msgid "country"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model:ir.model,name:l10n_dz_elosys.model_forme_juridique
+msgid "forme.juridique"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: code:addons/l10n_dz_elosys/models/res_company.py:0
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__state_id
+#, python-format
+msgid "state"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: code:addons/l10n_dz_elosys/models/res_company.py:0
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__street
+#, python-format
+msgid "street"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: code:addons/l10n_dz_elosys/models/res_company.py:0
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__street2
+#, python-format
+msgid "street2"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: model_terms:ir.ui.view,arch_db:l10n_dz_elosys.view_account_journal_form_extend
+msgid "tel que:"
+msgstr ""
+
+#. module: l10n_dz_elosys
+#: code:addons/l10n_dz_elosys/models/res_company.py:0
+#: model:ir.model.fields,field_description:l10n_dz_elosys.field_base_document_layout__zip
+#, python-format
+msgid "zip"
+msgstr ""
