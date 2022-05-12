@@ -23,14 +23,18 @@
 	            </div>
 
                 <div style="line-height: 50%; padding-top:15px; font-size:11px;">
-	                <div>
-                        <span t-if="o.partner_id.rc">RC N°: <span t-field="o.partner_id.rc"/></span>
-	                    <span t-if="o.partner_id.ai">AI : <span t-field="o.partner_id.ai"/></span>
+                    <div >
+	                    <span t-if="o.partner_id.ref">N° Client : <span t-field="o.partner_id.ref" style="text-align:left"/></span>
+                    </div>
+	                <div style="padding-top:10px;">
+                        <span t-if="o.partner_id.num_rc">RC N°: <span t-field="o.partner_id.num_rc"/></span>
+	                    <span t-if="o.partner_id.art">AI : <span t-field="o.partner_id.art"/></span>
                     </div>
                     <div style="padding-top:10px;">
-	                    <span t-if="o.partner_id.nif">NIF : <span t-field="o.partner_id.nif" style="text-align:left"/></span>
+	                    <span t-if="o.partner_id.vat">NIF : <span t-field="o.partner_id.vat" style="text-align:left"/></span>
 	                    <span t-if="o.partner_id.nis">NIS :  <span t-field="o.partner_id.nis" style="text-align:left"/></span>
                     </div>
+
 	            </div>
             </t>
         </xpath>
