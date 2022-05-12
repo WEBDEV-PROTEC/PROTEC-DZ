@@ -4,7 +4,7 @@
 
         <xpath expr="//t[@t-set='address']" position="replace">
             <t t-set="address">
-                <div style="line-height: 50%; padding-top:10px; font-size:12px;">
+                <div style="line-height: 100%; padding-top:10px; font-size:12px;">
                     <div>
                         <strong><span t-field="o.partner_id.name"/></strong>
                     </div>
