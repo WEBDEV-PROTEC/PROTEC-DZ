@@ -51,7 +51,7 @@
                 <tr>
                     <th style="border: 1px solid black; width:25%; font-size:13px;">
                         <p style="padding-top:5px; text-align:center;">
-	                        Visa / Signature client: <br/> <strong class="list-inline-item" style="text-align:center;">Solde actuel: <span t-field="o.montant_en_lettres"/></strong>
+	                        Visa / Signature client: <br/> <strong class="list-inline-item" style="text-align:center;">Solde actuel: <span t-field="o.amount_residual"/></strong>
 	                    </p>
                     </th>
                     <th style="width:50%;">
