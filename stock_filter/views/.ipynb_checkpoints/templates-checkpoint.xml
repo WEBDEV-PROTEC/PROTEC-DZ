@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <template id="product_stock_filter" inherit_id="website_sale.products_attributes" name="Stock Filter">
+            <xpath  expr="//form[@class='js_attributes mb-2'][1]" position="inside" >
+
+
+                    <!-- In Stock -->
+<!--                     <li class="nav-item tp-filter-attribute py-3 tp-hook-filter-stock">
+                        
+                        <t t-set="tp_is_attribute_filtered" t-value="in_stock"/>
+                        <t t-set="tp_in_stock" t-value="request.httprequest.args.get('in_stock')"/>
+                        <div t-attf-class="d-flex justify-content-between align-items-center tp-filter-attribute-title #{tp_is_collapsible and 'collapsible' or None} #{tp_is_attribute_filtered and 'expanded' or None}">
+                            <h6 class="mb-0">
+                                Stock
+                            </h6>
+                            <span t-if="tp_is_collapsible" class="tp-collapse-indicator">
+                                <i class="dri dri-chevron-right-l"/>
+                            </span>
+                        </div>
+                        <div t-attf-class="tp-filter-attribute-collapsible-area pt-3 #{tp_is_collapsible and 'collapsible' or None}" t-attf-style="display: #{(tp_is_attribute_filtered or not tp_is_collapsible) and 'block' or 'none'}">
+                            <ul class="nav nav-pills flex-column ml-0 flex-nowrap tp-filter-attribute-scrollbar">
+                                <li class="nav-item" t-att-data-search-term="in_stock">
+                                    <div class="custom-control custom-checkbox mb-2 ml-1">
+                                            <input type="checkbox" name="in_stock" class="custom-control-input" t-attf-id="in_stock" t-att-value="1" t-att-checked="'checked' if tp_in_stock=='1' else None"/>
+                                            <label class="custom-control-label" t-attf-for="in_stock">
+                                                <span>
+                                                    Available in stock
+                                                </span>
+                                            </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> -->
+
+                <li class="nav-item tp-filter-attribute py-3 tp-hook-filter-stock" style="list-style: none;">
+                    <t t-set="tp_is_attribute_filtered" t-value="in_stock"/>
+                    <t t-set="tp_in_stock" t-value="request.httprequest.args.get('in_stock')"/>
+                    <div t-attf-class="tp-filter-attribute-collapsible-area pt-3 #{tp_is_collapsible and 'collapsible' or None}" t-attf-style="display: #{(tp_is_attribute_filtered or not tp_is_collapsible) and 'block' or 'none'}">
+                        <ul class="nav flex-column ml-0 flex-nowrap tp-filter-attribute-scrollbar">
+                            <li class="nav-item" t-att-data-search-term="in_stock">
+                                <div class="custom-control custom-checkbox mb-2 ml-1">
+                                    <input type="checkbox" name="in_stock" class="custom-control-input" t-attf-id="in_stock" t-att-value="1" t-att-checked="'checked' if tp_in_stock=='1' else None"/>
+                                    <label class="custom-control-label" t-attf-for="in_stock">
+                                        <span>
+                                            Available in stock
+                                        </span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </xpath>
+        </template>
+    </data>
+</odoo>
