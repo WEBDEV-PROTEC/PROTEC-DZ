@@ -43,7 +43,7 @@
                                     <input type="checkbox" name="in_stock" class="custom-control-input" t-attf-id="in_stock" t-att-value="1" t-att-checked="'checked' if tp_in_stock=='1' else None"/>
                                     <label class="custom-control-label" t-attf-for="in_stock">
                                         <span>
-                                            Available in stock
+                                            Disponible
                                         </span>
                                     </label>
                                 </div>
