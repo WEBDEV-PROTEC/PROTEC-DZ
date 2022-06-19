@@ -8,229 +8,153 @@
             <t t-set="company" t-value="res_company" />
         </t>
         <div class="header">
-            <div class="row mt32">
-                <div class="col-12 text-center">
-                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 45px;" />
+            <div class="row" style="background-image: url(/product_catalogue/static/img/footer2.png);height: 140px; background-repeat: no-repeat; background-size: cover; background-position: top;">
+                <img style="max-height: 48px; margin: 10px 0 0 10px" src="/product_catalogue/static/img/logo-gray.png" />
+                <br/>
+                <div style="margin: 5px 0 0 10px; color: #f1f1f1; "> 
+                    Contact your sales department now:<br/>+213 550.900.360/363/364<br/>
+                    For more details visit:  www.protec-dz.com
                 </div>
             </div>
         </div>
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <!--Start old loop -->
-                <div class="page">
-                    <h2>LISTE DES PRODUITS</h2>
-                    <br />
-                    <table class="table table-bordered">
-                    <!--REFERENCE INTERNE / PRODUIT / IMAGE PRODUIT / PRIX SALES -->
-                        <thead>
-                            <tr>
-                                <th class="text-center" style="background-color:#1e88bd; color:#fff;">
-                                    <p>REFERENCE INTERNE</p>
-                                </th>
-                                <th class="text-center" style="background-color:#1e88bd; color:#fff;">
-                                    <p>PRODUIT</p>
-                                </th>
-                                <th class="text-center" colspan="1" style="background-color:#1e88bd; color:#fff;">
-                                    <p>IMAGE PRODUIT</p>
-                                </th>
-                                <th class="text-center" colspan="2" style="background-color:#1e88bd; color:#fff;">
-                                    <p>SPECIFICATIONS</p>
-                                </th>
-                            </tr>
-                        </thead>
+                <div class="page" style="background:none"> 
+<!--                     <h2 style="color: ">LISTE DES PRODUITS</h2>
+                    <br /> -->
+                    <table class="table" style="background-color:  #FFFFFF">
+                        <!--REFERENCE INTERNE / PRODUIT / IMAGE PRODUIT / PRIX SALES -->
+                        <!--<thead>
+                        </thead> -->
                         <tbody>
                             <!--Start loop -->
                             <t t-foreach="docs" t-as="o">
                                 <tr>
                                     <td>
-                                        <p t-if="o.default_code" style="font-weight: bold; font-size: 13px" t-field="o.default_code" />
-                                        <p t-else="">--</p>
-                                    </td>
-                                    <td>
-                                        <p style="font-weight: bold; font-size: 13px" t-field="o.name" />
-                                    </td>
-                                    <td>
                                         <div class="col-12 text-center">
-                                            <!--  <p style="padding: 0px; max-height: 24px" t-field="o.image_128" t-options="{&quot;widget&quot;: &quot;image&quot;}" /> -->
-                                            <img t-if="o.image_128" t-att-src="'data:image/png;base64,%s' % to_text(o.image_128)" style="max-height: 64px;" />
+                                            <img t-if="o.product_brand_ept_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.product_brand_ept_id.logo)" style="max-width: 100px; margin-bottom: 8px" />
+                                            <br/>
+                                            <img t-if="o.image_1024" t-att-src="'data:image/png;base64,%s' % to_text(o.image_1024)" style="max-height: 128px;" />
                                         </div>
+                                        
                                     </td>
                                     <td>
+                                        <div style="padding: 4px 0;" class="tags"> 
+                                            <span class="tag" t-foreach="o.dr_tag_ids" t-as="tag" > 
+                                                <img class="tag-image" t-if="tag.image" t-attf-src="data:image/gif;base64, #{tag.image}" alt="category.name"/>
+                                                <a t-else="" t-field="tag.name"/> 
+                                            </span>
+                                        </div>
                                         <t t-if="o.categ_id">
-                                            <b><span>CATEGORIE</span></b> 
-                                            <br />
+                                            <span style="font-size: 24px; white-space: nowrap; color: #2FA4FF" t-field="o.categ_id.name" />
                                         </t>
-                                        <t t-if="o.list_price">
-                                              <b><span>PRIX</span></b>
-                                        </t>
-<!--                                         <t t-if="o.default_code">
-                                            <b><span>Reference</span></b>
-                                            <br />
+<!--                                         <t t-if="o.public_categ_ids">
+                                        <t t-foreach="o.public_categ_ids" t-as="c">
+                                            <t t-set="rec" t-value="request.env['product.public.category'].sudo().search([('id', '=', c.id)])"/>
+                                                <li class="breadcrumb-item">
+                                                    <span class="product_catg_breadcrumb" t-esc="rec.name"/>
+                                                </li>
+                                            </t>
                                         </t> -->
-<!--                                         <t t-if="o.description">
-                                            <span>Description</span>
+                                        <br/>
+                                        <t t-if="o.name">
+                                            <span style="font-weight: bold;font-size: 14px; white-space: normal; color: #222222" t-field="o.name" />
+                                        </t>
+                                        <br/><span t-if="o.default_code" style="font-weight: bold; font-size: 14px" t-field="o.default_code" />
+                                        <p t-else=""></p>
+                                          <t t-if="len(o.product_variant_ids) &gt; 1">
+                                            <ul style="padding: 0; margin:0; list-style: none"> 
+                                                <li t-foreach="o.product_variant_ids" t-as="v"> 
+                                                    <t t-if="v.default_code">
+                                                        <span style="font-size: 13px" t-field="v.default_code" />
+                                                    </t>
+                                                    <t t-if="v.product_template_attribute_value_ids">
+                                                        <span style="font-size: 12px; white-space: nowrap; color: #2FA4FF" t-field="v.product_template_attribute_value_ids" />
+                                                    </t>
+                                                </li>
+                                            </ul>
+                                        </t>
+<!--                                         <t t-if="len(o.attribute_line_ids) &gt; 1">
+                                            <span style="font-size: 12px; white-space: nowrap;" t-field="o.attribute_line_ids.value_ids" />
                                         </t> -->
                                     </td>
                                     <td>
-                                        <div class="col-12">
-                                            <t t-if="o.categ_id">
-                                                <span style="font-size: 13px; white-space: nowrap" t-field="o.categ_id.name" />
-                                                <br/>
-                                            </t>
+                                        <div class="col-12 d-flex" style="flex-direction: column; margin-top: 20px">
                                             <t t-if="o.list_price">
-                                                <span t-field="o.list_price" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}" />
+                                                <span style="background-color:#EDEDED; padding: 5px; align-self: flex-end; font-family: 'sans-serif'; font-weight: 500" t-field="o.list_price" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}" />
                                             </t>
-<!--                                           <t t-if="o.default_code">
-                                                <span t-field="o.default_code" />
-                                            </t> -->
-<!--                                             <t t-if="o.description">
-                                                <span t-field="o.description" />
-                                            </t> -->
                                         </div>
                                     </td>
                                 </tr>
-                                <t t-if="len(o.product_variant_ids) &gt; 1">
-<!--                                     <h6>PRODUCT VARIANTS</h6> -->
-                                    <t t-foreach="o.product_variant_ids" t-as="v">
-                                        <tr>
-                                            <td class="text-center">
-                                                <t t-if="v.default_code">
-                                                    <span t-field="v.default_code" />
-                                                </t>
-                                                <t t-else="">
-                                                    <p>--</p>
-                                                </t>
-                                            </td>
-                                            <td class="text-center">
-<!--                                                 <p style="font-size: 12px" t-field=" '[VARIANT] ' + v.name" /> -->
-                                                <span>[VARIANT] </span>
-                                                <t style="font-size: 12px">
-                                                    <span t-field="v.name" />
-                                                </t>
-                                            </td>
-                                            <td>
-                                                <div class="col-12 text-center">
-<!--                                                   <p style="padding: 20px;" t-field="v.image_1920" t-options="{&quot;widget&quot;: &quot;image&quot;}" /> -->
-                                                    <img t-att-src="'data:image/png;base64,%s' % to_text(v.image_128)" style="max-height: 40px;" />
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12 text-left">
-<!--                                                 <t t-if="v.default_code">
-                                                        <span t-field="v.default_code" />
-                                                    </t> -->
-                                                    <t t-if="v.product_template_attribute_value_ids">
-                                                        <span style="font-size: 12px; white-space: nowrap;" t-field="v.product_template_attribute_value_ids" />
-                                                    </t>
-<!--                                                     <t t-if="(v.qty_available) &gt; 0">
-                                                        <br/>
-                                                        <span style="font-size: 13px" class="text-success">In Stock</span>
-                                                    </t>
-                                                    <t t-else="">
-                                                        <br/>
-                                                        <span style="font-size: 13px" class="text-danger">Out of Stock</span>
-                                                    </t> -->
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <t t-if="v.lst_price">
-                                                    <span style="font-size: 13px" t-field="v.lst_price" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: v.company_id.currency_id}" />
-                                                </t>
-                                            </td>
-                                        </tr>
-                                    </t>
-                                </t>
                             </t>
-                            <!--end loop -->
                         </tbody>
                     </table>
                 </div>
                 <p style="page-break-after: always;" />
-                <!-- <t t-if="len(o.product_variant_ids) &gt; 1">
-                        <t t-foreach="o.product_variant_ids" t-as="v">
-                            <h4>PRODUCT VARIANT</h4>
-                            <table class="table table-bordered" style="border: 2px solid black;">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" style="background-color:#893b74; color:#fff;border: 2px solid black;font-family:Verdana">
-                                            <p style="font-weight: bold;" t-field="o.name" />
-                                        </th>
-                                        <th class="text-center" colspan="2" style="background-color:#893b74; color:#fff; font-weight: bold;border: 2px solid black;">
-                                            <p>Specifications</p>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="border: 2px solid black;">
-                                            <div class="col-6 text-center">
-                                                <p style="padding: 20px;" t-field="v.image_1920" t-options="{&quot;widget&quot;: &quot;image&quot;}" />
-                                            </div>
-                                        </td>
-                                        <td style="border: 0px solid black;">
-                                            <t t-if="v.default_code">
-                                                <span>Internal Reference</span>
-                                                <br />
-                                                <br />
-                                            </t>
-                                            <t t-if="v.product_template_attribute_value_ids">
-                                                <span>Variant type</span>
-                                                <br />
-                                                <br />
-                                            </t>
-                                            <t t-if="(v.qty_available) &gt; 0">
-                                                <span>Available</span>
-                                                <br />
-                                                <br />
-                                            </t>
-                                            <t t-else="">
-                                                <span>Available</span>
-                                                <br />
-                                                <br />
-                                            </t>
-                                            <t t-if="v.lst_price">
-                                                <span>Sale Price</span>
-                                                <br />
-                                                <br />
-                                            </t>
-                                        </td>
-                                        <td style="border: 0px solid black;">
-                                            <div class="col-12 text-center">
-                                                <t t-if="v.default_code">
-                                                    <span t-field="v.default_code" />
-                                                    <br />
-                                                    <br />
-                                                </t>
-                                                <t t-if="v.product_template_attribute_value_ids">
-                                                    <span t-field="v.product_template_attribute_value_ids" />
-                                                    <br />
-                                                    <br />
-                                                </t>
-                                                <t t-if="(v.qty_available) &gt; 0">
-                                                    <span>In Stock</span>
-                                                    <br />
-                                                    <br />
-                                                </t>
-                                                <t t-else="">
-                                                    <span>Out of Stock</span>
-                                                    <br />
-                                                    <br />
-                                                </t>
-                                                <t t-if="v.lst_price">
-                                                    <span t-field="v.lst_price" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: v.company_id.currency_id}" />
-                                                    <br />
-                                                    <br />
-                                                </t>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p style="page-break-after: always;" />
-                        </t>
-                    </t> -->
-                <!--end old loop -->
+                <style>
+                    :root {
+                        /* Theme */
+                        --primary-color: #1662f3;
+                        --light-color: #d0dffc;
+                        --dark-color: #283b70;
+                        --regular-font: 'Inter', sans-serif;
+                    }
+                    
+                    .top-bg {
+                      height: 40px;
+                      background-image: url(/product_catalogue/static/img/footer.png);
+                      background-repeat: no-repeat;
+                      background-size: cover;
+                      background-position: top;
+                    }
+                                        
+                    td, tbody {
+                        background:none
+                    }
+
+                    .tags {
+                        margin-right: 6px;
+                        padding: 0;
+                        list-style-type: none;
+                        display: flex;
+                        flex-directon: row
+                        gap: 2rem;
+                        flex-wrap: wrap;
+                    }
+
+                    .tag {
+                        --color: var(--light-color);
+                        font-family: var(--regular-font);
+                        font-size: .9rem;
+                        border-radius: 100rem;
+                        /* box-shadow: 0 0 0 1.5px var(--light-color); */
+                        background-color: transparent;
+                        color: #0095ed;
+                        font-weight: bold;
+<!--                         transition: background-color 250ms ease, box-shadow 314ms ease; -->
+                        width: fit-content;
+                        margin-right: 16px
+                    }
+
+                    .tag>a {
+                        display: inline-block;
+                        position: relative;
+                        color: var(--dark-color);
+                        text-decoration: none;
+                        padding: 0.5rem;
+                    }
+
+                    .tag-image {
+                        max-height: 24px;
+                    }
+
+                    .te_product_brand_img {
+                        max-width: 130px;
+                        margin-right: 15px;
+                        margin: 15px 0px 7px;
+                    }
+                </style>
             </t>
         </t>
     </template>
