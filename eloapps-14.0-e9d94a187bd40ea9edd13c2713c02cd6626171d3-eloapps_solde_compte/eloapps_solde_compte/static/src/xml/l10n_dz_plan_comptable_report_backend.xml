@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+
+    <t t-name="planComptableReports.buttons">
+        <button type="button" class='btn btn-primary o_stock-widget-pdf d-none'>PRINT</button>
+    </t>
+
+    <form class="form-inline" t-name="eloapps_solde_compte.report_solde_compte_search">
+        <style>
+            div {
+                padding: 2px;
+            }
+        </style>
+        <div>
+            <div class="row">
+                <div style="width:300px;">
+                    <label>Filter par journaux</label>
+                    <select class="o_input o_filtrer_journals">
+                        <option t-att-data-type="0" t-att-value="0">--</option>
+                        <option t-foreach="journals" t-as="journal" t-att-data-type="journal['id']" t-att-value="journal['id']">
+                            <t t-esc="journal['name']"/>
+                        </option>
+                    </select>
+                </div>
+
+                <div style="width:300px;">
+                    <label>Filtrer par exercices</label>
+                    <select class="o_input o_filtrer_exercices">
+                        <option t-att-data-type="0" t-att-value="0">--</option>
+                        <option t-foreach="exercices" t-as="exercice" t-att-data-type="exercice['id']" t-att-value="exercice['id']">
+                            <t t-esc="exercice['name']"/>
+                        </option>
+                    </select>
+                </div>
+
+                <div style="width:300px;">
+                    <label>Filtrer par périodes</label>
+                    <select class="o_input o_filtrer_periodes" id="select_periodes">
+                        <option t-att-data-type="0" t-att-value="0">--</option>
+                        <!-- <t t-foreach="periodes" t-as="periode">
+                            <t t-if="periode['exercice_id'] == selected_exercice">
+                                <option t-att-data-type="periode['id']" t-att-value="periode['id']">
+                                    <t t-esc="periode['name']"/>
+                                </option>
+                            </t>
+                        </t> -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div role="dialog" t-name='planComptableReports.errorModal' class="modal" id="editable_error" tabindex="-1" data-backdrop="static" style="z-index:9999;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h3 class="modal-title">Error</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                </header>
+                <main class="modal-body">
+                    <p id='insert_error' class='text-center'></p>
+                </main>
+            </div>
+        </div>
+    </div>
+
+</templates>

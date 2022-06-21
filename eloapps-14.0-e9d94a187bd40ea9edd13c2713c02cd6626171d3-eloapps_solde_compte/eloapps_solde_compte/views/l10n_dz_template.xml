@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="l10n_dz_assets_backend" name="l10n_dz_plan_comptable assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/eloapps_solde_compte/static/src/js/l10n_dz_plan_comptable_report_backend.js"></script>
+            <script type="text/javascript" src="/eloapps_solde_compte/static/src/js/l10n_dz_plan_comptable_report_widgets.js"></script>
+            <link rel="stylesheet" type="text/scss" href="/mrp/static/src/scss/mrp_bom_report.scss" />
+            <link rel="stylesheet" type="text/scss" href="/stock/static/src/scss/stock_traceability_report.scss"/>
+        </xpath>
+    </template>
+</odoo>
