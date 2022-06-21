@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_account_form_hierarchy">
+            <field name="name">form.view.account.hierarchy</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <field name="hierarchy_group_ids" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//sheet/group/group" position="after">
+                    <group>
+                        <field name="debit"/>
+                        <field name="credit"/>
+                        <field name="balance"/>
+                    </group>
+                    <field name="move_line_ids" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='group_id']" position="attributes">
+                    <attribute name="string">Parent</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
