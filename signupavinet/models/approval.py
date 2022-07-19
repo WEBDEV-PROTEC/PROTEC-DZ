@@ -11,6 +11,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ApprovalSignup(models.Model):
+
     """warranty class"""
     _name = 'approval.signup'
     _description = 'approval.signup'
@@ -20,9 +21,9 @@ class ApprovalSignup(models.Model):
         [('eurl', 'EURL'), ('sarl', 'SARL'), ('snc', 'SNC'), ('spa', 'SPA'),
          ('ets', 'ETS'), ('epe', 'EPE'), ('autre', 'Autre')],
         string='Type Société')
-    vat = fields.Char(string="Nif")
-    num_rc = fields.Char(string="Numéro RC")
-    art = fields.Char(string="ART")
+    nif = fields.Char(string="Nif")
+    rc = fields.Char(string="Numéro RC")
+    ai = fields.Char(string="ART")
     agrem = fields.Char(string="Agrement")
     street = fields.Char(string="Adresse")
     exp_agrem = fields.Date(string="Date Expiration")
@@ -36,35 +37,35 @@ class ApprovalSignup(models.Model):
     mobile = fields.Char(string="mobile")
     phone2 = fields.Char(string="telephone")
     mobile2 = fields.Char(string="mobile")
-    email2 = fields.Char(string="email")
-
+#     email2 = fields.Char(string="email")
+    
     scan1 = fields.Binary(string="scan1")
     scan2 = fields.Binary(string="scan2")
     scan3 = fields.Binary(string="scan3")
     scan4 = fields.Binary(string="scan4")
     scan5 = fields.Binary(string="scan5")
-
-    password = fields.Char(string="Password")
+    password = fields.Char(string="password")
+    
     state = fields.Selection([
         ('draft', 'Draft'),
         ('approved', 'Approved'),
     ], string='Status', readonly=True, store=True, default='draft')
-
+  
     def action_toapprove(self):
-        print("password", self.password)
-        print("mail", self.email)
+#         print("password", self.password)
+#         print("mail", self.email)
         logFile = os.path.expanduser(
             '/home/odoo/src/user/signupavinet/settings.conf')
 
         with open(logFile, 'r') as file:
             test_t = file.read()
 
-        print(test_t)
+#         print(test_t)
         f = Fernet(bytes(test_t, 'utf-8'))
-        token = f.encrypt(bytes(self.email + "/" + self.password, 'utf-8'))
-        print(token)
+        token = f.encrypt(bytes(self.email + "/" + self.password, "utf-8"))
+#         print(token)
         decrpt = f.decrypt(token)
-        print(decrpt)
+#         print(decrpt)
         if self.lname and self.fname:
             contact_name = self.fname + ' ' + self.lname
         elif self.fname:
@@ -78,10 +79,10 @@ class ApprovalSignup(models.Model):
             'name': self.name,
             'company_type': 'company',
             'email': self.email,
-            'vat': self.vat,
+            'nif': self.nif,
             'company_statut': self.company_statut,
-            'num_rc': self.num_rc,
-            'art': self.art,
+            'rc': self.rc,
+            'ai': self.ai,
             'agrem': self.agrem,
             'exp_agrem': self.exp_agrem,
             'street': self.street,
@@ -96,11 +97,12 @@ class ApprovalSignup(models.Model):
         company = self.env['res.partner'].sudo().create(com_values)
 
         if contact_name:
+            
             child_values = {
                 'parent_id': company.id,
                 'name': contact_name,
                 'function': self.position,
-                'email': self.email2,
+                'email': self.email,
                 'phone': self.phone2,
                 'mobile': self.mobile2,
 
@@ -119,14 +121,15 @@ class ApprovalSignup(models.Model):
         }
         user = self.env['res.users'].sudo().create(login)
 
-        # self.env['res.groups'].sudo().write({
-        #     'name': group_id,
-        #     'users': user
-        # })
-        print("token", user.token)
-        # template_id = self.env.ref('signupavinet.set_password_email').id
-        # template = self.env['mail.template'].browse(template_id)
-        # template.send_mail(self.id, force_send=True)
+#         self.env['res.groups'].sudo().write({
+#             'name': group_id,
+#             'users': user
+#         })
+
+#         _logger.debug(user)
+        template_id = self.env.ref('signupavinet.set_password_email').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(user.id, force_send=True)
         self.state = 'approved'
 
 
@@ -152,9 +155,8 @@ class ResUsers(models.Model):
         template = False
         if create_mode:
             try:
-                template = self.env.ref('signupavinet.set_password_email',
-                                        raise_if_not_found=False)
-                print("called")
+                template = self.env.ref('signupavinet.set_password_email', raise_if_not_found=False)
+#                 print("called")
             except ValueError:
                 pass
         if not template:
@@ -164,7 +166,7 @@ class ResUsers(models.Model):
         template_values = {
             'email_to': '${object.email|safe}',
             'email_cc': False,
-            'auto_delete': True,
+#             'auto_delete': True,
             'partner_to': False,
             'scheduled_date': False,
         }
