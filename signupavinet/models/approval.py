@@ -180,6 +180,6 @@ class ResUsers(models.Model):
                 force_send = not (self.env.context.get('import_file', False))
                 template.with_context(lang=user.lang).send_mail(user.id,
                                                                 force_send=force_send,
-                                                                raise_exception=True)
+                                                                raise_exception=False)
             _logger.info("Password reset email sent for user <%s> to <%s>",
                          user.login, user.email)

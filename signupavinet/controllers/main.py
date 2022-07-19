@@ -44,14 +44,18 @@ class AuthSignupHome(Home):
             'name': kwargs.get('company_name'),
             'company_statut': kwargs.get('company_type'),
             'email': kwargs.get('login'),
-            'vat': kwargs.get('vat'),
-            'num_rc': kwargs.get('num_rc'),
-            'art': kwargs.get('art'),
+#             'vat': kwargs.get('vat'),
+#             'num_rc': kwargs.get('num_rc'),
+#             'art': kwargs.get('art'),
+             'nif': kwargs.get('nif'),
+            'rc': kwargs.get('rc'),
+            'ai': kwargs.get('ai'),
             'agrem': kwargs.get('agrem'),
 
             'fname': kwargs.get('first_name'),
             'lname': kwargs.get('last_name'),
-            'email2': kwargs.get('email2'),
+            'email': kwargs.get('email'),
+#             'email2': kwargs.get('email2'),
             'position': kwargs.get('position'),
             'mobile': kwargs.get('mobile'),
             'phone': kwargs.get('phone'),
@@ -166,7 +170,8 @@ class AuthSignupHome(Home):
                 'name': qcontext.get('company_name'),
                 'web_company_type': qcontext.get('company_type'),
                 'email': qcontext.get('login'),
-                'vat': qcontext.get('vat'),
+#                 'vat': qcontext.get('vat'),
+                'nif': qcontext.get('nif'),
                 # 'comment': qcontext.get('comment'),
             }
             exp_agrem = datetime.datetime.strptime(qcontext.get('exp_agrem'),
@@ -178,9 +183,12 @@ class AuthSignupHome(Home):
 
                 'company_statut': qcontext.get('company_type'),
                 'email': qcontext.get('login'),
-                'vat': qcontext.get('vat'),
-                'num_rc': qcontext.get('num_rc'),
-                'art': qcontext.get('art'),
+#                 'vat': qcontext.get('vat'),
+#                 'num_rc': qcontext.get('num_rc'),
+#                 'art': qcontext.get('art'),
+                'nif': qcontext.get('nif'),
+                'rc': qcontext.get('rc'),
+                'ai': qcontext.get('ai'),
                 'agrem': qcontext.get('agrem'),
                 'exp_agrem': exp_agrem,
                 'mobile': qcontext.get('mobile'),
@@ -260,7 +268,7 @@ class Home(http.Controller):
 
         decrpt = f.decrypt(bytes(token, 'utf-8'))
         account = decrpt.decode('utf-8').split('/')
-        uid = request.session.authenticate("protecdz-copie-3087959", account[0],
+        uid = request.session.authenticate("protecdz", account[0],
                                            account[1])
         request.params['login_success'] = True
         return http.redirect_with_hash(
