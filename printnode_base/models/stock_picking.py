@@ -50,6 +50,10 @@ class StockPicking(models.Model):
             # Print product labels
             self.print_scenarios(action='print_product_labels_on_transfer')
 
+            # Print lot labels
+            self.print_scenarios(action='print_single_lot_labels_on_transfer_after_validation')
+            self.print_scenarios(action='print_multiple_lot_labels_on_transfer_after_validation')
+
             # Print packages
             self.print_scenarios(action='print_packages_label_on_transfer')
 
@@ -95,15 +99,16 @@ class StockPicking(models.Model):
                 move_lines_without_package = self.move_line_ids_without_package.filtered(
                     lambda l: not l.result_package_id)
                 if move_lines_without_package:
-                    raise UserError(_('Some products on Delivery Order are not in Package. For '
-                                      'printing Package Slips + Shipping Labels, please, put in '
-                                      'pack remaining products. If you want to print only Shipping '
-                                      'Label, please, deactivate "Print Package just after Shipping'
-                                      ' Label" checkbox in PrintNode/Configuration/Settings'))
+                    raise UserError(_(
+                        'Some products on Delivery Order are not in Package. For '
+                        'printing Package Slips + Shipping Labels, please, put in '
+                        'pack remaining products. If you want to print only Shipping '
+                        'Label, please, deactivate "Print Package just after Shipping'
+                        ' Label" checkbox in PrintNode/Configuration/Settings'))
 
         if auto_print:
-            # Expected UserError if there is no shipping label printer is available.
-            user.get_shipping_label_printer()
+            # Simple check if shipping printer set, raise exception if no shipping printer found
+            user.get_shipping_label_printer(self.carrier_id, raise_exc=True)
 
         super(StockPicking, self).send_to_shipper()
 
@@ -122,22 +127,6 @@ class StockPicking(models.Model):
 
         if auto_print and (self.shipping_label_ids or user.company_id.print_sl_from_attachment):
             self.with_context(raise_exception_slp=False).print_last_shipping_label()
-
-    def _add_multi_print_lines(self):
-        product_lines = []
-        unit_uom = self.env.ref('uom.product_uom_unit')
-        for move in self.move_lines:
-            quantity = 1
-            if move.product_uom == unit_uom:
-                quantity = move.product_uom_qty
-
-            product_lines.append(
-                (0, 0, {
-                    'product_id': move.product_id.id,
-                    'quantity': quantity},
-                 )
-            )
-        return product_lines
 
     def _print_sl_from_attachment(self, raise_exception=True):
         self.ensure_one()
@@ -161,7 +150,7 @@ class StockPicking(models.Model):
         domain.append(('create_date', '=', attachment.create_date))
         last_attachments = self.env['ir.attachment'].search(domain)
 
-        printer = self.env.user.get_shipping_label_printer()
+        printer = self.env.user.get_shipping_label_printer(self.carrier_id, raise_exc=True)
 
         for doc in last_attachments:
             params = {
@@ -227,16 +216,89 @@ class StockPicking(models.Model):
         }
         self.env['shipping.label'].create(shipping_label_vals)
 
+    def _scenario_print_single_lot_labels_on_transfer_after_validation(
+        self, scenario, number_of_copies=1, **kwargs
+    ):
+        """
+        Print single lot label for each move line (after validation)
+        Special method to provide custom logic of printing
+        (like printing labels through wizards)
+        """
+
+        printed = self._scenario_print_single_lot_label_on_transfer(
+            scenario=scenario,
+            number_of_copies=number_of_copies,
+            **kwargs
+        )
+
+        return printed
+
+    def _scenario_print_multiple_lot_labels_on_transfer_after_validation(
+        self, scenario, number_of_copies=1, **kwargs
+    ):
+        """
+        Print multiple lot labels (depends on quantity) for each move line (after validation)
+        Special method to provide custom logic of printing
+        (like printing labels through wizards)
+        """
+
+        printed = self._scenario_print_multiple_lot_labels_on_transfer(
+            scenario=scenario,
+            number_of_copies=number_of_copies,
+            **kwargs
+        )
+
+        return printed
+
+    def _scenario_print_single_lot_label_on_transfer(
+        self, scenario, report_id, printer_id, number_of_copies=1, **kwargs
+    ):
+        """
+        Print single lot label for each move line (real time)
+        Special method to provide custom logic of printing
+        (like printing labels through wizards)
+        """
+        new_move_lines = kwargs.get('new_move_lines', self.move_line_ids)
+        print_options = kwargs.get('options', {})
+
+        return self._print_lot_labels_report(
+            new_move_lines,
+            report_id,
+            printer_id,
+            with_qty=False,
+            copies=number_of_copies,
+            options=print_options)
+
+    def _scenario_print_multiple_lot_labels_on_transfer(
+        self, scenario, report_id, printer_id, number_of_copies=1, **kwargs
+    ):
+        """
+        Print multiple lot labels (depends on quantity) for each move line (real time)
+        Special method to provide custom logic of printing (like printing labels through wizards)
+        """
+        new_move_lines = kwargs.get('new_move_lines', self.move_line_ids)
+        print_options = kwargs.get('options', {})
+
+        return self._print_lot_labels_report(
+            new_move_lines,
+            report_id,
+            printer_id,
+            with_qty=True,
+            copies=number_of_copies,
+            options=print_options)
+
     def _scenario_print_product_labels_on_transfer(
         self, report_id, printer_id, number_of_copies=1, **kwargs
     ):
         """
+        Print multiple product labels (depends on quantity) for each move line (after validation)
         Special method to provide custom logic of printing
         (like printing labels through wizards).
 
         If you need to just print a report - check scenarios.
         """
-        product_lines = self._add_multi_print_lines()
+        move_lines = self.move_lines
+        product_lines = self._get_product_lines_from_stock_moves(move_lines)
 
         wizard = self.env['product.label.multi.print'].create({
             'report_id': report_id.id,
@@ -247,70 +309,11 @@ class StockPicking(models.Model):
 
         return True
 
-    def _scenario_print_single_lot_label_on_transfer(
-        self, report_id, printer_id, number_of_copies=1, **kwargs
-    ):
-        """
-        Print single lot label for each move line
-        """
-        new_move_lines = kwargs.get('new_move_lines')
-        print_options = kwargs.get('options', {})
-        move_lines_with_lots_and_qty_done = new_move_lines.filtered(
-            lambda ml: ml.lot_id and not ml.printnode_printed and ml.qty_done > 0)
-
-        printed = False
-
-        for move_line in move_lines_with_lots_and_qty_done:
-            if move_line.lot_id:
-                printer_id.printnode_print(
-                    report_id,
-                    move_line.lot_id,
-                    copies=number_of_copies,
-                    options=print_options,
-                )
-
-                move_line.write({'printnode_printed': True})
-                printed = True
-
-        return printed
-
-    def _scenario_print_multiple_lot_labels_on_transfer(
-        self, report_id, printer_id, number_of_copies=1, **kwargs
-    ):
-        """
-        Print multiple lot labels (depends on quantity) for each move line
-        """
-        new_move_lines = kwargs.get('new_move_lines')
-        print_options = kwargs.get('options', {})
-        move_lines_with_lots_and_qty_done = new_move_lines.filtered(
-            lambda ml: ml.lot_id and not ml.printnode_printed and ml.qty_done > 0)
-
-        printed = False
-
-        for move_line in move_lines_with_lots_and_qty_done:
-            lots = self.env['stock.production.lot']
-
-            for i in range(int(move_line.qty_done)):
-                lots = lots.concat(move_line.lot_id)
-
-            if lots:
-                printer_id.printnode_print(
-                    report_id,
-                    lots,
-                    copies=number_of_copies,
-                    options=print_options,
-                )
-
-                move_line.write({'printnode_printed': True})
-                printed = True
-
-        return printed
-
     def _scenario_print_single_product_label_on_transfer(
         self, report_id, printer_id, number_of_copies=1, **kwargs
     ):
         """
-        Print single product label for each move line
+        Print single product label for each move line (real time)
         """
         new_move_lines = kwargs.get('new_move_lines')
         print_options = kwargs.get('options', {})
@@ -337,7 +340,7 @@ class StockPicking(models.Model):
         self, report_id, printer_id, number_of_copies=1, **kwargs
     ):
         """
-        Print multiple product labels for each move line
+        Print multiple product labels for each move line (real time)
         """
         new_move_lines = kwargs.get('new_move_lines')
         print_options = kwargs.get('options', {})
@@ -411,3 +414,101 @@ class StockPicking(models.Model):
             copies=number_of_copies,
             options=print_options,
         )
+
+    def _get_product_lines_from_stock_moves(self, move_lines):
+        """
+        This method returns product_lines with product_id and quantity from stock_moves
+        """
+        unit_uom = self.env.ref('uom.product_uom_unit')
+
+        product_lines = []
+        move_lines_with_qty_done = move_lines.filtered(lambda ml: ml.quantity_done > 0)
+
+        for move_line in move_lines_with_qty_done:
+            quantity_done = 1
+            if move_line.product_uom == unit_uom:
+                quantity_done = move_line.quantity_done
+
+            product_lines.append((0, 0, {
+                'product_id': move_line.product_id.id,
+                'quantity': quantity_done,
+            }))
+
+        return product_lines
+
+    def _get_product_lines_from_stock_move_lines(self, move_lines, with_qty=False):
+        """
+        This method returns product_lines with product_id and quantity from stock_move_lines
+        """
+        unit_uom = self.env.ref('uom.product_uom_unit')
+
+        product_lines = []
+        move_lines_with_lots_and_qty_done = move_lines.filtered(
+            lambda ml: ml.qty_done > 0 and ml.lot_id)
+
+        for move_line in move_lines_with_lots_and_qty_done:
+            quantity_done = 1
+            if move_line.product_uom_id == unit_uom and with_qty:
+                quantity_done = move_line.qty_done
+
+            product_lines.append((0, 0, {
+                'product_id': move_line.lot_id.id,
+                'quantity': quantity_done,
+            }))
+
+        return product_lines
+
+    def _add_multi_print_lines(self):
+        """
+        FIXME: This method really should be removed because this left to provide compatibility
+        with 'multi.print.mixin' mixin
+
+        Looks like this method should be the same as _get_product_lines_from_stock_moves but
+        this needs to be approved and tested
+        """
+        product_lines = []
+        unit_uom = self.env.ref('uom.product_uom_unit')
+        for move in self.move_lines:
+            quantity = 1
+            if move.product_uom == unit_uom:
+                quantity = move.product_uom_qty
+
+            product_lines.append(
+                (0, 0, {'product_id': move.product_id.id, 'quantity': quantity})
+            )
+        return product_lines
+
+    def _print_lot_labels_report(
+        self, new_move_lines, report_id, printer_id,
+        with_qty=False, copies=1, options=None
+    ):
+        """
+        This method runs printing of lots labels. It can print single lot label for each lot or
+        quantity based on qty_done attribute
+        """
+        move_lines_with_lots_and_qty_done = new_move_lines.filtered(
+            lambda ml: ml.lot_id and not ml.printnode_printed and ml.qty_done > 0)
+
+        printed = False
+
+        for move_line in move_lines_with_lots_and_qty_done:
+            lots = self.env['stock.production.lot']
+
+            if with_qty:
+                for i in range(int(move_line.qty_done)):
+                    lots = lots.concat(move_line.lot_id)
+            else:
+                lots = lots.concat(move_line.lot_id)
+
+            if lots:
+                printer_id.printnode_print(
+                    report_id,
+                    lots,
+                    copies=copies,
+                    options=options,
+                )
+
+                move_line.write({'printnode_printed': True})
+                printed = True
+
+        return printed

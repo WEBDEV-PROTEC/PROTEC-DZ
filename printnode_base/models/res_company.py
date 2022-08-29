@@ -92,3 +92,8 @@ class Company(models.Model):
         string="Direct Print Notification Page Limit",
         default=100,
     )
+
+    printnode_fit_to_page = fields.Boolean(
+        string='Disable fit to the page size',
+        default=False,
+    )

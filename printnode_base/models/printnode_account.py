@@ -1,12 +1,17 @@
 # Copyright 2021 VentorTech OU
 # See LICENSE file for full copyright and licensing details.
 
-import json
 import re
 import requests
 import psycopg2
 
 from odoo import api, exceptions, fields, models, registry, SUPERUSER_ID, _
+
+# Copied from request library to provide compatibility with the library
+try:
+    from simplejson import JSONDecodeError
+except ImportError:
+    from json import JSONDecodeError
 
 
 class PrintNodeAccount(models.Model):
@@ -239,12 +244,12 @@ class PrintNodeAccount(models.Model):
 
         if existing_scales:
             existing_scales.write({
-                'device_name': scales['deviceName'],
+                'name': scales['deviceName'],
                 'status': 'online',
             })
         else:
             scales_vals = {
-                'device_name': scales['deviceName'],
+                'name': scales['deviceName'],
                 'device_num': scales['deviceNum'],
                 'printnode_id': scales['productId'],
                 'computer_id': odoo_computer.id,
@@ -413,7 +418,8 @@ class PrintNodeAccount(models.Model):
             if resp.status_code not in (200, 403):
                 resp.raise_for_status()
 
-            self.status = 'OK'
+            if self.status != 'OK':
+                self.status = 'OK'
 
             json_response = resp.json()
 
@@ -430,7 +436,7 @@ class PrintNodeAccount(models.Model):
             # Deactivate printers only from current account
             self._deactivate_printers()
 
-            self.status = resp.json().get('message') or e
+            self.status = e
 
         return None
 
@@ -452,7 +458,8 @@ class PrintNodeAccount(models.Model):
         try:
             resp = methods[method]('{}/{}'.format(dpc_url, uri), **kwargs)
 
-            self.status = 'OK'
+            if self.status != 'OK':
+                self.status = 'OK'
             return resp.json()
         except requests.exceptions.ConnectionError as e:
             self._deactivate_printers()
@@ -461,8 +468,8 @@ class PrintNodeAccount(models.Model):
         except requests.exceptions.RequestException as e:
             self._deactivate_printers()
 
-            self.status = resp.json().get('message') or e
-        except json.decoder.JSONDecodeError as e:
+            self.status = e
+        except JSONDecodeError as e:
             self._deactivate_printers()
 
             self.status = e

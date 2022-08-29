@@ -98,6 +98,11 @@ class ResConfigSettings(models.TransientModel):
         related='company_id.printnode_notification_page_limit',
     )
 
+    printnode_fit_to_page = fields.Boolean(
+        readonly=False,
+        related='company_id.printnode_fit_to_page',
+    )
+
     dpc_api_key = fields.Char(
         string='API Key',
         default='',
@@ -134,9 +139,11 @@ class ResConfigSettings(models.TransientModel):
     def _onchange_available_wizard_report(self):
         available_report_ids = self.wizard_report_ids.ids
 
-        if not available_report_ids:
-            self.def_wizard_report_id = False
-        elif self.def_wizard_report_id and self.def_wizard_report_id.id not in available_report_ids:
+        if (
+            available_report_ids and  # Empty list means that all reports allowed
+            self.def_wizard_report_id and
+            self.def_wizard_report_id.id not in available_report_ids
+        ):
             self.def_wizard_report_id = available_report_ids[0]
 
     @api.onchange('print_package_with_label', 'print_sl_from_attachment')
@@ -187,9 +194,10 @@ class ResConfigSettings(models.TransientModel):
         if self.print_package_with_label and not self.group_stock_tracking_lot:
             self.group_stock_tracking_lot = True
 
-        self.env['printnode.account'].update_main_account(
-            self.dpc_api_key,
-            self.dpc_is_allowed_to_collect_data)
+        if self.dpc_api_key:
+            self.env['printnode.account'].update_main_account(
+                self.dpc_api_key,
+                self.dpc_is_allowed_to_collect_data)
 
         super(ResConfigSettings, self).set_values()
 

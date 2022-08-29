@@ -136,7 +136,7 @@ class PrintNodeScenario(models.Model):
             or not user.has_group(SECURITY_GROUP)
             or not user.printnode_enabled
         ):
-            # It is possible to execute scanarios from scheduled actions
+            # It is possible to execute scenarios from scheduled actions
             if not self.env.context.get('from_cron', False):
                 return False
 
@@ -160,6 +160,7 @@ class PrintNodeScenario(models.Model):
                         printer, printer_bin = scenario._get_printer()
                         print_options = {'bin': printer_bin.name} if printer_bin else {}
                         printed = scenario_method(
+                            scenario=scenario,
                             report_id=scenario.report_id,
                             printer_id=printer,
                             number_of_copies=scenario.number_of_copies,
@@ -174,6 +175,7 @@ class PrintNodeScenario(models.Model):
                         printer, printer_bin = scenario._get_printer()
                         print_options = {'bin': printer_bin.name} if printer_bin else {}
                         printed = scenario_method(
+                            scenario=scenario,
                             report_id=scenario.report_id,
                             printer_id=printer,
                             number_of_copies=scenario.number_of_copies,

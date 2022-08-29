@@ -143,7 +143,7 @@ class PrintNodePrinter(models.Model):
             job_id = resp.json()
             self.account_id.log_debug(job_id, 'printnode_post_response_%s' % function_name)
             self.sudo().write({'printjob_ids': [(0, 0, {
-                'printnode_id': job_id,
+                'printnode_id': str(job_id),
                 'description': data['title'],
             })]})
         else:
@@ -185,8 +185,9 @@ class PrintNodePrinter(models.Model):
             'contentType': ['raw_base64', 'pdf_base64'][pdf],
             'content': base64.b64encode(content).decode('ascii'),
             'qty': copies,
-            'options': options,
+            'options': self._get_data_options(options),
         }
+
         res = self._post_printnode_job('printjobs', data)
 
         # If model has printnode_printed flag and this flag is not inherited from other model
@@ -334,6 +335,17 @@ class PrintNodePrinter(models.Model):
         source_name = 'Odoo Direct Print PRO %s' % module_version
         return source_name
 
+    def _get_data_options(self, params=None):
+        """Prepare print data options
+        """
+        options = {}
+        if self.env.company.printnode_fit_to_page:
+            options.update({'fit_to_page': False})
+        if params:
+            options.update(params)
+
+        return options
+
     def printnode_print_b64(self, ascii_data, params, check_printer_format=True):
         self.ensure_one()
         error = self.printnode_check(report=(check_printer_format and params))
@@ -349,8 +361,9 @@ class PrintNodePrinter(models.Model):
             'source': self._get_source_name(),
             'contentType': con_type,
             'content': ascii_data,
-            'options': params.get('options', {}),
+            'options': self._get_data_options(params.get('options', {})),
         }
+
         return self._post_printnode_job('printjobs', printnode_data)
 
     @api.depends('paper_ids', 'format_ids')

@@ -35,7 +35,7 @@ class DataSetProxy(DataSet):
             if not objects:
                 continue
             printer, printer_bin = action._get_action_printer()
-            options = {'bin': printer_bin} if printer_bin else {}
+            options = {'bin': printer_bin.name} if printer_bin else {}
             printer.printnode_print(
                 action.report_id,
                 objects,
@@ -108,8 +108,24 @@ class ReportControllerProxy(ReportController):
     def _check_direct_print(self, data):
         print_data = {'can_print': False}
         request_content = json.loads(data)
+
         report_url, report_type = request_content[0], request_content[1]
+
+        # Get workstation devices from request (if specified)
+        # Moved to separate block for backward compatibility with old versions
+        workstation_devices = {}
+        if len(request_content) > 2:
+            workstation_devices = request_content[2]
+
         print_data['report_type'] = report_type
+
+        # Add workstations devices to context (if presented)
+        new_context = request.env.context.copy()
+        workstation_devices = {k: v for k, v in workstation_devices.items() if v is not None}
+
+        if workstation_devices:
+            new_context.update(workstation_devices)
+
         # STEP 1: First check if direct printing is enabled for user at all.
         # If no - not need to go further
         user = request.env.user
@@ -152,7 +168,8 @@ class ReportControllerProxy(ReportController):
 
         # STEP 4. Now let's check if we can define printer for the current report.
         # If not - just reset to default
-        printer_id, printer_bin = user.get_report_printer(report.id)
+        printer_id, printer_bin = user.with_context(new_context).get_report_printer(report.id)
+
         if not printer_id:
             return print_data
 
@@ -165,8 +182,10 @@ class ReportControllerProxy(ReportController):
     @http.route('/report/check', type='http', auth="user")
     def report_check(self, data, context=None):
         print_data = self._check_direct_print(data)
+
         if print_data['can_print']:
             return "true"
+
         return "false"
 
     @http.route('/report/print', type='http', auth="user")
