@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sh_shop_product_quantity" inherit_id="website_sale.product_quantity">
+        <xpath expr="//input[@name='add_qty']" position="replace">
+            <t t-if="request.env['sh.moq.multi.website'].sudo().search([('website_id','=',request.website.id),('product_id','=',product.id)],limit=1)">
+            	<t t-foreach="request.env['sh.moq.multi.website'].sudo().search([('website_id','=',request.website.id),('product_id','=',product.id)],limit=1)" t-as="data">
+	                <t t-if="product.company_id.multi_website_moq and data">
+	                    <input type="text" class="form-control quantity" data-min="1" name="add_qty" id="qty_id" 
+	                    t-att-value="data.sh_increment_qty or 1" t-att-data-min="data.sh_increment_qty" t-att-data-setqty="data.sh_increment_qty or 1" />
+	                </t>
+	                <t t-else="">
+						
+						 <input
+	                        type="text"
+	                        class="form-control quantity"
+	                        data-min="1"
+	                        name="add_qty"
+	                        id="qty_id"
+	                        t-att-value="product.sh_increment_qty or 1"
+	                        t-att-data-min="product.sh_increment_qty"
+	                        t-att-data-setqty="product.sh_increment_qty or 1"
+	                    />
+	                   
+	                </t>
+            	</t>
+            </t>
+            <t t-else="">
+            	 <input
+                        type="text"
+                        class="form-control quantity"
+                        name="add_qty"
+                        id="qty_id"
+                        t-att-value="product.sh_increment_qty or 1"
+                        t-att-data-min="product.sh_increment_qty"
+                        t-att-data-setqty="product.sh_increment_qty or 1"
+                    />
+            </t>
+            
+            
+        </xpath>
+    </template> 
+    <!-- This template is the one at the "Review order" step (the first one) on the checkout workflow. -->
+    <template id="sh_shop_qty_cart_lines" inherit_id="website_sale.cart_lines" name="SH Shopping Cart Lines">
+        <xpath expr="//input[hasclass('js_quantity')]" position="replace">
+            <t t-if="request.env['sh.moq.multi.website'].sudo().search([('website_id','=',request.website.id),('product_id','=',line.product_id.product_tmpl_id.id)],limit=1)">
+	            <t t-foreach="request.env['sh.moq.multi.website'].sudo().search([('website_id','=',request.website.id),('product_id','=',line.product_id.product_tmpl_id.id)],limit=1)" t-as="data">
+	                <t t-if="line.product_id.company_id.multi_website_moq and data">
+	                    <input
+	                        type="text"
+	                        class="js_quantity form-control quantity sh_shop_qty_input_qty"
+	                        t-att-data-setqty="data.sh_increment_qty"
+	                        t-att-data-line-id="line.id"
+	                        t-att-data-product-id="line.product_id.id"
+	                        t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"
+	                    />
+	                </t>
+	                <t t-else="">
+	                    <input
+	                        type="text"
+	                        class="js_quantity form-control quantity sh_shop_qty_input_qty"
+	                        t-att-data-setqty="line.product_id.sh_increment_qty"
+	                        t-att-data-line-id="line.id"
+	                        t-att-data-product-id="line.product_id.id"
+	                        t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"
+	                    />
+	                </t>
+	            </t>
+	       </t>
+	      	<t t-else="">
+	      		<input
+                        type="text"
+                        class="js_quantity form-control quantity sh_shop_qty_input_qty"
+                        t-att-data-setqty="line.product_id.sh_increment_qty"
+                        t-att-data-line-id="line.id"
+                        t-att-data-product-id="line.product_id.id"
+                        t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"
+                    />
+	      	</t>
+        </xpath>
+    </template>
+</odoo>
