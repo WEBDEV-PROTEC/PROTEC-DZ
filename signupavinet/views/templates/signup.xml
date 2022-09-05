@@ -86,7 +86,7 @@
                                 <hr/>
                                 <div class="form-group field-name">
                                     <input type="checkbox" name="check1" class="check_1"/>
-                                    <label for="name">Does your company resells security products?
+                                    <label for="name">Votre entreprise revend-elle des produits de sécurité ?
                                     </label>
                                 </div>
                                 <hr/>
@@ -95,7 +95,7 @@
                                 <hr/>
                                 <div class="form-group field-name">
                                     <input type="checkbox" name="check2" t-att-value="check2"  class="check_2"/>
-                                    <label for="name">Does your company resells telecom products?
+                                    <label for="name">Votre entreprise revend des produits télécoms ?
                                     </label>
                                 </div>
                                 <hr/>
@@ -173,7 +173,7 @@
                             </div>
                             <div class="col  col-12 col-sm-6 col-md-6 col-lg--">
                                 <div class="form-group field-name">
-                                    <label for="name">Telephone
+                                    <label for="name">Téléphone
                                     </label>
                                     <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm"
                                         t-att-readonly="'readonly' if only_passwords else None"
