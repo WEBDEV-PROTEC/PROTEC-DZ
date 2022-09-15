@@ -171,11 +171,11 @@ git merge bfbc314 && git push -u origin main
 #sh_category_dec{width: 100%;position: relative;margin-bottom:25px;}
 
 #sh_category_dec .sh_category_detail .sh_category_title {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 24px;
+    font-family: sans-serif;
+    font-size: 32px;
     position: relative;
-/*     margin: 36px 0px 0px 48px; */
-/*     padding-bottom: 26px; */
+    font-weight: 700;
+    color: #4c4c4c
 }
 
 #sh_category_dec .sh_category_detail{padding-left: 0px; margin: 36px 0px 16px 16px}
