@@ -217,5 +217,6 @@ sh_category_dec 4
 
 .card-hover:hover h5
 {
-    font-weight: 700
+    font-weight: 700;
+    color: #A52A21;
 }
