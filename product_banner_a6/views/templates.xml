@@ -1,0 +1,144 @@
+<odoo>
+    <data>
+        
+<!-- la description doit etre à droite
+
+et les Tag en bas avec le prix
+
+Tag Reference interne & Prix -->
+        <template id="product_label_a6" inherit_id="product.report_simple_label">
+            <xpath expr="//div[1]" position="replace">
+            <div style="width: 100%; display: inline-table;">
+                <table class="table mb-0">
+                    <tr>
+                        <th>
+                            <div class="row"> 
+                                <div class="col-2"> 
+                                    <img t-if="product.product_brand_ept_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(product.product_brand_ept_id.logo)"  style="max-height: 32px;"  />
+                                </div>                             
+                                <div class="col-10"> 
+                                    <strong t-field="product.display_name"/>
+                                 </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td style="height: 8rem;">
+                            <div class="row">
+                                <div class="col-6"><img t-if="product.image_1024" t-att-src="'data:image/png;base64,%s' % to_text(product.image_1024)" style="max-height: 256px;" /> </div>
+                                <div class="col-6">                        
+                                    <h4>Description</h4>
+                                    <span t-field="product.description_sale"/>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" style="height: 2rem;">
+                            <span style="padding: 4px 0;" class="tags"> 
+                                <span class="tag" t-foreach="product.dr_tag_ids" t-as="tag" > 
+                                    <img class="tag-image" t-if="tag.image" t-attf-src="data:image/gif;base64, #{tag.image}"/>
+                                    <a t-else="" t-field="tag.name"/> 
+                                </span>
+                            </span>
+                            <span style="color: #5f5f5f; font-weight: bold; margin-left: 8px;" t-field="product.default_code"/> | 
+                            <span t-field="product.lst_price" t-options="{'widget': 'monetary', 'display_currency': product.company_id.currency_id}"/>
+                        </td>
+                    </tr>
+                <!-- <tr t-if="product.description_sale"> 
+                        <td class="col offset-md-4 float-right">
+                            <span t-field="product.description_sale"/>
+                        </td>
+                    </tr>
+                     -->
+                    <tr>
+                        <td class="text-center align-middle" style="height: 6rem">
+                            <t t-if="product.barcode">
+                                <img alt="Barcode" t-if="len(product.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 600, 150)" style="width:100%;height::4rem;"/>
+                                <img alt="Barcode" t-elif="len(product.barcode) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(product.barcode or ''), 600, 150)" style="width:100%;height::4rem;"/>
+                                <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(product.barcode or ''), 600, 150)" style="width:100%;height::4rem;"/>
+                                <span t-field="product.barcode"/>
+                            </t>
+<!--                             <t t-else=""><span class="text-muted">No barcode available</span></t> -->
+                        </td>
+                    </tr>
+                </table>
+<!--                 <div t-if="product.description_sale" class="row"> 
+                    <div class="col-6"></div>
+                    <div class="col-6">
+                        <h4>Description</h4>
+                        <span t-field="product.description_sale"/>
+                    </div>
+                </div> -->
+                 
+                <p style="page-break-after: always;" > 
+                </p>
+                
+                <style>
+                    :root {
+                        /* Theme */
+                        --primary-color: #1662f3;
+                        --light-color: #d0dffc;
+                        --dark-color: #283b70;
+                        --regular-font: 'Inter', sans-serif;
+                    }
+                    
+                    .top-bg {
+                      height: 40px;
+                      background-image: url(/product_catalogue/static/img/footer.png);
+                      background-repeat: no-repeat;
+                      background-size: cover;
+                      background-position: top;
+                    }
+                    td, tbody {
+                        background:none
+                    }
+
+                    .tags {
+                         margin-left: 6px;
+                        margin-right: 6px;
+                        padding: 0;
+                        list-style-type: none;
+                        display: flex;
+                        flex-directon: row
+                        gap: 2rem;
+                        flex-wrap: wrap;
+                    }
+
+                    .tag {
+                        --color: var(--light-color);
+                        font-family: var(--regular-font);
+                        font-size: .9rem;
+                        border-radius: 100rem;
+                        /* box-shadow: 0 0 0 1.5px var(--light-color); */
+                        background-color: transparent;
+                        color: #0095ed;
+                        font-weight: bold;
+<!--                         transition: background-color 250ms ease, box-shadow 314ms ease; -->
+                        width: fit-content;
+                        margin-right: 16px
+                    }
+
+                    .tag>a {
+                        display: inline-block;
+                        position: relative;
+                        color: var(--dark-color);
+                        text-decoration: none;
+                        padding: 0.5rem;
+                    }
+
+                    .tag-image {
+                        max-height: 24px;
+                    }
+
+                    .te_product_brand_img {
+                        max-width: 130px;
+                        margin-right: 15px;
+                        margin: 15px 0px 7px;
+                    }
+                </style>
+            </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
