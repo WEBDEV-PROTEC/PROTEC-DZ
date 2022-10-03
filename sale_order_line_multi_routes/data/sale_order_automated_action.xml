@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vpcs_rule28022022_on_sale_order_create" model="base.automation">
+        <field name="name">Sale Order Split Automatic 28022022</field>
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="active">1</field>
+        <field name="state">code</field>
+        <field name="code">action = records.get_warehouse_ids()</field>
+        <field name="trigger">on_create_or_write</field>
+    </record>
+</odoo>

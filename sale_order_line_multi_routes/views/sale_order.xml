@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="view_order_form_inherit_multi_routes" model="ir.ui.view">
+            <field name="name">sale.order.form.multi.routes</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='commitment_date']" position="before">
+                    <field name="multi_warehouse_ids" options="{'no_create': True}" widget='many2many_tags'/>
+                </xpath>
+                <xpath expr="//page[@name='other_information']/group/group/field[@name='warehouse_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+           </field>
+        </record>
+
+    </data>
+</odoo>
