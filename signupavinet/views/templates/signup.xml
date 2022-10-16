@@ -59,7 +59,7 @@
                                 <div class="form-group field-name">
                                     <label for="name">NIF
                                     </label>
-                                    <input type="text" name="vat" t-att-value="vat" id="vat" class="form-control form-control-sm"
+                                    <input type="text" name="nif" t-att-value="nif" id="nif" class="form-control form-control-sm"
                                         t-att-readonly="'readonly' if only_passwords else None"
                                         t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                                 </div>
@@ -68,7 +68,7 @@
                                 <div class="form-group field-name">
                                     <label for="name">Numéro RC
                                     </label>
-                                    <input type="text" name="num_rc" t-att-value="num_rc" id="num_rc" class="form-control form-control-sm"
+                                    <input type="text" name="rc" t-att-value="rc" id="rc" class="form-control form-control-sm"
                                         t-att-readonly="'readonly' if only_passwords else None"
                                         t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                                 </div>
@@ -77,7 +77,7 @@
                                 <div class="form-group field-name">
                                     <label for="name">ART
                                     </label>
-                                    <input type="text" name="art" t-att-value="art" id="art" class="form-control form-control-sm"
+                                    <input type="text" name="ai" t-att-value="ai" id="ai" class="form-control form-control-sm"
                                         t-att-readonly="'readonly' if only_passwords else None"
                                         t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                                 </div>
