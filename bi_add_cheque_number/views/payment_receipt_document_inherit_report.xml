@@ -3,11 +3,23 @@
 	<template id="report_payment_receipt_document_inherit" inherit_id="account.report_payment_receipt_document">
         <xpath expr="//table[1]" position="before">
         	<div style="margin-top:50px;">
-                <h5><b>Cheque Details :</b></h5>
+                <h5><b>Details de Chèque:</b></h5>
             </div>
+            
             <div class="row" style="margin-bottom:50px;">
                 <div class="col-6" t-if="o.cheq_num">
-                    <strong>Number : </strong><span t-field="o.cheq_num"/>
+                    <strong>N° de chéque : </strong><span t-field="o.cheq_num"/>
+                </div>
+                
+                <div class="col-6" t-if="o.cheq_bank">
+                    <strong>Etablissement payeur : </strong><span t-field="o.cheq_bank"/>
+                </div>
+                
+                <div class="col-6" t-if="o.cheq_place">
+                    <strong>Lieu de Paiement : </strong><span t-field="o.cheq_place"/>
+                </div>
+                <div class="col-6" t-if="o.cheq_name">
+                    <strong>Nom du tireur : </strong><span t-field="o.cheq_name"/>
                 </div>
             </div>
         </xpath>
