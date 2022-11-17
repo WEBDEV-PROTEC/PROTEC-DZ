@@ -2,7 +2,7 @@
     <data>
         <template id="custom_batch_payment_report" inherit_id="account_batch_payment.print_batch_payment">
             <xpath expr="//div[@class='page page_batch_payment'][1]" position="replace">
-                <div t-foreach="pages(o)" t-as="page" class="page page_batch_payment">
+                <div t-foreach="pages(o)" t-as="page" class="page page_batch_payment"  style="padding-top: 0; margin-top:0">
                     <style>
                         .check {
                             margin-left: 5px;
@@ -28,8 +28,8 @@
                         }
                     </style>
                     <div>
-                        <div class="row mb-5">
-                            <div class="col-6">
+                        <div class="row mb-5"  style="padding-top: 0; margin-top:0">
+                            <div class="col-6"  style="padding-top: 0; margin-top:0">
                                 <img src="/batch_payment_pdf/static/download.png" alt="" style="height: 64px;"/>
                                 <!--                                <img src="/batch_payment_pdf/static/protec.png" alt="" style="height: 64px;"/> -->
                             </div>
