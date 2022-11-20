@@ -9,11 +9,14 @@
         </t>
         <div class="header">
             <div class="row" style="background-image: url(/product_catalogue/static/img/footer2.png);height: 140px; background-repeat: no-repeat; background-size: cover; background-position: top;">
-                <img style="max-height: 48px; margin: 10px 0 0 10px" src="/product_catalogue/static/img/logo-gray.png" />
-                <br/>
-                <div style="margin: 5px 0 0 10px; color: #f1f1f1; "> 
-                    Contact your sales department now:<br/>+213 550.900.360/363/364<br/>
-                    For more details visit:  www.protec-dz.com
+                <div class="col-4">
+                    <img style="max-height: 54px; margin: 10px 0 0 10px" src="/product_catalogue/static/img/logo-gray.png" />
+                </div>
+                <div class="col-8">
+                    <div style="margin: 5px 0 0 10px; color: #f1f1f1; float: right; text-align: left;"> 
+                        Contact your sales department now:<br/>+213 550.900.360/363/364<br/>
+                        For more details visit:  www.protec-dz.com
+                    </div> 
                 </div>
             </div>
         </div>
@@ -21,21 +24,16 @@
             <t t-call="web.external_layout">
                 <!--Start old loop -->
                 <div class="page" style="background:none"> 
-<!--                     <h2 style="color: ">LISTE DES PRODUITS</h2>
-                    <br /> -->
                     <table class="table" style="background-color:  #FFFFFF">
-                        <!--REFERENCE INTERNE / PRODUIT / IMAGE PRODUIT / PRIX SALES -->
-                        <!--<thead>
-                        </thead> -->
                         <tbody>
                             <!--Start loop -->
                             <t t-foreach="docs" t-as="o">
                                 <tr>
                                     <td>
                                         <div class="col-12 text-center">
-                                            <img t-if="o.product_brand_ept_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.product_brand_ept_id.logo)" style="max-width: 100px; margin-bottom: 8px" />
+                                            <img t-if="o.product_brand_ept_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.product_brand_ept_id.logo)" style="max-width: 64px; margin-bottom: 8px" />
                                             <br/>
-                                            <img t-if="o.image_1024" t-att-src="'data:image/png;base64,%s' % to_text(o.image_1024)" style="max-height: 128px;" />
+                                            <img t-if="o.image_1024" t-att-src="'data:image/png;base64,%s' % to_text(o.image_1024)" style="max-height: 64px;" />
                                         </div>
                                         
                                     </td>
