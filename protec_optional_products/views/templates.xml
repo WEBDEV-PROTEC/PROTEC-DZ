@@ -34,7 +34,7 @@
                     
                 </style>
                 <div id="myCarousel_acce_prod" class="" data-interval="5000">
-                    <h3 class="te_product_alt_h3">Optional Products</h3>
+                    <h3 class="te_product_alt_h3">Ajouter un article en option</h3>
                     <div class="owl-carousel">
                         <t t-foreach="product.accessory_product_ids" t-as="alt_product">
                             <t t-set="combination_info" t-value="alt_product._get_combination_info_variant(pricelist=website.get_current_pricelist())"/>
