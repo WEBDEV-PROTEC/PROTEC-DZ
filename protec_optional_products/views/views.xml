@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="protec_optional_products.list">
+      <field name="name">protec_optional_products list</field>
+      <field name="model">protec_optional_products.protec_optional_products</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="protec_optional_products.action_window">
+      <field name="name">protec_optional_products window</field>
+      <field name="res_model">protec_optional_products.protec_optional_products</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="protec_optional_products.action_server">
+      <field name="name">protec_optional_products server</field>
+      <field name="model_id" ref="model_protec_optional_products_protec_optional_products"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="protec_optional_products" id="protec_optional_products.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="protec_optional_products.menu_1" parent="protec_optional_products.menu_root"/>
+    <menuitem name="Menu 2" id="protec_optional_products.menu_2" parent="protec_optional_products.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="protec_optional_products.menu_1_list" parent="protec_optional_products.menu_1"
+              action="protec_optional_products.action_window"/>
+    <menuitem name="Server to list" id="protec_optional_products" parent="protec_optional_products.menu_2"
+              action="protec_optional_products.action_server"/>
+-->
+  </data>
+</odoo>
