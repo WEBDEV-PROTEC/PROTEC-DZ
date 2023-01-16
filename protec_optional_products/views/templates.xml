@@ -74,12 +74,5 @@
                 </div>
             </xpath>
         </template>
-        
-        <template id="protec_replace_optional_products" inherit_id="theme_clarico_vega.product_ept" name="Hide Protec Optional Products">
-                <xpath expr="//div[@class='recommended_product_slider_main container']" position="replace">
-    
-                    <div>test</div>
-                </xpath>
-        </template>
     </data>
 </odoo>
