@@ -15,7 +15,7 @@
 				<hr style="margin-bottom:10px;"/>
 				<div class="wk_product_slot_loading mt8" style="background-color:#c4c4c8;width:100%;text-align: center;padding:10px;">
 					<i class="fa fa-spinner fa-pulse fa-2x fa-fw margin-bottom" style="vertical-align: middle;"/>
-					<span> Loading offers</span>
+					<span>Chargement des offres</span>
 				</div>
 				<span class="wk_product_offer_slot"/>
 			</xpath>
@@ -28,8 +28,8 @@
 					<span style="font-size: 20px;">
 						<i class="fa fa-tags" aria-hidden="true"></i>
 						<span t-esc="len(relevent_offers)"/>
-						<span t-if="len(relevent_offers) > 1">Offers</span>
-						<span t-else="">Offer</span>
+						<span t-if="len(relevent_offers) > 1">Offres</span>
+						<span t-else="">Offre</span>
 					</span>
 				</div>
 				<div class="price_slot_offers" style="max-height: 240px;overflow-y: auto;">
@@ -54,13 +54,13 @@
 						<t t-set="expired" t-value="request.website.check_offer_expired_or_not(offer)"/> 
 						<div t-attf-class="card wk_offer_div mt8 p-2 #{'expired' if expired else ''}" t-att-style="'position:relative;' if expired else ''">
 							<input type="hidden" class="" name="min_qty" t-att-value="offer.min_quantity" />
-							<p class="row_1 d-flex align-items-center justify-content-between mb4" style="font-size:14px;">
+							<p class="row no-gutters d-flex align-items-left justify-content-between mb4" style="font-size:14px;">
 								<span >
-									<span class="text-muted" style="font-size:12px;">MIN QTY :</span>
+									<span class="text-muted" style="font-size:12px;">QTÉ MINI :</span>
 									<span t-esc="offer.min_quantity"/>
 								</span>
 								<span>
-									<span class="text-muted" style="font-size:12px;">TILL :</span>
+									<span class="text-muted" style="font-size:12px;"> JUSQU'À :</span>
 									<span t-if="offer.date_end" t-field="offer.date_end" t-options='{"widget":"datetime"}' />
 									<span t-else="">N/A</span>
 								</span> 
@@ -72,7 +72,7 @@
 								<input type="hidden" class="form-control wk_price_slot_qty" data-min="1"  name="add_qty" t-att-value="offer.min_quantity"/>
 								<span class="d-flex align-items-center justify-content-between">
 									<span>
-										<span class="text-muted" style="font-size:14px;">UNIT PRICE:</span>
+										<span class="text-muted" style="font-size:14px;">Prix unitaire:</span>
 										<span t-if="not expired" t-esc="product_id.product_tmpl_id._get_combination_info(product_id=product_id.id, add_qty = offer.min_quantity, pricelist=pricelist)['price']" 
 											t-options="{'widget': 'monetary', 'display_currency': request.website.currency_id}"
 											style="font-size: 18px;font-weight: 600;"/>
@@ -94,7 +94,7 @@
 			<t t-if="not relevent_offers">
 				<div class="alert alert-info mb0 d-none no-offer" style="padding: 5px;">
 					<span style="font-size: 20px;">
-						No offer found!
+						Aucune offre trouvée!
 					</span>
 				</div>	
 			</t>
