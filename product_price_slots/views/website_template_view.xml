@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+
+<odoo>
+	<data>
+		<template id="assets_frontend" inherit_id="website.assets_frontend" name="Assets Price Slot">
+			<xpath expr="." position="inside">
+			    <script src="/product_price_slots/static/src/js/product_price_slot.js" type="text/javascript"></script>
+		    </xpath>
+		</template>
+		<template id="mp_sold_by_detail_in_product" inherit_id="website_sale.product" active="True" name="Product Price Slot Offer">
+			<xpath expr="//div[@id='product_details']//div[hasclass('js_product')]" position="inside">
+				<hr style="margin-bottom:10px;"/>
+				<div class="wk_product_slot_loading mt8" style="background-color:#c4c4c8;width:100%;text-align: center;padding:10px;">
+					<i class="fa fa-spinner fa-pulse fa-2x fa-fw margin-bottom" style="vertical-align: middle;"/>
+					<span> Loading offers</span>
+				</div>
+				<span class="wk_product_offer_slot"/>
+			</xpath>
+		</template>
+
+		<template id="product_price_offer_template" name="Product Price Slot Offer">
+			<t t-set="is_eligible" t-value="website.check_partner_country_eligiblity_for_pricelist(request.env.user.partner_id,pricelist)"/>
+			<t t-if="product_id and is_eligible and relevent_offers">
+				<div class="alert alert-success text-center mb0" style="padding: 5px;">
+					<span style="font-size: 20px;">
+						<i class="fa fa-tags" aria-hidden="true"></i>
+						<span t-esc="len(relevent_offers)"/>
+						<span t-if="len(relevent_offers) > 1">Offers</span>
+						<span t-else="">Offer</span>
+					</span>
+				</div>
+				<div class="price_slot_offers" style="max-height: 240px;overflow-y: auto;">
+					<style>
+							.wk_offer_div.expired:before{
+								content:'Expired';
+								position:absolute;
+								top:0;
+								right:0;
+								bottom:0;
+								left:0;
+								z-index:10;
+								color:red;
+								background:rgba(255,255,255,.5);
+								display:flex;
+								align-items:center;
+								justify-content:center;
+							}
+					</style>  
+                       <t t-if="not request.env.user.has_group('base.group_public')">
+                        <t t-foreach="relevent_offers" t-as="offer">
+						<t t-set="expired" t-value="request.website.check_offer_expired_or_not(offer)"/> 
+						<div t-attf-class="card wk_offer_div mt8 p-2 #{'expired' if expired else ''}" t-att-style="'position:relative;' if expired else ''">
+							<input type="hidden" class="" name="min_qty" t-att-value="offer.min_quantity" />
+							<p class="row_1 d-flex align-items-center justify-content-between mb4" style="font-size:14px;">
+								<span >
+									<span class="text-muted" style="font-size:12px;">MIN QTY :</span>
+									<span t-esc="offer.min_quantity"/>
+								</span>
+								<span>
+									<span class="text-muted" style="font-size:12px;">TILL :</span>
+									<span t-if="offer.date_end" t-field="offer.date_end" t-options='{"widget":"datetime"}' />
+									<span t-else="">N/A</span>
+								</span> 
+							</p>
+							<form  action="/shop/cart/update" method="post" t-att-id="offer.id">
+								<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+								<input type="hidden" class="" name="product_id" t-att-value="product_id.id" />
+								<input type="hidden" class="" name="product_template_id" t-att-value="product_id.product_tmpl_id.id" />
+								<input type="hidden" class="form-control wk_price_slot_qty" data-min="1"  name="add_qty" t-att-value="offer.min_quantity"/>
+								<span class="d-flex align-items-center justify-content-between">
+									<span>
+										<span class="text-muted" style="font-size:14px;">UNIT PRICE:</span>
+										<span t-if="not expired" t-esc="product_id.product_tmpl_id._get_combination_info(product_id=product_id.id, add_qty = offer.min_quantity, pricelist=pricelist)['price']" 
+											t-options="{'widget': 'monetary', 'display_currency': request.website.currency_id}"
+											style="font-size: 18px;font-weight: 600;"/>
+										<span t-if="expired">N/A</span>
+									</span>
+									<button class="btn btn-primary btn-sm fa fa-shopping-cart wk_add_to_cart_slot" t-att-id="offer.id" title="Add to cart"> Add to Cart </button>										
+								</span>						
+							</form>
+						</div>
+                        </t>
+                    </t>   
+                    <t t-else="">
+                        <span class="d-flex align-items-center justify-content-between mt-5 mb-5">
+                            <a href="/web/login" class="btn btn-secondary">Connectez-vous pour voir les offres</a>
+                        </span>
+                    </t>
+				</div>
+			</t>
+			<t t-if="not relevent_offers">
+				<div class="alert alert-info mb0 d-none no-offer" style="padding: 5px;">
+					<span style="font-size: 20px;">
+						No offer found!
+					</span>
+				</div>	
+			</t>
+		</template>
+	</data>
+</odoo>
