@@ -57,15 +57,17 @@
                                                 <span style="font-size: 14px;" t-att-title="alt_product.name" t-field="alt_product.name" t-attf-class="alt_prod_name #{'te_2_line' if (website.number_of_product_line == '2') else 'te_3_line' if (website.number_of_product_line == '3') else ''}"/>
                                             </h6>
                                         </a>
-                                        <del t-attf-class="te_shop_del mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap; font-size: 12px;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
-                                        <span t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" style="font-size: 12px;" />
-                                        <div t-attf-class="te_discount {{'' if combination_info['has_discounted_price'] else 'd-none'}}">
-                                            <t t-set="difference" t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
-                                            <t t-set="discount" t-value="round(difference*100/combination_info['list_price']) if combination_info['list_price'] &gt; 0 else 0"/>
-                                            <div style="font-size: 12px;" class="te_percentage" t-if="discount"><span t-esc="'(%s'%(discount)+'%'"/>
-                                                Off)
+                                         <t t-if="not request.env.user.has_group('base.group_public')">
+                                            <del t-attf-class="te_shop_del mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap; font-size: 12px;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                            <span t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" style="font-size: 12px;" />
+                                            <div t-attf-class="te_discount {{'' if combination_info['has_discounted_price'] else 'd-none'}}">
+                                                <t t-set="difference" t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
+                                                <t t-set="discount" t-value="round(difference*100/combination_info['list_price']) if combination_info['list_price'] &gt; 0 else 0"/>
+                                                <div style="font-size: 12px;" class="te_percentage" t-if="discount"><span t-esc="'(%s'%(discount)+'%'"/>
+                                                    Off)
+                                                </div>
                                             </div>
-                                        </div>
+                                        </t>
                                     </section>
                                 </div>
                         </t>
