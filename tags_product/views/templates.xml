@@ -54,7 +54,8 @@
                     }
 
                     .tag-image {
-                        max-height: 36px;
+                        min-height: 32px;
+                        max-height: 64px
                     }
                 </style>
                 <div class="col-12"> 
