@@ -91,13 +91,13 @@
                     </t>
 				</div>
 			</t>
-			<t t-if="not relevent_offers">
+			<!-- <t t-if="not relevent_offers">
 				<div class="alert alert-info mb0 d-none no-offer" style="padding: 5px;">
 					<span style="font-size: 20px;">
 						Aucune offre trouvée!
 					</span>
 				</div>	
-			</t>
+			</t> -->
 		</template>
 	</data>
 </odoo>
