@@ -25,6 +25,7 @@
                             <label for="password">Password</label>
                             <input type="password" placeholder="Password" name="password" id="password" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
                         </div>
+
                         <p class="alert alert-danger" t-if="error" role="alert">
                             <t t-esc="error"/>
                         </p>
@@ -37,7 +38,12 @@
                                 <button type="submit" name="redirect" value="/web/become" class="btn btn-link btn-sm btn-block">Log in as superuser</button>
                             </t>
                             <div class="o_login_auth"/>
+                                <div class="justify-content-between mt-2 d-flex small">
+                                    <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}">Don't have an account?</a>
+                                    <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}">Reset Password</a>
+                                </div>
                             </div>
+
                             <input type="hidden" name="redirect" t-att-value="redirect"/>
                     </form>
                     </div>
