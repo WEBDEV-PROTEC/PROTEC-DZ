@@ -35,7 +35,7 @@
                             <field name="position"/>
                             <field name="phone2"/>
                             <field name="mobile2"/>
-                            <field name="password" />
+                            <!-- <field name="password" /> -->
                         </group>
                         <group>
                              <field name="scan1"/>
