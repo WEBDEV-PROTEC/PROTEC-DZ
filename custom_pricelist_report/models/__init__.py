@@ -1,0 +1,1 @@
+from .custom_pricelist_report import CustomReportProductPricelist
