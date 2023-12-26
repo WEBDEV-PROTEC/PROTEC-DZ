@@ -43,7 +43,6 @@
                                             <td>
                                                 <t t-if="product.get('default_code')">
                                                     <p style="font-size: 12px"><t t-esc="product['default_code']"/></p>
-                                                   
                                                 </t>
                                                 <!-- <t t-else="">
                                                     No Reference found for this product
@@ -65,6 +64,16 @@
                                         </tr>
                                         <t t-if="is_product_tmpl">
                                             <tr t-foreach="product['variants']" t-as="variant">
+                                                <td> 
+                                                    <t t-if="variant.get('image_128')">
+                                                        <img t-att-src="'data:image/png;base64,%s' % to_text(variant['image_128'])" style="max-height: 50px;"/>
+                                                    </t>  
+                                                </td>
+                                                <td>
+                                                    <t t-if="variant.get('default_code')">
+                                                        <p style="font-size: 12px"><t t-esc="variant['default_code']"/></p>
+                                                    </t>
+                                                </td>
                                                 <td>
                                                     <a t-if="is_html_type" href="#" class="o_action ml-4" data-model="'product.product'" t-att-data-res-id="variant['id']">
                                                         <t t-esc="variant['name']"/>
