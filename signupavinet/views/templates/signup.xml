@@ -75,7 +75,7 @@
                             </div>
                             <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="form-group field-name">
-                                    <label for="name">ARTICLE D'IMPOSITION
+                                    <label for="name">ART
                                     </label>
                                     <input type="text" name="ai" t-att-value="ai" id="ai" class="form-control form-control-sm"
                                         t-att-readonly="'readonly' if only_passwords else None"
@@ -120,22 +120,22 @@
                                         t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
                                 </div>
                             </div>
-                            <div class="col col-12">
-                                    <div class="form-group field-name">
-                                        <label for="name">Joindre les scans de votre carte fiscale et registre de commerce / agrément.
-                                            <span style="color:red">*</span>
-                                        </label>
-                                        <div class="custom-file">
-                                            <input type="file" accept="image/png, image/jpeg, application/pdf"
-                                                   multiple="multiple" required="required"
-                                                   name="scan" t-att-value="scan" id="scan"
-                                                   class="custom-file-input form-control-sm"
-                                                   t-att-readonly="'readonly' if only_passwords else None"
-                                                   t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
-                                            <label class="custom-file-label" for="scan">Choisir Fichers...</label>
-                                        </div>
-                                    </div>
+                            <div class="col  col-12 ">
+                                <div class="form-group field-name">
+                                    <label for="name">Joindre les scans de votre carte
+                                    fiscale et registre de commerce / agrément.
+                                    <span style="color:red">*</span>
+                                    </label>
+                                    <input type="file" accept="image/png, image/jpeg"
+                                        multiple="multiple" required="required"
+                                        name="scan" t-att-value="scan" id="scan"
+                                        class="form-control form-control-sm"
+                                        t-att-readonly="'readonly' if only_passwords else None"
+                                        t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                                    <p class="alert alert-danger file_alert">Limit exceeds up to 5 files
+                                    </p>
                                 </div>
+                            </div>
                             <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="form-group field-name">
                                     <label for="name">Adresse
@@ -148,7 +148,7 @@
                             </div>
                             <div class="col  col-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="form-group field-name">
-                                    <label for="ville">Wilaya
+                                    <label for="ville">State
                                     </label>
                                     <select name="State" id="State" title="State" style="width:100%; height:40x; line-height:40px">
                                         <option data-title="choix" value="">Choisir la ville</option>
@@ -192,7 +192,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-center col-12">
-                                <a id="next_btn" class="btn btn-primary text-light btnNext mb-3">Suivant <i class="fa fa-angle-right ml-2"></i></a>
+                                <a class="btn btn-primary text-light btnNext mb-3" >Suivant  <i class="fa fa-angle-right ml-2"> </i> </a>
                             </div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                     <div class="tab-pane fade" id="nav-tab-contact" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
                             <div class="col col-12 col-sm-6 col-md-12 col-lg-12 text-center">
-                                <h3 class="mb-5">Coordonnées de contact</h3>
+                                <h3 class="mb-5">Info Contact</h3>
                             </div>
                         </div>
                         <div class="row">
@@ -265,9 +265,8 @@
                         </div>
                         <div class="row">
                             <div class="col col-12 text-center">
-                                <a id="previous_btn" class="btn btn-primary text-light btnPrevious mb-3" ><i class="fa fa-angle-left mr-2"></i> Précedent</a>
-                                <a id="next_btn2" class="btn btn-primary text-light btnNext mb-3">Suivant <i class="fa fa-angle-right ml-2"></i></a>
-
+                                <a class="btn btn-primary text-light btnPrevious mb-3" ><i class="fa fa-angle-left mr-2"></i> Précedent</a>
+                                <a class="btn btn-primary text-light btnNext mb-3" >Suivant <i class="fa fa-angle-right ml-2"> </i></a>
                             </div>
                         </div>
                     </div>
@@ -431,7 +430,8 @@
         <!--            </t>-->
         <div class="row">
             <div class="text-left col col-12">
-                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link" role="button">Vous êtes dèja membre?
+                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link" role="button">Already
+                have an account?
                 </a>
                 <div class="o_login_auth"/>
                 </div>
