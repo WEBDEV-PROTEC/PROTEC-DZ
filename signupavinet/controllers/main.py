@@ -35,7 +35,8 @@ class AuthSignupHome(Home):
         for i in range(len(files)):
             print(i)
             if i >= 5:
-                raise UserError(_("Passwords do not match; please retype them."))
+                raise UserError(
+                    _("Passwords do not match; please retype them."))
 
             com_values1['scan' + str(i + 1)] = base64.b64encode(files[i].read())
 
@@ -43,18 +44,27 @@ class AuthSignupHome(Home):
             'name': kwargs.get('company_name'),
             'company_statut': kwargs.get('company_type'),
             'email': kwargs.get('login'),
-            'vat': kwargs.get('vat'),
-            'num_rc': kwargs.get('num_rc'),
-            'art': kwargs.get('art'),
+#             'vat': kwargs.get('vat'),
+#             'num_rc': kwargs.get('num_rc'),
+#             'art': kwargs.get('art'),
+             'nif': kwargs.get('nif'),
+            'rc': kwargs.get('rc'),
+            'ai': kwargs.get('ai'),
             'agrem': kwargs.get('agrem'),
 
             'fname': kwargs.get('first_name'),
             'lname': kwargs.get('last_name'),
+            'email': kwargs.get('email'),
+#             'email2': kwargs.get('email2'),
+            'position': kwargs.get('position'),
             'mobile': kwargs.get('mobile'),
             'phone': kwargs.get('phone'),
-            'city_id': city_id,
+            'mobile2': kwargs.get('mobile2'),
+            'phone2': kwargs.get('phone2'),
+            'city_id': kwargs.get('ville'),
             'street': kwargs.get('adresse'),
             'password': kwargs.get('password'),
+            
 
         }
         com_values = {**com_values1, **com_values2}
@@ -104,7 +114,8 @@ class AuthSignupHome(Home):
         test = request.env['ir.config_parameter'].sudo().get_param(
             'web.base.url')
         invite = request.website.name
-        ville = request.env['res.country.state'].sudo().search([('country_id', '=', request.env.ref('base.dz').id)])
+        ville = request.env['res.country.state'].sudo().search(
+            [('country_id', '=', request.env.ref('base.dz').id)])
         city = request.env['res.city'].sudo().search([])
         qcontext.update({'villes': ville, 'city': city})
         if invite == "PROTEC IT Network & Security":
@@ -159,7 +170,8 @@ class AuthSignupHome(Home):
                 'name': qcontext.get('company_name'),
                 'web_company_type': qcontext.get('company_type'),
                 'email': qcontext.get('login'),
-                'vat': qcontext.get('vat'),
+#                 'vat': qcontext.get('vat'),
+                'nif': qcontext.get('nif'),
                 # 'comment': qcontext.get('comment'),
             }
             exp_agrem = datetime.datetime.strptime(qcontext.get('exp_agrem'),
@@ -171,15 +183,19 @@ class AuthSignupHome(Home):
 
                 'company_statut': qcontext.get('company_type'),
                 'email': qcontext.get('login'),
-                'vat': qcontext.get('vat'),
-                'num_rc': qcontext.get('num_rc'),
-                'art': qcontext.get('art'),
+#                 'vat': qcontext.get('vat'),
+#                 'num_rc': qcontext.get('num_rc'),
+#                 'art': qcontext.get('art'),
+                'nif': qcontext.get('nif'),
+                'rc': qcontext.get('rc'),
+                'ai': qcontext.get('ai'),
                 'agrem': qcontext.get('agrem'),
                 'exp_agrem': exp_agrem,
                 'mobile': qcontext.get('mobile'),
                 'phone': qcontext.get('phone'),
-                'city_id': city_id,
-                'street': qcontext.get('adresse'),
+                'city_id': qcontext.get('ville'),
+                'street': qcontext.get('adresse'), 
+           
 
             }
             test = request.env['ir.config_parameter'].sudo().get_param(
@@ -234,9 +250,6 @@ class AuthSignupHome(Home):
         return city
 
 
-
-
-
 class Home(http.Controller):
 
     def _login_redirect(self, uid, redirect=None):
@@ -255,7 +268,7 @@ class Home(http.Controller):
 
         decrpt = f.decrypt(bytes(token, 'utf-8'))
         account = decrpt.decode('utf-8').split('/')
-        uid = request.session.authenticate("protecdz-copie-3087959", account[0],
+        uid = request.session.authenticate("protecdz", account[0],
                                            account[1])
         request.params['login_success'] = True
         return http.redirect_with_hash(

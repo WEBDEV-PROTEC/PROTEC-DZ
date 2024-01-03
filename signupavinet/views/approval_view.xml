@@ -14,36 +14,28 @@
                         <group>
                             <field name="name"/>
                             <field name="company_statut"/>
-                            <field name="vat"/>
-                            <field name="num_rc"/>
-                            <field name="art"/>
-                       
-                                
-                              
-                        
+                            <field name="nif"/>
+                            <field name="rc"/>
+                            <field name="ai"/>
                             <field name="city_id"/>
                             <field name="phone"/>
                             <field name="mobile"/>
-                            
                         </group>
                         <group>
                               <label for="agrem" class="o_form_label" />
                               <div>
-                                   
                                     <field name="agrem"  placeholder="Num agrement" />
-                             
-                               
                                     <field name="exp_agrem" placeholder="Date expiration" />
                               </div>
                         </group>
                         <group>
-                            <field name="email2"/>
+                            <field name="email"/>
                             <field name="fname"/>
                             <field name="lname"/>
                             <field name="position"/>
                             <field name="phone2"/>
                             <field name="mobile2"/>
-                            <field name="password" invisible="1"/>
+                            <!-- <field name="password" /> -->
                         </group>
                         <group>
                              <field name="scan1"/>

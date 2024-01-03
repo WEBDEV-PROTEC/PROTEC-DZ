@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+    <record id="report_custom_module_custom_pricelist_page" model="ir.actions.report">
+        <field name="name">Protec Pricelist (PDF)</field>
+        <field name="model">product.pricelist</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_pricelist_report.report_custom_pricelist</field>
+        <field name="report_file">custom_pricelist_report.report_custom_pricelist</field>
+    </record>
+
+    </data>
+</odoo>

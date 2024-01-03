@@ -26,7 +26,7 @@ class ApprovalSignup(models.Model):
     agrem = fields.Char(string="Agrement")
     street = fields.Char(string="Adresse")
     exp_agrem = fields.Date(string="Date Expiration")
-    city_id = fields.Many2one('res.city', domain="[('country_id','=',62)]",
+    city_id = fields.Many2one('res.city',
                               string="Ville")
     email = fields.Char(string="Email")
     fname = fields.Char(string="Prenom")
@@ -65,7 +65,14 @@ class ApprovalSignup(models.Model):
         print(token)
         decrpt = f.decrypt(token)
         print(decrpt)
-        contact_name = self.fname + ' ' + self.lname
+        if self.lname and self.fname:
+            contact_name = self.fname + ' ' + self.lname
+        elif self.fname:
+            contact_name = self.fname
+        elif self.lname:
+            contact_name = self.lname
+        else:
+            contact_name = False
 
         com_values = {
             'name': self.name,
@@ -79,6 +86,8 @@ class ApprovalSignup(models.Model):
             'exp_agrem': self.exp_agrem,
             'street': self.street,
             'city_id': self.city_id.id,
+            'state_id': self.city_id.state_id.id,
+            'zip': self.city_id.zipcode,
             'phone': self.phone,
             'mobile': self.mobile,
 
@@ -86,16 +95,17 @@ class ApprovalSignup(models.Model):
 
         company = self.env['res.partner'].sudo().create(com_values)
 
-        child_values = {
-            'parent_id': company.id,
-            'name': contact_name,
-            'function': self.position,
-            'email': self.email2,
-            'phone': self.phone2,
-            'mobile': self.mobile2,
+        if contact_name:
+            child_values = {
+                'parent_id': company.id,
+                'name': contact_name,
+                'function': self.position,
+                'email': self.email2,
+                'phone': self.phone2,
+                'mobile': self.mobile2,
 
-        }
-        self.env['res.partner'].sudo().create(child_values)
+            }
+            self.env['res.partner'].sudo().create(child_values)
 
         group_id = request.env.ref('base.group_portal').id
         login = {
