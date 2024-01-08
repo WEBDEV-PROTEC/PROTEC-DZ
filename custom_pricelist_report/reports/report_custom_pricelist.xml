@@ -1,99 +1,225 @@
 <odoo>
-    <data>
-        <template id="custom_pricelist_report_pricelist_page_inherit" inherit_id="product.report_pricelist_page">
-            <xpath expr="//div[@class='container bg-white p-4 my-4']" position="replace">
-                <div class="container bg-white p-4 my-4">
-                    <div class="row my-3">
-                        <div class="col-12">
-                            <h2 t-if="is_html_type">
-                                Pricelist:
-                                <a href="#" class="o_action" data-model="'report.product.report_pricelist'" t-att-data-res-id="custom_pricelist_report_pricelist_page_inherit">
-                                    <t t-esc="pricelist.display_name"/>
-                                </a>
-                            </h2>
-                            <h2 t-else="">
-                                Pricelist: <t t-esc="pricelist.display_name"/>
-                            </h2>
-                        </div>
+    <template id="custom_pricelist_report_pricelist_page_inherit" inherit_id="product.report_pricelist_page">
+        <xpath expr="//div[@class='container bg-white p-4 my-4']" position="replace">
+            <div t-if="not is_html_type" class="header">
+                <div class="row" style="background-image: url(/custom_pricelist_report/static/img/footer2.png);height: 140px; background-repeat: no-repeat; background-size: cover; background-position: top;">
+                    <div class="col-4">
+                        <img style="max-height: 54px; margin: 10px 0 0 10px" src="/custom_pricelist_report/static/img/logo-gray.png" />
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Référence</th>
-                                        <th>Products</th>
-                                        <t t-foreach="quantities" t-as="qty">
-                                            <th class="text-right"><t t-esc="qty"/> Units</th>
-                                        </t>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <t t-foreach="products" t-as="product">
-                                        <tr>
-                                            <td>
-                                                <t t-if="product.get('image_128')">
-                                                    <img t-att-src="'data:image/png;base64,%s' % to_text(product['image_128'])" style="max-height: 50px;"/>
-                                                </t>
-                                                <!-- <t t-else="">
-                                                    No image found for this product
-                                                </t> -->
-                                            </td>
-                                            <td>
-                                                <t t-if="product.get('default_code')">
-                                                    <p style="font-size: 12px"><t t-esc="product['default_code']"/></p>
-                                                </t>
-                                                <!-- <t t-else="">
-                                                    No Reference found for this product
-                                                </t> -->
-                                            </td>
-                                            <td t-att-class="is_product_tmpl and 'font-weight-bold' or None">
-                                                <a t-if="is_html_type" href="#" class="o_action" t-att-data-model="'report.product.report_pricelist'" t-att-data-res-id="product['id']">
-                                                    <t t-esc="product['name']"/>
-                                                </a>
-                                                <t t-else="">
-                                                    <t t-esc="product['name']"/>
-                                                </t>
-                                            </td>
-                                            <t t-foreach="quantities" t-as="qty">
-                                                <td class="text-right">
-                                                    <t t-esc="product['price'][qty]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: pricelist.currency_id}"/>
-                                                </td>
-                                            </t>
-                                        </tr>
-                                        <t t-if="is_product_tmpl">
-                                            <tr t-foreach="product['variants']" t-as="variant">
-                                                <td> 
-                                                    <t t-if="variant.get('image_128')">
-                                                        <img t-att-src="'data:image/png;base64,%s' % to_text(variant['image_128'])" style="max-height: 50px;"/>
-                                                    </t>  
-                                                </td>
-                                                <td>
-                                                    <t t-if="variant.get('default_code')">
-                                                        <p style="font-size: 12px"><t t-esc="variant['default_code']"/></p>
-                                                    </t>
-                                                </td>
-                                                <td>
-                                                    <a t-if="is_html_type" href="#" class="o_action ml-4" data-model="'product.product'" t-att-data-res-id="variant['id']">
-                                                        <t t-esc="variant['name']"/>
-                                                    </a>
-                                                    <span t-else="" class="ml-4" t-esc="variant['name']"/>
-                                                </td>
-                                                <t t-foreach="quantities" t-as="qty">
-                                                    <td class="text-right">
-                                                        <t t-esc="variant['price'][qty]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: pricelist.currency_id}"/>
-                                                    </td>
-                                                </t>
-                                            </tr>
-                                        </t>
-                                    </t>
-                                </tbody>
-                            </table>
+                    <div class="col-8">
+                        <div style="margin: 5px 0 0 10px; color: #f1f1f1; float: right; text-align: left;">
+                            Contact your sales department now:<br/>+213 550.900.360/363/364<br/>
+                            For more details visit: www.protec-dz.com
                         </div>
                     </div>
                 </div>
-            </xpath>
-        </template>
-    </data>
+            </div>
+            <!-- <t t-if="not is_html_type" t-call="web.html_container">
+                <t t-call="web.external_layout"> -->
+                    <div t-if="not is_html_type" class="page" style="break-inside: always;">
+                        <div class="row my-3">
+                            <div class="col-12">
+                                <h2 t-if="is_html_type">
+                                    Pricelist:
+                                    <a href="#" class="o_action" data-model="'report.product.report_pricelist'" t-att-data-res-id="custom_pricelist_report_pricelist_page_inherit">
+                                        <t t-esc="pricelist.display_name"/>
+                                    </a>
+                                </h2>
+                                <h2 t-else="">
+                                    Pricelist: 
+                                    <t t-esc="pricelist.display_name"/>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Référence</th>
+                                            <th>Products</th>
+                                            <t t-foreach="quantities" t-as="qty">
+                                                <th class="text-right">
+                                                    <t t-esc="qty"/>
+                                                    Units
+                                                </th>
+                                            </t>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="products" t-as="product">
+                                            <tr>
+                                                <td>
+                                                    <t t-if="product.get('image_128')">
+                                                        <img t-att-src="'data:image/png;base64,%s' % to_text(product['image_128'])" style="max-height: 64px;"/>
+                                                    </t>
+                                                    <!-- <t t-else="">
+                                                        No image found for this product
+                                                        </t> -->
+                                                </td>
+                                                <td>
+                                                    <t t-if="product.get('default_code')">
+                                                        <p style="font-size: 12px">
+                                                            <t t-esc="product['default_code']"/>
+                                                        </p>
+                                                    </t>
+                                                    <!-- <t t-else="">
+                                                        No Reference found for this product
+                                                        </t> -->
+                                                </td>
+                                                <td t-att-class="is_product_tmpl and 'font-weight-bold' or None">
+                                                    <a t-if="is_html_type" href="#" class="o_action" t-att-data-model="'report.product.report_pricelist'" t-att-data-res-id="product['id']">
+                                                        <t t-esc="product['name']"/>
+                                                    </a>
+                                                    <t t-else="">
+                                                        <t t-esc="product['name']"/>
+                                                    </t>
+                                                </td>
+                                                <t t-foreach="quantities" t-as="qty">
+                                                    <td class="text-right">
+                                                        <t t-esc="product['price'][qty]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: pricelist.currency_id}"/>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                            <t t-if="is_product_tmpl">
+                                                <tr t-foreach="product['variants']" t-as="variant">
+                                                    <td>
+                                                        <t t-if="variant.get('image_128')">
+                                                            <img t-att-src="'data:image/png;base64,%s' % to_text(variant['image_128'])" style="max-height: 50px;"/>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="variant.get('default_code')">
+                                                            <p style="font-size: 12px">
+                                                                <t t-esc="variant['default_code']"/>
+                                                            </p>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <a t-if="is_html_type" href="#" class="o_action ml-4" data-model="'product.product'" t-att-data-res-id="variant['id']">
+                                                            <t t-esc="variant['name']"/>
+                                                        </a>
+                                                        <span t-else="" class="ml-4" t-esc="variant['name']"/>
+                                                    </td>
+                                                    <t t-foreach="quantities" t-as="qty">
+                                                        <td class="text-right">
+                                                            <t t-esc="variant['price'][qty]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: pricelist.currency_id}"/>
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </tbody>
+                                </table>
+ 
+                            </div>
+                        </div>
+                           <!-- <p style="break-inside: always;" > </p> -->
+                    </div>
+                <!-- </t>
+            </t> -->
+                                       
+            <div t-if="is_html_type" class="container bg-white p-4 my-4">
+                <div class="row my-3">
+                    <div class="col-12">
+                        <h2 t-if="is_html_type">
+                            Pricelist:
+                            <a href="#" class="o_action" data-model="'report.product.report_pricelist'" t-att-data-res-id="custom_pricelist_report_pricelist_page_inherit">
+                                <t t-esc="pricelist.display_name"/>
+                            </a>
+                        </h2>
+                        <h2 t-else="">
+                            Pricelist: 
+                            <t t-esc="pricelist.display_name"/>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Référence</th>
+                                    <th>Products</th>
+                                    <t t-foreach="quantities" t-as="qty">
+                                        <th class="text-right">
+                                            <t t-esc="qty"/>
+                                            Units
+                                        </th>
+                                    </t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="products" t-as="product">
+                                    <tr>
+                                        <td>
+                                            <t t-if="product.get('image_128')">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(product['image_128'])" style="max-height: 50px;"/>
+                                            </t>
+                                            <!-- <t t-else="">
+                                                No image found for this product
+                                                </t> -->
+                                        </td>
+                                        <td>
+                                            <t t-if="product.get('default_code')">
+                                                <p style="font-size: 12px">
+                                                    <t t-esc="product['default_code']"/>
+                                                </p>
+                                            </t>
+                                            <!-- <t t-else="">
+                                                No Reference found for this product
+                                                </t> -->
+                                        </td>
+                                        <td t-att-class="is_product_tmpl and 'font-weight-bold' or None">
+                                            <a t-if="is_html_type" href="#" class="o_action" t-att-data-model="'report.product.report_pricelist'" t-att-data-res-id="product['id']">
+                                                <t t-esc="product['name']"/>
+                                            </a>
+                                            <t t-else="">
+                                                <t t-esc="product['name']"/>
+                                            </t>
+                                        </td>
+                                        <t t-foreach="quantities" t-as="qty">
+                                            <td class="text-right">
+                                                <t t-esc="product['price'][qty]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: pricelist.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <t t-if="is_product_tmpl">
+                                        <tr t-foreach="product['variants']" t-as="variant">
+                                            <td>
+                                                <t t-if="variant.get('image_128')">
+                                                    <img t-att-src="'data:image/png;base64,%s' % to_text(variant['image_128'])" style="max-height: 50px;"/>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-if="variant.get('default_code')">
+                                                    <p style="font-size: 12px">
+                                                        <t t-esc="variant['default_code']"/>
+                                                    </p>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <a t-if="is_html_type" href="#" class="o_action ml-4" data-model="'product.product'" t-att-data-res-id="variant['id']">
+                                                    <t t-esc="variant['name']"/>
+                                                </a>
+                                                <span t-else="" class="ml-4" t-esc="variant['name']"/>
+                                            </td>
+                                            <t t-foreach="quantities" t-as="qty">
+                                                <td class="text-right">
+                                                    <t t-esc="variant['price'][qty]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: pricelist.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </xpath>
+    </template>
 </odoo>
