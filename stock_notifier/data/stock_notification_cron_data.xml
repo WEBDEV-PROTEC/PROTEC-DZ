@@ -1,0 +1,12 @@
+<!-- stock_notification_cron_data.xml -->
+
+<odoo>
+    <data>
+        <!-- Define the model for the cron -->
+        <record id="model_stock_notification_cron" model="ir.model">
+            <field name="name">stock.notification.cron</field>
+            <field name="model">stock.notification.cron</field>
+            <field name="info">Stock Notification Cron</field>
+        </record>
+    </data>
+</odoo>
