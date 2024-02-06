@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="ir_cron_custom" model="ir.cron">
+            <field name="name">Product Stock Notification</field>
+            <field name="model_id" ref="model_stock_notification_cron"/>
+            <field name="active" eval="True"/>
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="code">model._send_stock_notifications()</field>
+            <field name="doall">1</field>
+            <field name="nextcall" eval="'2024-02-06 17:00:00'" />
+        </record>
+    </data>
+</odoo>
