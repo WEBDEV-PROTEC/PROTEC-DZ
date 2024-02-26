@@ -5,7 +5,7 @@
     'name': 'Droggol Theme Common',
     'description': 'Droggol Theme Common',
     'category': 'eCommerce',
-    'version': '14.0.0.1.2',
+    'version': '17.0',
     'depends': [
         'sale_product_configurator',
         'website_sale_comparison',
