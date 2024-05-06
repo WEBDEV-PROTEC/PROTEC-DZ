@@ -55,7 +55,7 @@
                 <ul class="d-none js_add_cart_variants" t-att-data-attribute_exclusions="{'exclusions: []'}"/>
             </t>
         </t>
-        <t t-if=" not request.env.user.has_group('base.group_public')">
+        <t t-if=" not request.env.user.has_group('base.group_public') or website.id=='4' ">
             <t t-call="website_sale.product_price" />
             <p t-if="True" class="css_not_available_msg alert alert-warning">This combination does not exist.</p>
             <a role="button" id="add_to_cart" class="btn btn-primary btn-lg mt16 js_check_product a-submit d-block d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"/> Add to Cart</a>
