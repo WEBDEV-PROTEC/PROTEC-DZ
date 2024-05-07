@@ -62,6 +62,7 @@ class YalidineAPIController(http.Controller):
             "X-API-ID": api_id,
             "X-API-TOKEN": api_token
         }
+
         payload = {
             "order_id": order_id,
             "from_wilaya_name": "Oran",  # Replace with appropriate value
@@ -84,7 +85,7 @@ class YalidineAPIController(http.Controller):
             "has_exchange": 0,
             "product_to_collect": str(total_amount) + "dzd"
         }
-
+        _logger.info("Created yalidine payload: %s", payload)
         try:
             response = requests.post(url, json=payload, headers=headers)
             response.raise_for_status()
@@ -99,7 +100,7 @@ class YalidineAPIController(http.Controller):
         items_value = sum(order.order_line.mapped('price_total'))
         total_weight = sum(order.order_line.mapped('product_id.weight'))
         product_names = [line.product_id.name for line in order.order_line]
-    
+        _logger.info("Calculating total amount and weight")
         # Get the city ID (assuming 'city' is the name of the city)
         city_id = get_city_id(city)
     
