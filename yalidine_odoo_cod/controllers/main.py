@@ -34,7 +34,7 @@ class YalidineAPIController(http.Controller):
         if not order_id:
             _logger.warning("Order ID not found in session")
             return "Order ID not found in session"
-
+        _logger.info("Starting controller process payment")
         order = request.env['sale.order'].sudo().browse(order_id)
 
         # Retrieve customer information from the order
@@ -42,7 +42,7 @@ class YalidineAPIController(http.Controller):
         customer_phone = order.partner_id.phone or ''
         customer_address = order.partner_id.street or ''
         customer_city = order.partner_id.city or ''
-
+        _logger.info("Calculating values and fetching products names from cart")
         # Calculate total amount, total weight, and product names
         items_value, total_amount, total_weight, product_names, shipping_cost = calculate_total_amount_weight_and_shipping_cost(order_id, customer_city)
 
@@ -169,7 +169,8 @@ class YalidineAPIController(http.Controller):
         if city_id == 0:
             print('city id is 0')
             return 0  # City not found, shipping cost is 0
-    
+        
+        _logger.info("Calculating total amount and weight")
         # Make API call to get shipping cost
         api_url = f'https://api.yalidine.app/v1/deliveryfees/?wilaya_id={city_id}'
         api_id = '30766545130987580386'
