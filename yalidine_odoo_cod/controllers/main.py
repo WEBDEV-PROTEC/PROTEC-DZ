@@ -35,7 +35,7 @@ class YalidineAPIController(http.Controller):
             _logger.warning("Order ID not found in session")
             return "Order ID not found in session"
         _logger.info("Starting controller process payment")
-        order = request.env['sale.order'].sudo().browse(order_id)
+        order = self.env['sale.order'].sudo().browse(order_id)
 
         # Retrieve customer information from the order
         customer_name = order.partner_id.name or ''
@@ -44,7 +44,7 @@ class YalidineAPIController(http.Controller):
         customer_city = order.partner_id.city or ''
         _logger.info("Calculating values and fetching products names from cart")
         # Calculate total amount, total weight, and product names
-        items_value, total_weight, product_names, shipping_cost, total_amount = self.calculate_total_amount_weight_and_shipping_cost(order_id, customer_city)
+        items_value, total_weight, total_amount = self.calculate_total_amount_weight_and_shipping_cost(order_id, customer_city)
 
         # Split name into first name and family name
         name_parts = customer_name.split(maxsplit=1)
@@ -72,7 +72,7 @@ class YalidineAPIController(http.Controller):
             "address": customer_address,
             "to_commune_name": "",  # Fill this with appropriate data
             "to_wilaya_name": customer_city,
-            "product_list": product_names,
+            "product_list": "product_names",
             "price": total_amount,
             "do_insurance": False,
             "declared_value": items_value,
@@ -99,7 +99,7 @@ class YalidineAPIController(http.Controller):
         order = self.env['sale.order'].sudo().browse(order_id)
         items_value = sum(order.order_line.mapped('price_total'))
         total_weight = sum(order.order_line.mapped('product_id.weight'))
-        product_names = [line.product_id.name for line in order.order_line]
+        #product_names = [line.product_id.name for line in order.order_line]
         _logger.info("Calculating total amount and weight")
         # Get the city ID (assuming 'city' is the name of the city)
         city_id = get_city_id(city)
@@ -108,7 +108,7 @@ class YalidineAPIController(http.Controller):
         shipping_cost = calculate_shipping_cost(city_id)
         total_amount = shipping_cost + items_value
 
-        return items_value, total_weight, product_names, shipping_cost, total_amount
+        return items_value, total_weight, shipping_cost, total_amount
 
     def get_city_id(city_name):
         # Dictionary mapping city names to their corresponding ID
