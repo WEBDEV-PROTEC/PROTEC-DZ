@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_product_template,access_product_template,yalidine_odoo_cod.model_product_template,base.group_public,1,1,1,1
-access_product_product,access_product_product,yalidine_odoo_cod.model_product_product,base.group_public,1,1,1,1
+access.product.template,access_product_template,yalidine_odoo_cod.model_product_template,base.group_user,1,1,1,0
+access.product.product,access_product_product,yalidine_odoo_cod.model_product_product,base.group_user,1,1,1,0
