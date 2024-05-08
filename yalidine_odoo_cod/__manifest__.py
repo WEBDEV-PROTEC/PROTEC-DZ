@@ -4,11 +4,10 @@
     'summary': 'Integrate Odoo with YALIDINE for delivery tracking.',
     'author': 'Djamel Hemch (Protec DZ)',
     'category': 'Uncategorized',
-    'depends': ['base', 'web'],
+    'depends': ['base', 'web', 'stock', 'product'],
     'data': [
         'views/delivery_history_template.xml',
-        'views/history_assets.xml',
-        'security/ir.model.access.csv'
+        'views/history_assets.xml'
     ],
     'installable': True,
     'auto_install': False,
