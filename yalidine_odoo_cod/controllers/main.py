@@ -104,7 +104,7 @@ class YalidineAPIController(http.Controller):
         product_names = [line.product_id.name for line in order.order_line]
         _logger.info("Calculating total amount and weight")
         # Here you can calculate shipping cost and total amount based on your business logic
-        shipping_cost = 0  # Replace with actual shipping cost calculation
+        shipping_cost = self.calculate_shipping_cost(city)  # Replace with actual shipping cost calculation
         total_amount = shipping_cost + items_value
 
         return items_value, total_weight, product_names, shipping_cost, total_amount
