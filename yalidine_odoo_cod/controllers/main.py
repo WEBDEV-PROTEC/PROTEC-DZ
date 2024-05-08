@@ -44,7 +44,7 @@ class YalidineAPIController(http.Controller):
         customer_city = order.partner_id.city or ''
         _logger.info("Calculating values and fetching products names from cart")
         # Calculate total amount, total weight, and product names
-        items_value, total_amount, total_weight, product_names, shipping_cost = calculate_total_amount_weight_and_shipping_cost(order_id, customer_city)
+        items_value, total_weight, product_names, shipping_cost, total_amount = self.calculate_total_amount_weight_and_shipping_cost(order_id, customer_city)
 
         # Split name into first name and family name
         name_parts = customer_name.split(maxsplit=1)
@@ -94,8 +94,8 @@ class YalidineAPIController(http.Controller):
         except requests.RequestException as e:
             _logger.error("Error creating parcel: %s", e)
             return "Error creating parcel: %s" % e
-            
-    def calculate_total_amount_weight_and_shipping_cost(order_id, city):
+
+    def calculate_total_amount_weight_and_shipping_cost(self, order_id, city):
         order = self.env['sale.order'].sudo().browse(order_id)
         items_value = sum(order.order_line.mapped('price_total'))
         total_weight = sum(order.order_line.mapped('product_id.weight'))
@@ -103,12 +103,12 @@ class YalidineAPIController(http.Controller):
         _logger.info("Calculating total amount and weight")
         # Get the city ID (assuming 'city' is the name of the city)
         city_id = get_city_id(city)
-    
+
         # Calculate shipping cost
         shipping_cost = calculate_shipping_cost(city_id)
         total_amount = shipping_cost + items_value
-        
-        return items_value, total_weight, product_names, shipping_cost, total_amount, product_names 
+
+        return items_value, total_weight, product_names, shipping_cost, total_amount
 
     def get_city_id(city_name):
         # Dictionary mapping city names to their corresponding ID
