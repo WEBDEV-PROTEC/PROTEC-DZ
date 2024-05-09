@@ -1,7 +1,0 @@
-<odoo>
-    <template id="assets_backend" name="yalidine_odoo_cod assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" type="text/css" href="/yalidine_odoo_cod/static/src/css/delivery_history.css"/>
-        </xpath>
-    </template>
-</odoo>
