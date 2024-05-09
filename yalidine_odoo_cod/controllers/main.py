@@ -7,30 +7,8 @@ _logger = logging.getLogger(__name__)
 
 class YalidineAPIController(http.Controller):
 
-    @http.route('/shop/delivery', type='http', auth='public', website=True)
-    def index(self):
-        _logger.info("Received request to display delivery information")
-
-        # Get the current order ID from the session
-        order_id = request.session.get('sale_order_id')
-        name = request.session.get('name')
-        delivery_address = request.session.get('delivery_address')
-        delivery_history = [
-            {'date': '2024-04-30', 'event': 'Package picked up'},
-            {'date': '2024-05-02', 'event': 'In transit'},
-            {'date': '2024-05-05', 'event': 'Out for delivery'},
-            {'date': '2024-05-06', 'event': 'Delivered'}
-        ]
-
-        _logger.info("Received request to display delivery information for order ID: %s", order_id)
-        _logger.info("Delivery address requested from session variable: %s", delivery_address)
-
-        return request.render('yalidine_odoo_cod.delivery_histories', {
-            'delivery_history': delivery_history
-        })
-        
-    @http.route('/shop/confirmation', type='http', auth='public', website=True)
-    def process_payment(self, **kwargs):
+    @http.route('/shop/confirmation', type='https', auth='public', website=True)
+    def index(self, **kwargs):
         _logger.info("Starting payment process")
 
         # Retrieve the order ID from the session
