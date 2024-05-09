@@ -7,7 +7,7 @@ _logger = logging.getLogger(__name__)
 
 class YalidineAPIController(http.Controller):
 
-    @http.route('/shop/payment', type='http', auth='public', website=True)
+    @http.route('/shop/payment', type='http', auth='public', website=True, website_id=4)
     def index(self, **kwargs):
         _logger.info("Yalidine API : Starting payment process")
 
