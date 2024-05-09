@@ -9,7 +9,7 @@ class YalidineAPIController(http.Controller):
 
     @http.route('/shop/payment', type='http', auth='public', website=True)
     def index(self, **kwargs):
-        _logger.info("Starting payment process")
+        _logger.info("Yalidine API : Starting payment process")
 
         # Retrieve the order ID from the session
         order_id = request.session.get('sale_order_id')
