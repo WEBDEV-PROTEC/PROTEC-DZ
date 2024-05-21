@@ -1,1 +1,0 @@
-from .stock_notification import StockNotificationCron
