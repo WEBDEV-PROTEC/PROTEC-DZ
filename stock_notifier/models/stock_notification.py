@@ -77,9 +77,16 @@ class StockNotificationCron(models.AbstractModel):
         for product_info in products_to_notify:
             if product_info['qty_available'] <= 2:
                 message = (
-                    f"<span style='color: orange;'>RESTOCK NECESSAIRE POUR</span> "
-                    f"<span style='color: green; text-decoration: none; font-weight: bold;'>{product_info['name']}</span> "
-                    f"<span style='color: red;'>QUANTITE RESTANTE: {product_info['qty_available']}</span>"
+                    f"<div style='border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; border-radius: 8px;'>"
+                    f"<h3 style='color: #d9534f; margin-bottom: 10px;'>⚠️ Restock Alert</h3>"
+                    f"<p style='font-size: 14px; color: #333;'>"
+                    f"<span style='color: #ff9800; font-weight: bold;'>Produit:</span> "
+                    f"<span style='color: #4caf50; text-decoration: none; font-weight: bold;'>{product_info['name']}</span><br>"
+                    f"<span style='color: #ff9800; font-weight: bold;'>Quantité Restante:</span> "
+                    f"<span style='color: #d9534f;'>{product_info['qty_available']}</span>"
+                    f"</p>"
+                    f"<p style='font-size: 12px; color: #888; margin-top: 10px;'>Veuillez réapprovisionner dès que possible.</p>"
+                    f"</div>"
                 )
                 # Create a mail.message to associate with the channel
                 channel.message_post(body=message, message_type='comment', subtype_xmlid='mail.mt_comment', author_id=self.env.user.partner_id.id)
