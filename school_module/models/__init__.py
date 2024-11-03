@@ -1,1 +1,0 @@
-from .school_model import SchoolModel
