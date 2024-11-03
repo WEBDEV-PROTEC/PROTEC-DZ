@@ -1,2 +1,0 @@
-from .purchase_order import PurchaseOrderLine
-from .product_template_inherit import ProductTemplateInherit
