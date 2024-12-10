@@ -1,5 +1,4 @@
 import logging
-
 from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
@@ -12,91 +11,97 @@ class StockNotificationCron(models.AbstractModel):
     def _send_stock_notifications(self):
         _logger.info("Starting stock notification cron job.")
 
-        location = self.env['stock.location'].search([('name', '=', 'MAG/Stock')], limit=1)
-        products_to_notify = []
+        locations = {
+            'MAGASIN': {
+                'channel_name': 'Alerte Stock MAG/MAGASIN',
+                'user_name': 'Stock Manager'
+            },
+            'DEPOT': {
+                'channel_name': 'Alerte Stock DEP/DEPOT',
+                'user_name': 'DEPOT (PROTEC)'
+            },
+        }
 
-        # Set the batch size for processing
-        batch_size = 100
-        offset = 0
+        # Testing purposes: Limit the total number of products to 10
+        test_limit = 10
 
-        # Continue processing batches until all products are covered
-        while True:
-            # Fetch products in batches using LIMIT and OFFSET
-            products_below_threshold = self.env['product.template'].search([
-                ('qty_available', '<=', 2),
+        # Process products for each location
+        for location_name, data in locations.items():
+            location = self.env['stock.location'].search([('complete_name', 'like', location_name)], limit=1)
+            user = self.env['res.users'].search([('name', '=', data['user_name'])], limit=1)
+
+            if not location:
+                _logger.warning(f"Location '{location_name}' not found.")
+                continue
+
+            if not user:
+                _logger.warning(f"User '{data['user_name']}' not found.")
+                continue
+
+            products_to_notify = []
+
+            # Fetch products using stock.quant based on location and quantity below threshold
+            quants_below_threshold = self.env['stock.quant'].search([
                 ('location_id', '=', location.id),
-                ('qty_available', '>', 0),  # Only add products with quantity greater than zero
-            ], limit=batch_size, offset=offset)
+                ('quantity', '<=', 2),
+                ('quantity', '>', 0)  # Only products with a quantity greater than zero
+            ], limit=test_limit)
 
-            # Break the loop if no more products are found
-            if not products_below_threshold:
-                break
+            # Process the products fetched for this location
+            self._process_batch(quants_below_threshold, products_to_notify)
 
-            # Process the current batch of products
-            self._process_batch(products_below_threshold, products_to_notify)
+            _logger.info(f"Processing products for {location_name}: {products_to_notify}")
 
-            # Increment the offset for the next batch
-            offset += batch_size
-
-        _logger.info(f"Processing all products: {products_to_notify}")
-
-        try:
-            self._notify_users(products_to_notify)
-            _logger.info('Notifications sent')
-        except Exception as e:
-            _logger.error(f"Error sending notifications: {e}")
+            if products_to_notify:
+                try:
+                    self._notify_user(products_to_notify, data['channel_name'], user)
+                    _logger.info(f'Notifications sent for {location_name}')
+                except Exception as e:
+                    _logger.error(f"Error sending notifications for {location_name}: {e}")
 
     @api.model
-    def _process_batch(self, products_below_threshold, products_to_notify):
-        # Process the current batch of products
-        for product in products_below_threshold:
+    def _process_batch(self, quants_below_threshold, products_to_notify):
+        for quant in quants_below_threshold:
             products_to_notify.append({
-                'name': product.name,
-                'qty_available': product.qty_available,
-                'status': 'red' if product.qty_available < 2 else 'orange',
+                'name': quant.product_id.name,
+                'qty_available': quant.quantity,
+                'status': 'red' if quant.quantity < 2 else 'orange',
             })
+
     @api.model
-    def _notify_users(self, products_to_notify):
-        _logger.info("Notifying users in Odoo about products that need restocking.")
+    def _notify_user(self, products_to_notify, channel_name, user):
+        _logger.info(f"Notifying {user.name} about products that need restocking via channel '{channel_name}'.")
 
-        # Search for the existing channel named "stock_warning"
-        channel = self.env['mail.channel'].search([('name', '=', 'Stock Notif'), ('public', '=', 'private')], limit=1)
+        # Create or find the channel
+        channel = self.env['mail.channel'].search([('name', '=', channel_name), ('public', '=', 'private')], limit=1)
 
-        # If the channel doesn't exist, create it and add all users
         if not channel:
             channel = self.env['mail.channel'].create({
-                'name': 'Stock Notif',
+                'name': channel_name,
                 'public': 'public',
             })
 
-            # Add all users to the "stock_warning" channel
+            # Add the user to the channel
             all_users = self.env['res.users'].search([])
             channel.write({'channel_partner_ids': [(4, user.partner_id.id) for user in all_users]})
 
-        # Notify users in the "stock_warning" channel
+        # Notify users in the channel
         for product_info in products_to_notify:
             if product_info['qty_available'] <= 2:
                 message = (
-                    f"<span style='color: orange;'>RESTOCK NECESSAIRE POUR</span> "
-                    f"<span style='color: green; text-decoration: none; font-weight: bold;'>{product_info['name']}</span> "
-                    f"<span style='color: red;'>QUANTITE RESTANTE: {product_info['qty_available']}</span>"
+                    f"<div style='border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; border-radius: 8px;'>"
+                    f"<h3 style='color: #d9534f; margin-bottom: 10px;'>⚠️ Restock Alert</h3>"
+                    f"<p style='font-size: 14px; color: #333;'>"
+                    f"<span style='color: #ff9800; font-weight: bold;'>Produit:</span> "
+                    f"<span style='color: #4caf50; text-decoration: none; font-weight: bold;'>{product_info['name']}</span><br>"
+                    f"<span style='color: #ff9800; font-weight: bold;'>Quantité Restante:</span> "
+                    f"<span style='color: #d9534f;'>{product_info['qty_available']}</span>"
+                    f"</p>"
+                    f"<p style='font-size: 12px; color: #888; margin-top: 10px;'>Veuillez réapprovisionner dès que possible.</p>"
+                    f"</div>"
                 )
                 # Create a mail.message to associate with the channel
                 channel.message_post(body=message, message_type='comment', subtype_xmlid='mail.mt_comment', author_id=self.env.user.partner_id.id)
-                
-       
-        
-        _logger.info("Users in the Stock Notif channel notified about products that need restocking.")
-        
-    @api.model
-    def _get_channel_icon(self):
-        # Get the path to the assets folder
-        assets_folder = os.path.join(os.path.dirname(__file__), '..', 'assets')
 
-        # Load your custom icon image and encode it in base64
-        icon_path = os.path.join(assets_folder, 'icon.png')
+        _logger.info(f"Users in the channel '{channel_name}' notified about products that need restocking.")
 
-        with open(icon_path, 'rb') as image_file:
-            icon_binary = image_file.read()
-
-        return base64.b64encode(icon_binary)

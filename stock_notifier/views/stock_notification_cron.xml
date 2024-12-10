@@ -10,7 +10,8 @@
             <field name="numbercall">-1</field>
             <field name="code">model._send_stock_notifications()</field>
             <field name="doall">1</field>
-            <field name="nextcall" eval="'2024-02-06 17:00:00'" />
+            <field name="nextcall" eval="'2024-09-12 18:00:00'" />
         </record>
     </data>
 </odoo>
+ 
