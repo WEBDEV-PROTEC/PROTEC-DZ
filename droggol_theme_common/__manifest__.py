@@ -65,4 +65,6 @@
             'droggol_theme_common/static/src/js/navbar/*.js',
         ]
     },
+    "auto_install": True,
+    "installable": True,
 }
