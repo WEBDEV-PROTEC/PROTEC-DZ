@@ -33,6 +33,7 @@ def migrate(cr, version):
                 delete from ir_cron where id=61;
                delete from ir_cron where id=59;
                delete from ir_cron where id=60;
+               delete from ir_model_fields where name in ('show_category','printnode_enabled', 'product_brand_ept_id','sale_product_count','rc','exclude_website_ids','is_display_timer','equation_montant','use_timbre','printnode_printed','is_dynamic_menu','due_amount','autoprint_paperformat_id');
                 delete from ir_model where model='website.stock.config.settings';
                 delete from  website_notifiy_config_settings;
                 delete from mail_template where model='website.stock.notify';
