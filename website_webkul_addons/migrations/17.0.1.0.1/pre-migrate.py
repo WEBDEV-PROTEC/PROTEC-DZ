@@ -83,7 +83,6 @@ def migrate(cr, version):
                 delete from ir_ui_view where id=6363;
                 delete from ir_ui_view where id=6364;
                 delete from ir_ui_view where id=2866;
-                delete from ir_ui_view where id=5121;
                 delete from ir_ui_view where id=2888;
                 delete from ir_ui_view where id=2885;
                 delete from ir_ui_view where id=2886;
