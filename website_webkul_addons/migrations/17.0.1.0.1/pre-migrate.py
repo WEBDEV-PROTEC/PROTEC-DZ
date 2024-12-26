@@ -75,7 +75,33 @@ def migrate(cr, version):
                 delete from ir_model_fields where model='printnode.scales';
                 delete from ir_model_fields where model='printnode.paper';
                 delete from ir_model_fields where model='printnode.action.method';
-               delete from ir_model_fields where model='printnode.map.action.server';
+                delete from ir_model_fields where model='printnode.map.action.server';
+                delete from ir_ui_view where id=7043;
+                delete from ir_ui_view where id=7045;
+                delete from ir_ui_view where id=5790;
+                delete from ir_ui_view where id=3544;
+                delete from ir_ui_view where id=6363;
+                delete from ir_ui_view where id=6364;
+                delete from ir_ui_view where id=2866;
+                delete from ir_ui_view where id=5121;
+                delete from ir_ui_view where id=2888;
+                delete from ir_ui_view where id=2885;
+                delete from ir_ui_view where id=2886;
+                delete from ir_ui_view where id=5793;
+                delete from ir_ui_view where id=5794;
+                delete from ir_ui_view where id=5783;
+                delete from ir_ui_view where id=5784;
+                delete from ir_ui_view where id=6347;
+                delete from ir_ui_view where id=6348;
+                delete from ir_ui_view where id=6349;
+                delete from ir_ui_view where id=6350;
+                delete from ir_ui_view where id=6351;
+                delete from ir_ui_view where id=6357;
+                delete from ir_ui_view where id=2870;
+                delete from ir_ui_view where id=2871;
+                delete from ir_ui_view where id=6421;
+                delete from ir_ui_view where id=6358;
+                delete from ir_ui_view where id=6359;
                """)
     _logger.info('**********Delete******** generate_combination')
    
