@@ -4,7 +4,10 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
 class AccountChartTemplate(models.Model):
-    _inherit = 'account.chart.template'
+    # _inherit = 'account.chart.template'
+    _name = "l10n_dz.account.chart.template"  
+    _inherit = "account.chart.template"
+    _description = "Algerian Localization Chart Template"
 
             
     def _load(self, company):
