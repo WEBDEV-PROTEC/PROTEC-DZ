@@ -4,18 +4,15 @@
 {
     'name': "Comptabilité - Algérie",
     'summary': """ Plan comptable aux normes algériennes. """,
+    'category': 'Accounting',
+    'version': '0.1',
 
-
-
-    'category': 'Accounting/Localizations/Account Charts',
-    'version': '17.0',
-
-    "contributors": [
-        "1 <Soufyane AMRAOUI>",
-        "2 <Chems Eddine SAHININE>",
-        "3 <Fatima MESSADI>",
-    ],
-    'sequence': 1,
+    # "contributors": [
+    #     "1 <Soufyane AMRAOUI>",
+    #     "2 <Chems Eddine SAHININE>",
+    #     "3 <Fatima MESSADI>",
+    # ],
+    # 'sequence': 1,
     
     
     'author': 'Elosys',
@@ -34,13 +31,11 @@
         
     ],
 
-    
-
 
 
     'data': [
         'data/accounting_group.xml',
-        # 'data/l10n_dz_base_chart_data.xml',
+        'data/l10n_dz_base_chart_data.xml',
         'data/account_group.xml',
         'data/account_account_template_data.xml',
         'data/account_chart_template_data.xml',
@@ -67,9 +62,9 @@
     
     'images': ['images/banner.gif'],
 
-    'post_init_hook': '_preserve_tag_on_taxes',
+    # 'post_init_hook': '_preserve_tag_on_taxes',
 
-    'installable': True,
-    'auto_install': False,
-    'application':False,
+    # 'installable': True,
+    # 'auto_install': False,
+    # 'application':False,
 }
