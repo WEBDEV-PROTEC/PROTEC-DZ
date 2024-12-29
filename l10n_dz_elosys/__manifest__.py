@@ -38,11 +38,11 @@
         'data/l10n_dz_base_chart_data.xml',
         'data/account_group.xml',
         'data/account_account_template_data.xml',
-        'data/account_chart_template_data.xml',
+        # 'data/account_chart_template_data.xml',
         'data/account_data.xml',
         'data/account_tax_data.xml',
         'data/account_fiscal_position_template_data.xml',
-        'data/account_chart_template_configure_data.xml',
+        # 'data/account_chart_template_configure_data.xml',
         'data/company_function.xml',
         
 
