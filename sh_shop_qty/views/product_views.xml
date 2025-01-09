@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_product_template_form_view" model="ir.ui.view">
+        <field name="name">sh.product.template.form.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name='priority'>1000</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="multi_website_moq" invisible="1" />
+                <field name="sh_increment_qty" invisible="1" />
+                <field name="sh_multiples_qty" />
+            </xpath>
+            <xpath expr="//page[@name='variants']" position="after">
+                <page string="Multi Website MOQ" invisible="multi_website_moq == False">
+                    <field name="multi_website_ids">
+                        <tree string="Website wise Qty" editable="bottom">
+                            <field name="website_id" domain="[('multi_website_moq','=', True)]"/>
+                            <field name="sh_increment_qty" invisible="1"/>
+                            <field name="sh_multiples_qty" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
