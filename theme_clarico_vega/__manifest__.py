@@ -7,6 +7,7 @@
     'summary': 'An Odoo eCommerce Solution with a lot of well-analized features. Suitable for all kind of eCommerce Businesses like Furniture, Fashion, Electronics, Beauty, Fitness, Jewelry, etc.',
     'version': '17.0.0.23',
     'license': 'OPL-1',
+    'module_type': 'official',
     'depends': [
         'emipro_theme_base', 'website_mass_mailing',
     ],
