@@ -4,7 +4,7 @@
 
         <template id="hide_price_shop" inherit_id="website_sale.products_item">
             <xpath expr="//div[@class='product_price']" position="replace">
-                   <t t-if="not request.env.user.has_group('base.group_public')">
+                   <t t-if="not request.env.user.has_group('base.group_public') or website.id== 4">
                     <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
                         <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
                         <span t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
@@ -55,7 +55,7 @@
                 <ul class="d-none js_add_cart_variants" t-att-data-attribute_exclusions="{'exclusions: []'}"/>
             </t>
         </t>
-        <t t-if=" not request.env.user.has_group('base.group_public')">
+        <t t-if=" not request.env.user.has_group('base.group_public') or website.id== 4 ">
             <t t-call="website_sale.product_price" />
             <p t-if="True" class="css_not_available_msg alert alert-warning">This combination does not exist.</p>
             <a role="button" id="add_to_cart" class="btn btn-primary btn-lg mt16 js_check_product a-submit d-block d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"/> Add to Cart</a>

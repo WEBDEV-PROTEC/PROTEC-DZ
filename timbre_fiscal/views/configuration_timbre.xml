@@ -6,13 +6,15 @@
         <field name="name">l10n.dz.config.timbre.form</field>
         <field name="model">config.timbre</field>
         <field name="arch" type="xml">
-            <form string="Timbre" edit="true" create="false" delete="false">
+            <form string="Configuration Timbre" edit="true" create="false" delete="false">
                 <sheet>
                     <group>
-                        <group name="config_timbre" string="Configuration timbre">
+                        <group name="config_timbre" string="Configuration Timbre">
                             <field name="name" class="oe_inline"/>
                             <field name="tranche" class="oe_inline"/>
-                            <field name="prix" class="oe_inline"/>
+                            <field name="prix_1" class="oe_inline"/>
+                            <field name="prix_2" class="oe_inline"/>
+                            <field name="prix_3" class="oe_inline"/>
                         </group>
                         <group name="config_compt_contrparti" string="Configuration comptes contreparties">
                             <field name="sale_timbre" class="oe_inline"/>
@@ -20,9 +22,11 @@
                         </group>
                     </group>
                     <group>
-                        <group name="mnt_min_max_ttc"  string="Montant Minimal/Maximal TTC">
+                        <group name="mnt_min_max_ttc" string="Montants Minimal/Maximal">
                             <field name="mnt_min" class="oe_inline"/>
-                            <field name="mnt_max" class="oe_inline"/>
+                            <field name="mnt_max_1" class="oe_inline"/>
+                            <field name="mnt_max_2" class="oe_inline"/>
+                            <field name="montant_minimum_timbre" class="oe_inline"/>
                         </group>
                         <group>
                             <field name="montant_en_lettre" class="oe_inline"/>
@@ -40,10 +44,10 @@
         <field name="res_id">1</field>
     </record>
 
-    <menuitem   
+    <menuitem
         id="menu_timbre"
         action="action_timbre"
-        name="Configuration timbre"
+        name="Configuration Timbre"
         parent="account.menu_finance_configuration"
         sequence="1"
     />
