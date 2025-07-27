@@ -293,7 +293,7 @@
                                         </td>
                                         <td class="text-left cheq-line serif-font">
                                             <!-- <t t-if="payment.cheq_place" t-esc="payment.cheq_place"/> - <t t-if="payment.cheq_num" t-esc="payment.cheq_num"/> -->
-                                            <t t-if="payment.cheq_bank" t-esc="payment.cheq_bank"/>
+                                            <t t-if="payment.cheq_bank" t-esc="payment.cheq_bank"/> - <t t-if="payment.cheq_num" t-esc="payment.cheq_num"/> -->
                                         </td>
                                         <td class="text-right cheq-line serif-font">
                                             <t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/>
